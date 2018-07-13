@@ -25,7 +25,15 @@ SECRET_KEY = '*3rg#c!#mwt0jk-e#y%1w!l#8%%dr#@uf*6er9m35f)n4ev5p#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+SITE_TITLE = 'ciremai'
+
+ANONYMOUS_USER_ID = -1
+AUTH_USER_MODEL = "auth.User"
+
+LOGIN_URL = "/login/"
+LOGIN_URL_BILLING = "/login/"
+
 
 
 # Application definition
@@ -37,6 +45,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #
+    'datetimewidget',
+    'django_tables2',
+    'bootstrap3',
+    'avatar',
+    'annoying',
+    'simple_history',
+    'widget_tweaks',
+    'mptt',
+    'django_select2',
+    #
+    'bbconnlab',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +70,32 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bbconnection.urls'
+
+
+#########################
+# CIREMAI CONFIGURATION #
+#########################
+
+# HL7 Message
+HL7_ORDER_DIR = 'C:\\HL7'
+
+# report file
+RESULT_REPORT_FILE_HEADER = 'D:\\git\\ciremai\\report_jrxml\\ciremaiHeader.jrxml'
+RESULT_REPORT_FILE_MAIN = 'D:\\git\\ciremai\\report_jrxml\\ciremaiReport.jrxml'
+RESULT_REPORT_FILE = 'D:\\git\\ciremai\\report_jrxml\\ciremaiReport.jasper'
+RESULT_REPORT_DIR = 'D:\\git\\ciremai\\report_jrxml'
+
+REPORT_DIR = 'D:\\git\\ciremai\\report_jrxml\\out'
+# Jasper Report Database
+JASPER_CONN = {
+        'driver': 'mysql',
+        'username': 'root',
+        'password': 'P455word',
+        'host': '127.0.0.1',
+        'database': 'ciremai_rs'
+    }
+
+#########################
 
 TEMPLATES = [
     {
@@ -73,10 +119,21 @@ WSGI_APPLICATION = 'bbconnection.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'ciremai_rs',
+        'USER': 'root',
+        'PASSWORD': 'P455word',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -116,5 +173,28 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+AVATAR_AUTO_GENERATE_SIZES = (60,)
+AVATAR_PROVIDERS = (
+    'avatar.providers.PrimaryAvatarProvider',
+    #'avatar.providers.GravatarAvatarProvider',
+    'avatar.providers.DefaultAvatarProvider',
+)
+AVATAR_DEFAULT_URL = 'http://127.0.0.1:8000/media/avatars/avatar.jpg'
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.10/howto/static-files/
+
+CRISPY_TEMPLATE_PACK="bootstrap3"
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    'D:\\git\\ciremai\\ciremai\\static',
+]
+
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = 'D://git//ciremai//ciremai//media'
+MEDIA_URL = '/media/'
+
