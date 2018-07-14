@@ -26,7 +26,7 @@ SECRET_KEY = '*3rg#c!#mwt0jk-e#y%1w!l#8%%dr#@uf*6er9m35f)n4ev5p#'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-SITE_TITLE = 'ciremai'
+SITE_TITLE = 'bbconnection'
 
 ANONYMOUS_USER_ID = -1
 AUTH_USER_MODEL = "auth.User"
@@ -34,9 +34,10 @@ AUTH_USER_MODEL = "auth.User"
 LOGIN_URL = "/login/"
 LOGIN_URL_BILLING = "/login/"
 
-
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -45,7 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    
     #
+    'crispy_forms',
     'datetimewidget',
     'django_tables2',
     'bootstrap3',
@@ -67,40 +71,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'bbconnection.urls'
 
-
-#########################
-# CIREMAI CONFIGURATION #
-#########################
-
-# HL7 Message
-HL7_ORDER_DIR = 'C:\\HL7'
-
-# report file
-RESULT_REPORT_FILE_HEADER = 'D:\\git\\ciremai\\report_jrxml\\ciremaiHeader.jrxml'
-RESULT_REPORT_FILE_MAIN = 'D:\\git\\ciremai\\report_jrxml\\ciremaiReport.jrxml'
-RESULT_REPORT_FILE = 'D:\\git\\ciremai\\report_jrxml\\ciremaiReport.jasper'
-RESULT_REPORT_DIR = 'D:\\git\\ciremai\\report_jrxml'
-
-REPORT_DIR = 'D:\\git\\ciremai\\report_jrxml\\out'
-# Jasper Report Database
-JASPER_CONN = {
-        'driver': 'mysql',
-        'username': 'root',
-        'password': 'P455word',
-        'host': '127.0.0.1',
-        'database': 'ciremai_rs'
-    }
-
-#########################
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PROJECT_ROOT, "templates"),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,17 +98,10 @@ WSGI_APPLICATION = 'bbconnection.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'ciremai_rs',
+        'NAME': 'bbconn',
         'USER': 'root',
         'PASSWORD': 'P455word',
         'HOST': 'localhost',
@@ -160,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'id'
 
 TIME_ZONE = 'UTC'
 
@@ -173,13 +145,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
 AVATAR_AUTO_GENERATE_SIZES = (60,)
 AVATAR_PROVIDERS = (
     'avatar.providers.PrimaryAvatarProvider',
     #'avatar.providers.GravatarAvatarProvider',
     'avatar.providers.DefaultAvatarProvider',
 )
-AVATAR_DEFAULT_URL = 'http://127.0.0.1:8000/media/avatars/avatar.jpg'
+AVATAR_DEFAULT_URL = 'http://127.0.0.1:8000/media/avatars/logo_avatar.jpg'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -191,10 +164,35 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    'D:\\git\\ciremai\\ciremai\\static',
+    'C:\\Users\\ysr\\git\\bbconnection\\ciremai\\static',
 ]
 
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_ROOT = 'D://git//ciremai//ciremai//media'
+MEDIA_ROOT = 'C:\\Users\\ysr\git\\bbconnection\\bbconnection\\media'
 MEDIA_URL = '/media/'
 
+
+#########################
+# CIREMAI CONFIGURATION #
+#########################
+# HL7 Message
+HL7_ORDER_DIR = 'C:\\HL7'
+
+# report file
+RESULT_REPORT_FILE_HEADER = 'C:\\Users\\ysr\\git\\bbconnection\\report_jrxml\\ciremaiHeader.jrxml'
+RESULT_REPORT_FILE_MAIN = 'C:\\Users\\ysr\\git\\bbconnection\\report_jrxml\\ciremaiReport.jrxml'
+RESULT_REPORT_FILE_FOOTER = 'C:\\Users\\ysr\\git\\bbconnection\\report_jrxml\\ciremaiFooter.jrxml'
+RESULT_REPORT_FILE = 'C:\\Users\\ysr\\git\\bbconnection\\report_jrxml\\ciremaiReport.jasper'
+RESULT_REPORT_DIR = 'C:\\Users\\ysr\\git\\bbconnection\\report_jrxml'
+
+REPORT_DIR = 'C:\\Users\\ysr\\git\\bbconnection\\report_jrxml\\out'
+# Jasper Report Database
+JASPER_CONN = {
+        'driver': 'mysql',
+        'username': 'root',
+        'password': 'P455word',
+        'host': '127.0.0.1',
+        'database': 'bbconn'
+    }
+
+#########################

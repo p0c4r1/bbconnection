@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ciremaiReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d78ec64-68a1-4356-bf78-98f283cea182">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bin\DataAdapter.xml"/>
+	<parameter name="ORDER_ID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select bbconnlab_testgroups.name grup,bbconnlab_tests.name testname,bbconnlab_results.alfa_result,bbconnlab_orderresults.unit
+,bbconnlab_orderresults.patologi_mark,bbconnlab_orderresults.ref_range,bbconnlab_testparameters.method,bbconnlab_testparameters.special_information
+from
+bbconnlab_orderresults
+left join bbconnlab_results on bbconnlab_orderresults.result_id = bbconnlab_results.id
+left join bbconnlab_tests on bbconnlab_results.test_id = bbconnlab_tests.id
+left join bbconnlab_testgroups on bbconnlab_tests.test_group_id = bbconnlab_testgroups.id
+left join bbconnlab_testparameters on bbconnlab_tests.id = bbconnlab_testparameters.test_id
+where
+bbconnlab_orderresults.order_id =  $P{ORDER_ID}
+and bbconnlab_orderresults.is_header = 0
+and bbconnlab_orderresults.validation_status >= 3
+order by bbconnlab_tests.sort]]>
+	</queryString>
+	<field name="grup" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="grup"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_testgroups"/>
+	</field>
+	<field name="testname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="testname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_tests"/>
+	</field>
+	<field name="alfa_result" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="alfa_result"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_results"/>
+	</field>
+	<field name="unit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="unit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_orderresults"/>
+	</field>
+	<field name="patologi_mark" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="patologi_mark"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_orderresults"/>
+	</field>
+	<field name="ref_range" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ref_range"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_orderresults"/>
+	</field>
+	<field name="method" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="method"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_testparameters"/>
+	</field>
+	<field name="special_information" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="special_information"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_testparameters"/>
+	</field>
+	<variable name="Variable_1" class="java.lang.String">
+		<variableExpression><![CDATA[new Date()]]></variableExpression>
+	</variable>
+	<variable name="V_CURRENT_PAGE_NUMBER" class="java.lang.Integer" resetType="Page">
+		<variableExpression><![CDATA[1]]></variableExpression>
+		<initialValueExpression><![CDATA[$V{PAGE_NUMBER}]]></initialValueExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{grup}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField>
+					<reportElement x="10" y="5" width="100" height="19" uuid="3ae6a2bb-00ab-4f69-b18d-0c60da1d75a3"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{grup}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="10"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="103" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="0" width="400" height="20" uuid="1a3da516-dfc5-46f7-bd97-5cfbd959ad4d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DINAS KESEHATAN ANGKATAN LAUT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="20" width="400" height="20" uuid="17041d38-e5ea-4d4a-b05e-e8f8de19b1cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUMKITAL Dr. RAMELAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="40" width="400" height="20" uuid="739c8b59-75e0-4bcb-8b88-1c5e17e89b78"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HASIL PEMERIKSAAN LABORATORIUM KLINIK]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="79" height="69" uuid="c8039f79-db25-4da8-8e16-2c3d0fcb26e0"/>
+				<imageExpression><![CDATA["D:\\git\\ciremai\\ciremai\\media\\image\\logo.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="2" y="79" width="550" height="1" uuid="acbf5d7a-82a5-413c-8fa1-0c459cc1012b"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="142" splitType="Stretch">
+			<subreport>
+				<reportElement x="10" y="0" width="540" height="140" uuid="dcf7e81c-775c-413f-b820-59316a18040b"/>
+				<subreportParameter name="ORDER_ID">
+					<subreportParameterExpression><![CDATA[$P{ORDER_ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["ciremaiHeader.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="0" width="552" height="1" uuid="229aa0b3-d838-4e85-a97d-51a7fbaf15e8"/>
+			</line>
+			<line>
+				<reportElement x="1" y="20" width="552" height="1" uuid="a8894c9e-86ff-4401-a864-273077e896f8"/>
+			</line>
+			<staticText>
+				<reportElement x="20" y="0" width="82" height="20" uuid="7afe2a92-04dc-4376-9568-2caee21ffa1a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="83b32e18-657e-4a84-b187-5948bd6a896d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Parameter]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="0" width="78" height="20" uuid="3e406c12-1d47-45c4-ae5b-8fce4a890586">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3869f147-752b-4ed1-892e-4628752dea04"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Result]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="0" width="50" height="19" uuid="8b4c33d9-b691-4275-a90d-7cda843edc96">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8d6b8e1-51f1-45f0-83a0-e009deac6269"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="0" width="30" height="19" uuid="1422fec1-2321-4647-98cf-03cc7c3b45af">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4ef98b53-79b2-40a0-be9b-b4a489086e4b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Flag]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="0" width="80" height="19" uuid="a177d63d-e828-4492-b95c-5ce08a86f48a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="06a57f23-e609-4cf0-a56f-8b05e8294c1d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ref. Ranges]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="191" y="0" width="78" height="15" uuid="51c36f86-97d0-4e97-a233-f9975c9cfb03">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3869f147-752b-4ed1-892e-4628752dea04"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{alfa_result}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="293" y="0" width="50" height="15" uuid="4932ca22-d5e0-41f9-b046-12888b63a2d4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8d6b8e1-51f1-45f0-83a0-e009deac6269"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="366" y="0" width="30" height="15" uuid="fd876022-6c3f-4e14-ac46-ac2ef6cc4a03">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4ef98b53-79b2-40a0-be9b-b4a489086e4b"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{patologi_mark}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="433" y="0" width="80" height="15" uuid="e57a7695-1ab7-4a1b-a323-df185c785a0e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="06a57f23-e609-4cf0-a56f-8b05e8294c1d"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ref_range}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="0" width="171" height="15" uuid="cbf74dc7-f200-4335-a36e-e9c96450c02c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c81f313a-c668-4ac6-901f-1828a20d9b1e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{testname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="-6" width="548" height="1" uuid="122f5fd2-aef8-4b2b-92f2-04018938fa7e"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="263" y="9" width="37" height="15" uuid="7f640635-9714-42c9-a650-dea7565c1f50"/>
+				<text><![CDATA[Print at]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="300" y="9" width="100" height="15" uuid="0cbb96f8-1c7c-48be-84ab-f5b58d2893a8"/>
+				<textFieldExpression><![CDATA[NOW( )]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto">
+				<reportElement x="410" y="9" width="145" height="15" uuid="65a71b70-af5e-4bc5-9879-4606d906ae21"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[msg("Page {0} of {1}", $V{V_CURRENT_PAGE_NUMBER}, $V{PAGE_NUMBER})]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="94">
+			<subreport>
+				<reportElement positionType="Float" x="2" y="8" width="550" height="23" uuid="60420b55-2bae-4f78-9358-47f9afe4637d"/>
+				<subreportParameter name="ORDER_ID">
+					<subreportParameterExpression><![CDATA[$P{ORDER_ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["ciremaiFooter.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="390" y="32" width="100" height="30" uuid="52d0cbb5-b67f-4884-b32e-7c879dcdd2f5"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Verificator:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="365" y="73" width="150" height="1" uuid="5a2639ab-afcc-466b-ae94-c4d081dfbaeb"/>
+			</line>
+			<textField evaluationTime="Auto">
+				<reportElement x="410" y="79" width="145" height="15" uuid="dbf90cb0-abda-410f-b0b1-d9b96f506be8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[msg("Page {0} of {1}", $V{V_CURRENT_PAGE_NUMBER}, $V{PAGE_NUMBER})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="79" width="100" height="15" uuid="623daa9c-f4e2-4e93-b784-73e9eb4ec78d"/>
+				<textFieldExpression><![CDATA[NOW( )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="263" y="79" width="37" height="15" uuid="b2660c5a-9704-4d3c-a886-34e672bbe229"/>
+				<text><![CDATA[Print at]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>
