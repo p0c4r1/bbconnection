@@ -112,13 +112,13 @@
                         </h5>
                     </p>
                     {% if perms.admin %}
-                    <li><a href="/admin/"><i class="fa fa-gears"></i>Administration</a></li>
+                    <li><a href="/admin/"><i class="fa fa-gears"></i>{% trans "Administration" %}</a></li>
                     {% endif %}
 
 
                   {% else %}
 
-                      <li><a href="/login/"><i class="fa fa-sign-in"></i>Login</a></li>
+                      <li><a href="/login/"><i class="fa fa-sign-in"></i>{% trans "Login" %}</a></li>
 
                   {% endif %}
 
@@ -163,16 +163,16 @@
                   <li class="sub-menu">
                       <a {% if request.path == '/reptest/' or request.path == '/reports/jm/' or request.path == '/reports/insurance/' or request.path == '/reports/tests/' %} class="active"{% endif %} href="javascript:;" >
                           <i class="fa fa-file-o"></i>
-                          <span>Report</span>
+                          <span>{% trans "Report" %}</span>
                       </a>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/jm/'%} class="active"{% endif %} ><a href="/reports/jm/">Order list</a></li>{% endif %}
+                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/jm/'%} class="active"{% endif %} ><a href="/reports/jm/">{% trans "Order list" %}</a></li>{% endif %}
                       </ul>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/origin/'%} class="active"{% endif %} ><a href="/reports/origin/">Origin</a></li>{% endif %}
+                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/origin/'%} class="active"{% endif %} ><a href="/reports/origin/">{% trans "Origin" %}</a></li>{% endif %}
                       </ul>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/insurance/'%} class="active"{% endif %} ><a href="/reports/insurance/">Cara bayar</a></li>{% endif %}
+                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/insurance/'%} class="active"{% endif %} ><a href="/reports/insurance/">{% trans "Cara bayar" %}</a></li>{% endif %}
                       </ul>
                       <ul class="sub">
                           {% if perms.billing.view_orders %} <li {% if request.path == '/reports/tests/'%} class="active"{% endif %} ><a href="/reports/tests/">Test</a></li>{% endif %}

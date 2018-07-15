@@ -107,7 +107,7 @@
     	<div class="form-group">
     	<input type="checkbox" name="check_conclusion" tabindex="-1" value="">
   <label for="conclusion">{% trans "Conclusion:" %}</label>
-  <textarea class="form-control" rows="5" id="conclusion" name="conclusion">{{ orders.conclusion }}</textarea>
+  <textarea class="form-control" rows="5" id="conclusion" name="conclusion">{{ orders.conclusion|default:"" }}</textarea>
 </div>
     	</td>
     </tr>
@@ -135,14 +135,6 @@
     <button type='submit' class="btn btn-default" name="medval" role="button">
     <span class="fa fa-check"></span>&nbsp;{% trans "Medical Validate" %}
     </button>
-    
-    <!--
-    <a href="techval?id={{ orders.id }}" class="btn btn-default" role="button">
-    <span class="fa fa-check"></span>&nbsp;{% trans "Techical Validate" %}</a>
-    
-    <a href="medval?id={{ orders.id }}" class="btn btn-default" role="button">
-    <span class="fa fa-check"></span>&nbsp;{% trans "Medical Validate" %}</a>
-    -->
     
     <button type='submit' class="btn btn-default" name="repeat" role="button">
     <span class="fa fa-repeat"></span>&nbsp;{% trans "Repeat" %}

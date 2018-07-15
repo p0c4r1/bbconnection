@@ -61,7 +61,7 @@ class Label(object):
         except Exception as e:
             return False,str(e)
         
-        return True,_("Printer [%(name)] OK with serial port [%(port)]." )% {'name':port_com.name,'port':port_com.com_port}
+        return True,_("Printer [%(name)s] OK with serial port [%(port)s]." ) % {'name':str(port_com.name),'port':str(port_com.com_port) }
 
         
     
@@ -129,6 +129,6 @@ class Label(object):
         except Exception as e:
             return False,str(e)
         
-        return True,_("Printer [%(name)] OK with serial port [%(port)]." ) % {'name':port_com.name,'port':port_com.com_port}
+        return True,_("Printer [%(name)s] OK with serial port [%(port)s]." ) % {'name':str(port_com.name),'port':str(port_com.com_port) }
             
         

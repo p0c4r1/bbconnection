@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-15 15:12+0700\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2018-07-15 22:32+0700\n"
+"PO-Revision-Date: 2018-07-15 HO:MI+ZONE\n"
+"Last-Translator: pocari <p0c4r1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -182,6 +182,17 @@ msgstr "Profil pengguna"
 msgid "Change user profile"
 msgstr "Ubah profil pengguna"
 
+#: .\bbconnection\templates\base\base_billing.html:115
+msgid "Administration"
+msgstr "Administrasi"
+
+#: .\bbconnection\templates\base\base_billing.html:121
+#: .\bbconnection\templates\registration\login2.html:4
+#: .\bbconnection\templates\registration\login2.html:5
+#: .\bbconnection\templates\registration\login2.html:8
+msgid "Login"
+msgstr "Masuk"
+
 #: .\bbconnection\templates\base\base_billing.html:130
 #: .\bbconnection\templates\dashboard.html:4
 #: .\bbconnection\templates\dashboard.html:5
@@ -240,12 +251,35 @@ msgstr "Daftar kerja batch"
 msgid "Workarea"
 msgstr "Area kerja"
 
+#: .\bbconnection\templates\base\base_billing.html:166
+#, fuzzy
+#| msgid "Report origin"
+msgid "Report"
+msgstr "Laporan asal"
+
+#: .\bbconnection\templates\base\base_billing.html:169
+#, fuzzy
+#| msgid "Order test"
+msgid "Order list"
+msgstr "Tes order"
+
+#: .\bbconnection\templates\base\base_billing.html:172
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:50
+#: .\bbconnection\templates\orders_detail.html:50 .\bbconnlab\forms.py:87
+#: .\bbconnlab\forms.py:112 .\bbconnlab\models.py:105 .\bbconnlab\models.py:331
+msgid "Origin"
+msgstr "Asal"
+
+#: .\bbconnection\templates\base\base_billing.html:175
+#: .\bbconnection\templates\report\insurance.html:18
+msgid "Cara bayar"
+msgstr "Cara bayar"
+
 #: .\bbconnection\templates\base\base_billing.html:207
 #: .\bbconnection\templates\index.html:4 .\bbconnection\templates\index.html:5
 #: .\bbconnection\templates\index.html:8
 #: .\bbconnection\templates\index_billing.html:4
 #: .\bbconnection\templates\index_billing.html:5
-#: .\bbconnection\templates\index_billing.html:8
 #: .\bbconnection\templates\index_middleware.html:4
 #: .\bbconnection\templates\index_middleware.html:5
 #: .\bbconnection\templates\index_middleware.html:8
@@ -330,16 +364,10 @@ msgid "Last modified"
 msgstr "Terakhir diubah"
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:46
-#: .\bbconnection\templates\orders_detail.html:46 .\bbconnlab\models.py:51
-#: .\bbconnlab\models.py:246
+#: .\bbconnection\templates\orders_detail.html:46 .\bbconnlab\forms.py:88
+#: .\bbconnlab\forms.py:113 .\bbconnlab\models.py:51 .\bbconnlab\models.py:246
 msgid "Priority"
 msgstr "Prioritas"
-
-#: .\bbconnection\templates\bbconnlab\orders_detail.html:50
-#: .\bbconnection\templates\orders_detail.html:50 .\bbconnlab\models.py:105
-#: .\bbconnlab\models.py:331
-msgid "Origin"
-msgstr "Asal"
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:54
 #: .\bbconnection\templates\orders_detail.html:54 .\bbconnlab\models.py:332
@@ -347,15 +375,17 @@ msgid "Sender doctor"
 msgstr "Dokter pengirim"
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:58
-#: .\bbconnection\templates\orders_detail.html:58 .\bbconnlab\models.py:124
-#: .\bbconnlab\models.py:125 .\bbconnlab\models.py:333
+#: .\bbconnection\templates\orders_detail.html:58 .\bbconnlab\forms.py:116
+#: .\bbconnlab\models.py:124 .\bbconnlab\models.py:125
+#: .\bbconnlab\models.py:333
 msgid "Diagnosis"
 msgstr "Diagnosa"
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:62
-#: .\bbconnection\templates\orders_detail.html:62 .\bbconnlab\models.py:69
+#: .\bbconnection\templates\orders_detail.html:62 .\bbconnlab\forms.py:114
+#: .\bbconnlab\models.py:69
 msgid "Insurence"
-msgstr "Ansuransi"
+msgstr "Angakatan"
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:66
 #: .\bbconnection\templates\bbconnlab\patients_detail.html:66
@@ -670,8 +700,18 @@ msgid "products in your database."
 msgstr "Produk di database anda."
 
 #: .\bbconnection\templates\dashboard_billing.html:19
+msgid "you have"
+msgstr "anda mempunyai"
+
+#: .\bbconnection\templates\dashboard_billing.html:19
 msgid "order(s) today."
 msgstr "order hari ini."
+
+#: .\bbconnection\templates\dashboard_billing.html:26
+#, fuzzy
+#| msgid "Register new patient"
+msgid "register new"
+msgstr "Register pasien baru"
 
 #: .\bbconnection\templates\dashboard_billing.html:26
 msgid "patient(s) today."
@@ -1159,7 +1199,7 @@ msgid "Order History"
 msgstr "Riwayat order"
 
 #: .\bbconnection\templates\middleware\order_history.html:17
-#: .\bbconnection\templates\middleware\order_results.html:155
+#: .\bbconnection\templates\middleware\order_results.html:147
 msgid "History"
 msgstr "Riwayat"
 
@@ -1188,19 +1228,14 @@ msgid "Technical Validate"
 msgstr "Validasi teknis"
 
 #: .\bbconnection\templates\middleware\order_results.html:136
-#: .\bbconnection\templates\middleware\order_results.html:144
 msgid "Medical Validate"
 msgstr "Validasi medis"
 
-#: .\bbconnection\templates\middleware\order_results.html:141
-msgid "Techical Validate"
-msgstr "Validasi teknis"
-
-#: .\bbconnection\templates\middleware\order_results.html:148
+#: .\bbconnection\templates\middleware\order_results.html:140
 msgid "Repeat"
 msgstr "Mengulang"
 
-#: .\bbconnection\templates\middleware\order_results.html:152
+#: .\bbconnection\templates\middleware\order_results.html:144
 msgid "Print Result"
 msgstr "Print hasil"
 
@@ -1240,12 +1275,6 @@ msgstr "Lupa kata sandi atau id pengguna anda?"
 msgid "Log in"
 msgstr "Masuk"
 
-#: .\bbconnection\templates\registration\login2.html:4
-#: .\bbconnection\templates\registration\login2.html:5
-#: .\bbconnection\templates\registration\login2.html:8
-msgid "Login"
-msgstr "Masuk"
-
 #: .\bbconnection\templates\registration\login2.html:25
 msgid "Please correct the error below."
 msgstr "Harap perbaiki kesalahan dibawah ini."
@@ -1271,10 +1300,6 @@ msgstr "Laporan Jasa Medis"
 #: .\bbconnection\templates\report\insurance.html:11
 msgid "Report cara bayar"
 msgstr "Laporan cara bayar"
-
-#: .\bbconnection\templates\report\insurance.html:18
-msgid "Cara bayar"
-msgstr "Cara bayar"
 
 #: .\bbconnection\templates\report\insurance.html:24
 #: .\bbconnection\templates\report\jm.html:24
@@ -1342,8 +1367,18 @@ msgstr "Pilih penggunaan produk"
 msgid "No storage available?"
 msgstr "Tidak ada penyimpanan tersedia?"
 
+#: .\bbconnlab\forms.py:115 .\bbconnlab\models.py:87
+msgid "Doctor"
+msgstr "Dokter"
+
+#: .\bbconnlab\forms.py:120
+msgid "Test selections"
+msgstr "Pilihan tes"
+
 #: .\bbconnlab\labels.py:64 .\bbconnlab\labels.py:132
-msgid "Printer [%(name)] OK with serial port [%(port)]."
+#, fuzzy, python-format
+#| msgid "Printer [%(name)] OK with serial port [%(port)]."
+msgid "Printer [%(name)s] OK with serial port [%(port)s]."
 msgstr "Printer [%(name)] OK dengan port serial [%(port)]."
 
 #: .\bbconnlab\models.py:19
@@ -1377,20 +1412,18 @@ msgid "Priorities"
 msgstr "Prioritas"
 
 #: .\bbconnlab\models.py:55
-msgid "Insurence Name"
-msgstr "Nama ansuransi"
+#, fuzzy
+#| msgid "Insurence Name"
+msgid "Insurance Name"
+msgstr "Nama Angkatan"
 
 #: .\bbconnlab\models.py:70
 msgid "Insurences"
-msgstr "Ansuransi"
+msgstr "Angkatan"
 
 #: .\bbconnlab\models.py:73
 msgid "Doctor Name"
 msgstr "Nama dokter"
-
-#: .\bbconnlab\models.py:87
-msgid "Doctor"
-msgstr "Dokter"
 
 #: .\bbconnlab\models.py:88
 msgid "Doctors"
@@ -1548,7 +1581,7 @@ msgstr "Prioritas order"
 
 #: .\bbconnlab\models.py:335
 msgid "Insurance"
-msgstr "Ansuransi"
+msgstr "Angkatan"
 
 #: .\bbconnlab\models.py:336
 msgid "Note/Comment"
@@ -1850,14 +1883,17 @@ msgstr "input path"
 msgid "Total Price"
 msgstr "Total harga"
 
-#: .\bbconnlab\views.py:84
+#: .\bbconnlab\views.py:80
 msgid "Wrong username and/or password."
 msgstr "Salah id pengguna dan/atau kata sandi"
 
-#: .\bbconnlab\views.py:126
+#: .\bbconnlab\views.py:122
 msgid "Successfully updated your avatar."
 msgstr "Berhasil update avatar anda."
 
-#: .\bbconnlab\views.py:157
+#: .\bbconnlab\views.py:153
 msgid "Successfully uploaded a new avatar."
 msgstr "Berhasil upload avatar baru."
+
+#~ msgid "Techical Validate"
+#~ msgstr "Validasi teknis"

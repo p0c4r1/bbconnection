@@ -52,7 +52,7 @@ class Priority(models.Model):
         verbose_name_plural = _("Priorities")
         
 class Insurance(models.Model):
-    name = models.CharField(max_length=100,verbose_name=_("Insurence Name"))
+    name = models.CharField(max_length=100,verbose_name=_("Insurance Name"))
     ext_code = models.CharField(max_length=30,verbose_name=_("External code"))
     lastmodification = ModificationDateTimeField(verbose_name=_("Last modified"))
     lastmodifiedby = models.ForeignKey(

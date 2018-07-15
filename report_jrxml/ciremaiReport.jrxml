@@ -95,7 +95,7 @@ order by bbconnlab_tests.sort]]>
 				<text><![CDATA[RUMKITAL Dr. RAMELAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="80" y="40" width="400" height="20" uuid="739c8b59-75e0-4bcb-8b88-1c5e17e89b78"/>
+				<reportElement x="80" y="81" width="400" height="20" uuid="739c8b59-75e0-4bcb-8b88-1c5e17e89b78"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -108,6 +108,20 @@ order by bbconnlab_tests.sort]]>
 			<line>
 				<reportElement x="2" y="79" width="550" height="1" uuid="acbf5d7a-82a5-413c-8fa1-0c459cc1012b"/>
 			</line>
+			<staticText>
+				<reportElement x="80" y="44" width="400" height="20" uuid="cff1c6a4-25a0-4093-b49e-5cdfe0dc0046"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Satukan Tekad Berikan Layanan "TERBAIK"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="57" width="450" height="20" uuid="b0570229-ae89-4f66-a07b-6554fa66066b"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[(Terpercaya, Efisien, Ramah, Berkualitas, Akurat, Inovatif, dan Komunikatif)]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>

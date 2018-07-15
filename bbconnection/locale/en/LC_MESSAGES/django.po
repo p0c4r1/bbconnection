@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-15 15:12+0700\n"
+"POT-Creation-Date: 2018-07-15 22:32+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -181,6 +181,17 @@ msgstr ""
 msgid "Change user profile"
 msgstr ""
 
+#: .\bbconnection\templates\base\base_billing.html:115
+msgid "Administration"
+msgstr ""
+
+#: .\bbconnection\templates\base\base_billing.html:121
+#: .\bbconnection\templates\registration\login2.html:4
+#: .\bbconnection\templates\registration\login2.html:5
+#: .\bbconnection\templates\registration\login2.html:8
+msgid "Login"
+msgstr ""
+
 #: .\bbconnection\templates\base\base_billing.html:130
 #: .\bbconnection\templates\dashboard.html:4
 #: .\bbconnection\templates\dashboard.html:5
@@ -239,12 +250,31 @@ msgstr ""
 msgid "Workarea"
 msgstr ""
 
+#: .\bbconnection\templates\base\base_billing.html:166
+msgid "Report"
+msgstr ""
+
+#: .\bbconnection\templates\base\base_billing.html:169
+msgid "Order list"
+msgstr ""
+
+#: .\bbconnection\templates\base\base_billing.html:172
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:50
+#: .\bbconnection\templates\orders_detail.html:50 .\bbconnlab\forms.py:87
+#: .\bbconnlab\forms.py:112 .\bbconnlab\models.py:105 .\bbconnlab\models.py:331
+msgid "Origin"
+msgstr ""
+
+#: .\bbconnection\templates\base\base_billing.html:175
+#: .\bbconnection\templates\report\insurance.html:18
+msgid "Cara bayar"
+msgstr ""
+
 #: .\bbconnection\templates\base\base_billing.html:207
 #: .\bbconnection\templates\index.html:4 .\bbconnection\templates\index.html:5
 #: .\bbconnection\templates\index.html:8
 #: .\bbconnection\templates\index_billing.html:4
 #: .\bbconnection\templates\index_billing.html:5
-#: .\bbconnection\templates\index_billing.html:8
 #: .\bbconnection\templates\index_middleware.html:4
 #: .\bbconnection\templates\index_middleware.html:5
 #: .\bbconnection\templates\index_middleware.html:8
@@ -329,15 +359,9 @@ msgid "Last modified"
 msgstr ""
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:46
-#: .\bbconnection\templates\orders_detail.html:46 .\bbconnlab\models.py:51
-#: .\bbconnlab\models.py:246
+#: .\bbconnection\templates\orders_detail.html:46 .\bbconnlab\forms.py:88
+#: .\bbconnlab\forms.py:113 .\bbconnlab\models.py:51 .\bbconnlab\models.py:246
 msgid "Priority"
-msgstr ""
-
-#: .\bbconnection\templates\bbconnlab\orders_detail.html:50
-#: .\bbconnection\templates\orders_detail.html:50 .\bbconnlab\models.py:105
-#: .\bbconnlab\models.py:331
-msgid "Origin"
 msgstr ""
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:54
@@ -346,13 +370,15 @@ msgid "Sender doctor"
 msgstr ""
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:58
-#: .\bbconnection\templates\orders_detail.html:58 .\bbconnlab\models.py:124
-#: .\bbconnlab\models.py:125 .\bbconnlab\models.py:333
+#: .\bbconnection\templates\orders_detail.html:58 .\bbconnlab\forms.py:116
+#: .\bbconnlab\models.py:124 .\bbconnlab\models.py:125
+#: .\bbconnlab\models.py:333
 msgid "Diagnosis"
 msgstr ""
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:62
-#: .\bbconnection\templates\orders_detail.html:62 .\bbconnlab\models.py:69
+#: .\bbconnection\templates\orders_detail.html:62 .\bbconnlab\forms.py:114
+#: .\bbconnlab\models.py:69
 msgid "Insurence"
 msgstr ""
 
@@ -669,7 +695,15 @@ msgid "products in your database."
 msgstr ""
 
 #: .\bbconnection\templates\dashboard_billing.html:19
+msgid "you have"
+msgstr ""
+
+#: .\bbconnection\templates\dashboard_billing.html:19
 msgid "order(s) today."
+msgstr ""
+
+#: .\bbconnection\templates\dashboard_billing.html:26
+msgid "register new"
 msgstr ""
 
 #: .\bbconnection\templates\dashboard_billing.html:26
@@ -1158,7 +1192,7 @@ msgid "Order History"
 msgstr ""
 
 #: .\bbconnection\templates\middleware\order_history.html:17
-#: .\bbconnection\templates\middleware\order_results.html:155
+#: .\bbconnection\templates\middleware\order_results.html:147
 msgid "History"
 msgstr ""
 
@@ -1187,19 +1221,14 @@ msgid "Technical Validate"
 msgstr ""
 
 #: .\bbconnection\templates\middleware\order_results.html:136
-#: .\bbconnection\templates\middleware\order_results.html:144
 msgid "Medical Validate"
 msgstr ""
 
-#: .\bbconnection\templates\middleware\order_results.html:141
-msgid "Techical Validate"
-msgstr ""
-
-#: .\bbconnection\templates\middleware\order_results.html:148
+#: .\bbconnection\templates\middleware\order_results.html:140
 msgid "Repeat"
 msgstr ""
 
-#: .\bbconnection\templates\middleware\order_results.html:152
+#: .\bbconnection\templates\middleware\order_results.html:144
 msgid "Print Result"
 msgstr ""
 
@@ -1239,12 +1268,6 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: .\bbconnection\templates\registration\login2.html:4
-#: .\bbconnection\templates\registration\login2.html:5
-#: .\bbconnection\templates\registration\login2.html:8
-msgid "Login"
-msgstr ""
-
 #: .\bbconnection\templates\registration\login2.html:25
 msgid "Please correct the error below."
 msgstr ""
@@ -1269,10 +1292,6 @@ msgstr ""
 
 #: .\bbconnection\templates\report\insurance.html:11
 msgid "Report cara bayar"
-msgstr ""
-
-#: .\bbconnection\templates\report\insurance.html:18
-msgid "Cara bayar"
 msgstr ""
 
 #: .\bbconnection\templates\report\insurance.html:24
@@ -1341,8 +1360,17 @@ msgstr ""
 msgid "No storage available?"
 msgstr ""
 
+#: .\bbconnlab\forms.py:115 .\bbconnlab\models.py:87
+msgid "Doctor"
+msgstr ""
+
+#: .\bbconnlab\forms.py:120
+msgid "Test selections"
+msgstr ""
+
 #: .\bbconnlab\labels.py:64 .\bbconnlab\labels.py:132
-msgid "Printer [%(name)] OK with serial port [%(port)]."
+#, python-format
+msgid "Printer [%(name)s] OK with serial port [%(port)s]."
 msgstr ""
 
 #: .\bbconnlab\models.py:19
@@ -1376,7 +1404,7 @@ msgid "Priorities"
 msgstr ""
 
 #: .\bbconnlab\models.py:55
-msgid "Insurence Name"
+msgid "Insurance Name"
 msgstr ""
 
 #: .\bbconnlab\models.py:70
@@ -1385,10 +1413,6 @@ msgstr ""
 
 #: .\bbconnlab\models.py:73
 msgid "Doctor Name"
-msgstr ""
-
-#: .\bbconnlab\models.py:87
-msgid "Doctor"
 msgstr ""
 
 #: .\bbconnlab\models.py:88
@@ -1849,14 +1873,14 @@ msgstr ""
 msgid "Total Price"
 msgstr ""
 
-#: .\bbconnlab\views.py:84
+#: .\bbconnlab\views.py:80
 msgid "Wrong username and/or password."
 msgstr ""
 
-#: .\bbconnlab\views.py:126
+#: .\bbconnlab\views.py:122
 msgid "Successfully updated your avatar."
 msgstr ""
 
-#: .\bbconnlab\views.py:157
+#: .\bbconnlab\views.py:153
 msgid "Successfully uploaded a new avatar."
 msgstr ""
