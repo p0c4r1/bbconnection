@@ -78,7 +78,7 @@ class SelectPatientsTable(tables.Table):
                             extra_class="btn-info",
                             condition = '1',
                             onclick = "location.href='{% url 'create_order_from_patient' record.pk %}'",
-                            verbose_name=_(''),orderable=False)
+                            verbose_name='',orderable=False)
     
     class Meta:
         model = Patients

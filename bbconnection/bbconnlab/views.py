@@ -1,6 +1,8 @@
 from django.shortcuts import render,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.template.response import TemplateResponse
+from django.utils.translation import activate
+from django.utils import timezone
 
 from . import models,tables,forms,filters
 from braces.views import PermissionRequiredMixin, LoginRequiredMixin
@@ -36,6 +38,12 @@ from utils import is_float
 from labels import Label
 
 
+## language all
+from django.utils import translation
+user_language = 'id'
+translation.activate(user_language)
+#request.session[translation.LANGUAGE_SESSION_KEY] = user_language
+
 
 # ######################
 # ##   Helper Views   ##
@@ -50,6 +58,11 @@ class UpdateUserProfile(LoginRequiredMixin,NamedFormsetsMixin,UpdateWithInlinesV
 def login_user(request):
     logout(request)
     next_url = request.GET.get('next','')
+    
+    print 'Login'
+    print settings.LANGUAGE_CODE
+    
+    
     
     
     if request.POST:
@@ -76,7 +89,7 @@ def login_user(request):
 
 @login_required(login_url='login_billing')
 def show_dashboard(request):
-    today = datetime.now().date()
+    today = timezone.now().date()
     ordercount_today = models.Orders.objects.filter(order_date__gte=today).count()
     patientcount_today = models.Patients.objects.filter(dateofcreation__gte=today).count()
     context = {'ordercount_today': ordercount_today,'patientcount_today':patientcount_today}
@@ -253,7 +266,7 @@ def report_origin(request):
 def report_jm(request):
     template = 'report/jm.html'
     data = models.Orders.objects.all()
-    today = datetime.now().date()
+    today = timezone.now().date()
       
     if request.GET.get('order_date'):
         d_range = request.GET.get('order_date')
@@ -478,7 +491,7 @@ def order_results_history(request,pk):
 @login_required(login_url='login_middleware')
 def order_results_validate(request,pk):
     if request.user.is_authenticated():
-        order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=1).update(validation_status=2,validation_user=str(request.user),validation_date=datetime.now())
+        order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=1).update(validation_status=2,validation_user=str(request.user),validation_date=timezone.now())
     return redirect('order_results', pk=pk)
 
 @login_required(login_url='login_middleware')
@@ -490,11 +503,11 @@ def order_results_techval(request,pk):
             test_id = tes['test_id']
             test = models.Tests.objects.get(pk=test_id)
             act_txt = 'Test %s technical validated' % (test)
-            his_order = models.HistoryOrders(order_id=pk,test=test,action_code='TECHVAL',action_user=str(request.user),action_date=datetime.now(),action_text=act_txt)
+            his_order = models.HistoryOrders(order_id=pk,test=test,action_code='TECHVAL',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
             his_order.save()
         
         # update
-        order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=1).update(validation_status=2,techval_user=str(request.user),techval_date=datetime.now())
+        order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=1).update(validation_status=2,techval_user=str(request.user),techval_date=timezone.now())
     return redirect('order_results', pk=pk)
 
 @login_required(login_url='login_middleware')
@@ -506,36 +519,37 @@ def order_results_medval(request,pk):
             test_id = tes['test_id']
             test = models.Tests.objects.get(pk=test_id)
             act_txt = 'Test %s medical validated' % (test)
-            his_order = models.HistoryOrders(order_id=pk,test=test,action_code='MEDVAL',action_user=str(request.user),action_date=datetime.now(),action_text=act_txt)
+            his_order = models.HistoryOrders(order_id=pk,test=test,action_code='MEDVAL',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
             his_order.save()
-        order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=2).update(validation_status=3,medval_user=str(request.user),medval_date=datetime.now())
+        order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=2).update(validation_status=3,medval_user=str(request.user),medval_date=timezone.now())
     return redirect('order_results', pk=pk)
 
 @login_required(login_url='login_middleware')
 def order_results_repeat(request,pk):
     if request.user.is_authenticated():
+        print 'repeat'
         #test = Tests.objects.get(pk=)
         #result = models.Results(order=)
-        order = models.Orders.objects.get(pk=pk)
-        test_id =  request.GET.get('test_id')
-        tes = Tests.objects.get(pk=test_id)
-        result = models.Results(order=order,test=tes)
-        result.save()
-        order_result = models.OrderResults.objects.get(order=order,test=tes)
-        order_result.validation_status=0
-        order_result.result = result
-        order_result.techval_user = None
-        order_result.techval_date = None
-        order_result.medval_user = None
-        order_result.medval_date = None
-        order_result.patologi_mark = None
-        order_result.save()
-        order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=1).update(validation_status=3,medval_user=str(request.user),medval_date=datetime.now())
+        #order = models.Orders.objects.get(pk=pk)
+        #test_id =  request.GET.get('test_id')
+        #tes = Tests.objects.get(pk=test_id)
+        #result = models.Results(order=order,test=tes)
+        #result.save()
+        #order_result = models.OrderResults.objects.get(order=order,test=tes)
+        #order_result.validation_status=0
+        #order_result.result = result
+        #order_result.techval_user = None
+        #order_result.techval_date = None
+        #order_result.medval_user = None
+        #order_result.medval_date = None
+        #order_result.patologi_mark = None
+        #order_result.save()
+        #order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=1).update(validation_status=3,medval_user=str(request.user),medval_date=timezone.now())
         
          # create history
-        act_txt = 'Result %s repeated' % (tes)
-        his_order = models.HistoryOrders(order=order,test=tes,action_code='REPEAT',action_user=str(request.user),action_date=datetime.now(),action_text=act_txt)
-        his_order.save()
+        #act_txt = 'Result %s repeated' % (tes)
+        #his_order = models.HistoryOrders(order=order,test=tes,action_code='REPEAT',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
+        #his_order.save()
     return redirect('order_results', pk=pk)
 
 @login_required(login_url='login_middleware')
@@ -579,7 +593,7 @@ def order_results_print(request,pk):
     
     # set validation printed
     if request.user.is_authenticated():
-        order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=3).update(validation_status=4,print_user=str(request.user),print_date=datetime.now())
+        order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=3).update(validation_status=4,print_user=str(request.user),print_date=timezone.now())
     
     
 
@@ -597,8 +611,27 @@ def order_result_report(request,pk):
 def order_results(request,pk):
     order = models.Orders.objects.get(pk=pk)
     if request.method == 'POST': 
+        repeat_conclusion = False
+        save = False
+        repeat = False
+        techval = False
+        medval = False
+        for par in request.POST:
+            if par == 'save':
+                save = True
+            if par == 'repeat':
+                repeat = True
+            if par == 'repeat_conclusion':
+                repeat_conclusion = True
+            if par == 'techval':
+                techval = True
+            if par == 'medval':
+                medval = True
+            
+                
         for p_tes in request.POST:
-            if p_tes == 'conclusion':
+            #print request.POST
+            if p_tes == 'conclusion' and not repeat_conclusion:
                 # conclusion
                 s_con = request.POST.get( p_tes, '')
                 if s_con<>'':
@@ -607,11 +640,11 @@ def order_results(request,pk):
                         o_order.conclusion = s_con
                         o_order.save()
                         # update history
-                        act_txt = ''
-                        his_order = models.HistoryOrders(order=o_order,action_code='CONCL',action_user=str(request.user),action_date=datetime.now(),action_text=act_txt)
+                        act_txt = 'Edit conclusion to [%s]' % s_con
+                        his_order = models.HistoryOrders(order=o_order,action_code='CONCL',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
                         his_order.save()
                         
-            if p_tes.startswith('test_'):
+            if p_tes.startswith('test_') and save:
                 o_order = models.Orders.objects.get(pk=pk)
                 o_test = models.Tests.objects.get(pk=p_tes.split('_')[1])
                 # check current result
@@ -679,8 +712,66 @@ def order_results(request,pk):
 
                             # create history
                             act_txt = 'Result %s set for analyt %s ' % (request.POST.get( p_tes, ''),o_test)
-                            his_order = models.HistoryOrders(order=o_order,test=o_test,action_code='RESENTRY',action_user=str(request.user),action_date=datetime.now(),action_text=act_txt)
+                            his_order = models.HistoryOrders(order=o_order,test=o_test,action_code='RESENTRY',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
                             his_order.save()
+            
+            if p_tes.startswith('check_') and techval:
+                o_order = models.Orders.objects.get(pk=pk)
+                test = models.Tests.objects.get(pk=p_tes.split('_')[1])   
+                # update
+                order_res = models.OrderResults.objects.filter(order=o_order,test=test,validation_status=1).update(validation_status=2,techval_user=str(request.user),techval_date=timezone.now())
+                # history
+                act_txt = 'Test %s technical validated' % (test)
+                his_order = models.HistoryOrders(order_id=pk,test=test,action_code='TECHVAL',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
+                his_order.save()
+                
+            if p_tes.startswith('check_') and medval:
+                o_order = models.Orders.objects.get(pk=pk)
+                test = models.Tests.objects.get(pk=p_tes.split('_')[1])   
+                # update
+                order_res = models.OrderResults.objects.filter(order=o_order,test=test,validation_status=2).update(validation_status=3,medval_user=str(request.user),medval_date=timezone.now())
+                # history
+                act_txt = 'Test %s medical validated' % (test)
+                his_order = models.HistoryOrders(order_id=pk,test=test,action_code='MEDVAL',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
+                his_order.save()
+        
+                
+                
+                 
+            if p_tes.startswith('check_') and repeat:
+                if p_tes == 'check_conclusion':
+                    cl = models.Orders.objects.get(pk=pk)
+                    cl.conclusion = ''
+                    cl.save()
+                     # create history
+                    act_txt = 'Conclusion is repeated'
+                    his_order = models.HistoryOrders(order=order,action_code='CONCREPEAT',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
+                    his_order.save()
+                    repeat_conclusion = True
+                    
+                if p_tes <> 'check_conclusion':
+                    o_order = models.Orders.objects.get(pk=pk)
+                    tes = models.Tests.objects.get(pk=p_tes.split('_')[1])
+                    result = models.Results(order=order,test=tes)
+                    result.save()
+                    order_result = models.OrderResults.objects.get(order=order,test=tes)
+                    order_result.validation_status=0
+                    order_result.result = result
+                    order_result.techval_user = None
+                    order_result.techval_date = None
+                    order_result.medval_user = None
+                    order_result.medval_date = None
+                    order_result.patologi_mark = None
+                    order_result.save()
+                    order_res = models.OrderResults.objects.filter(order_id=pk,validation_status=1).update(validation_status=3,medval_user=str(request.user),medval_date=timezone.now())
+                    
+                     # create history
+                    act_txt = 'Result %s repeated' % (tes)
+                    his_order = models.HistoryOrders(order=order,test=tes,action_code='REPEAT',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
+                    his_order.save()
+                
+                
+                    
     
     # Reference Range update from 
 

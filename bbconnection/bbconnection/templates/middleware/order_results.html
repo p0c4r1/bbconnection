@@ -42,7 +42,7 @@
 <table class="table table-responsive table-hover">
 	<thead>
 		<tr>
-			<th>&nbsp;&nbsp;</th>
+			<th><input type="checkbox" name="check_all" tabindex="-1" class="all" value=""</th>
 			<th>Name</th>
 			<th>Result</th>
 			<th>Unit</th>
@@ -56,7 +56,7 @@
 	
 	<tbody>
     {% for o in ordertests %}
-	    <tr>
+	    <tr><td><input type="checkbox" name="check_{{ o.test_id }}" tabindex="-1" value=""></td>
 	    	{% if o.is_header %}
 	    	<td></td>
 	    	<td colspan="2"><strong>{{ o.test__name }}</strong></td>
@@ -84,6 +84,7 @@
 	     	<td>{{ o.test__name }}</td>
 	     	
 	     	{% endif %}
+	     	
 	     	<td>
 	     	{% if not o.is_header %}
 	     	{% if  o.test__result_type  == 'ALF' %}<input type="text" name="test_{{ o.test_id }}" class="form-control form-control-ok"   value="{{ o.result__alfa_result|default:"" }}" />{% endif %}
@@ -104,6 +105,7 @@
     <tr>
     	<td colspan="9">
     	<div class="form-group">
+    	<input type="checkbox" name="check_conclusion" tabindex="-1" value="">
   <label for="conclusion">{% trans "Conclusion:" %}</label>
   <textarea class="form-control" rows="5" id="conclusion" name="conclusion">{{ orders.conclusion }}</textarea>
 </div>
@@ -117,7 +119,7 @@
 {% endblock %}
 
 {% block main_footer %}
-    <button type='submit' class='btn btn-primary'>
+    <button type='submit' class='btn btn-primary' name="save">
         {% trans "Save" %}
     </button>
 
@@ -126,11 +128,25 @@
         {% trans "Cancel" %}
     </button>
     
+    <button type='submit' class="btn btn-default" name="techval" role="button">
+    <span class="fa fa-check"></span>&nbsp;{% trans "Technical Validate" %}
+    </button>
+    
+    <button type='submit' class="btn btn-default" name="medval" role="button">
+    <span class="fa fa-check"></span>&nbsp;{% trans "Medical Validate" %}
+    </button>
+    
+    <!--
     <a href="techval?id={{ orders.id }}" class="btn btn-default" role="button">
     <span class="fa fa-check"></span>&nbsp;{% trans "Techical Validate" %}</a>
     
     <a href="medval?id={{ orders.id }}" class="btn btn-default" role="button">
     <span class="fa fa-check"></span>&nbsp;{% trans "Medical Validate" %}</a>
+    -->
+    
+    <button type='submit' class="btn btn-default" name="repeat" role="button">
+    <span class="fa fa-repeat"></span>&nbsp;{% trans "Repeat" %}
+    </button>
     
     <a href="print" target="_blank" class="btn btn-default" role="button">
     <span class="fa fa-print"></span>&nbsp;{% trans "Print Result" %}</a>
@@ -139,4 +155,13 @@
     <span class="fa fa-clock-o"></span>&nbsp;{% trans "History" %}</a>
     
     </form>
+    
+ <script type="text/javascript">
+   $('.all').on('click', function(e){
+    $this = this;
+    $.each($(this).parents('table').find('input'), function(i, item){
+      $(item).prop('checked', $this.checked);
+    });
+  });
+</script>
 {% endblock %}

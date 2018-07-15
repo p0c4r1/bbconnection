@@ -8,7 +8,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>dreamlab - billing</title>
+    <title>BBConnection</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/assets/css/bootstrap.css" rel="stylesheet">
@@ -52,9 +52,9 @@
 
 		        <div class="login-wrap">
                     {{ form.username.errors }}
-		            <input id="id_username" type="text" class="form-control" placeholder="User ID" autofocus><br>
+		            <input id="id_username" type="text" class="form-control" placeholder="{% trans "User ID" %}" autofocus><br>
                     {{ form.password.errors }}
-		            <input id="id_password" type="password" class="form-control" placeholder="Password"><br><br>
+		            <input id="id_password" type="password" class="form-control" placeholder="{% trans "Password" %}"><br><br>
                     <input type="hidden" name="next" value="{{ next }}" />
                     <input type="hidden" name="username" id="username" />
                     <input type="hidden" name="password" id="password" />

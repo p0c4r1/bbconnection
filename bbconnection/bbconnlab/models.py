@@ -749,38 +749,39 @@ class Results(models.Model):
         return (self.order.order_date - self.order.patient.dob).days
              
     def setup_range(self,alfa_value=None,operator=None,operator_value=None,lower=None,upper=None):
-        if alfa_value:
-            self.ref_range = alfa_value
-            if self.alfa_result <> str(alfa_value):
-                self.mark = 'A'
-        else:
-            # numeric range
-            if operator:
-                self.ref_range = str(operator)+' '+str(operator_value)
-                if self.is_number(self.alfa_result):
-                    # GT
-                    if str(operator)=='>':
-                        if float(self.alfa_result)<=float(operator_value):
-                            self.mark = 'L'
-                    if str(operator)=='>=':
-                        if float(self.alfa_result)<float(operator_value):
-                            self.mark = 'L'
-                    if str(operator)=='<':
-                        if float(self.alfa_result)>=float(operator_value):
-                            self.mark = 'H'
-                    if str(operator)=='<=':
-                        if float(self.alfa_result)>float(operator_value):
-                            self.mark = 'H'
+        if self.alfa_result:
+            if alfa_value:
+                self.ref_range = alfa_value
+                if self.alfa_result <> str(alfa_value):
+                    self.mark = 'A'
             else:
-                # range
-                self.ref_range = str(lower)+' - '+str(upper)
-                if self.alfa_result:
+                # numeric range
+                if operator:
+                    self.ref_range = str(operator)+' '+str(operator_value)
                     if self.is_number(self.alfa_result):
-                        if float(self.alfa_result)<float(lower):
-                            self.mark = 'L'
-                        if float(self.alfa_result)>float(upper):
-                            self.mark = 'H'
-                     
+                        # GT
+                        if str(operator)=='>':
+                            if float(self.alfa_result)<=float(operator_value):
+                                self.mark = 'L'
+                        if str(operator)=='>=':
+                            if float(self.alfa_result)<float(operator_value):
+                                self.mark = 'L'
+                        if str(operator)=='<':
+                            if float(self.alfa_result)>=float(operator_value):
+                                self.mark = 'H'
+                        if str(operator)=='<=':
+                            if float(self.alfa_result)>float(operator_value):
+                                self.mark = 'H'
+                else:
+                    # range
+                    self.ref_range = str(lower)+' - '+str(upper)
+                    if self.alfa_result:
+                        if self.is_number(self.alfa_result):
+                            if float(self.alfa_result)<float(lower):
+                                self.mark = 'L'
+                            if float(self.alfa_result)>float(upper):
+                                self.mark = 'H'
+                         
    
     def save(self, *args, **kwargs):
         refrange = TestRefRanges.objects.filter(test=self.test).values('any_age','gender','age_from_type','age_from','age_to','operator','operator_value','lower','upper','alfa_value','special_info','gender_id')

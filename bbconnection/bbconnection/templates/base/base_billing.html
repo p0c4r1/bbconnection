@@ -3,6 +3,7 @@
 {% load i18n staticfiles avatar_tags  %}
 {% load bootstrap3 %}
 {% load avatar_tags %}
+{% load l10n %}
 
 
 <head>
@@ -203,7 +204,7 @@
                         <div style="margin-top: 10px;">
                             <ul class="breadcrumb" style="background-color: white;">
                             {% spaceless %}
-                                <li id="breadcrumb-menu-home"><a href="/billing">Home</a></li>
+                                <li id="breadcrumb-menu-home"><a href="/">{% trans "Home" %}</a></li>
                             {% block breadcrumb_menu %}
                                 
                             {% endblock %}

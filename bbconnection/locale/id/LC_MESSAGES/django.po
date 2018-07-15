@@ -1,0 +1,1863 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR p0c4r1@gmail.com, 2018
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-15 15:12+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\bbconnection\templates\auth\avatar_add.html:4
+#: .\bbconnection\templates\auth\avatar_add.html:5
+#: .\bbconnection\templates\auth\avatar_add_billing.html:4
+#: .\bbconnection\templates\auth\avatar_add_billing.html:5
+#: .\bbconnection\templates\auth\avatar_add_middleware.html:4
+#: .\bbconnection\templates\auth\avatar_add_middleware.html:5
+#: .\bbconnection\templates\auth\avatar_change.html:4
+#: .\bbconnection\templates\auth\avatar_change.html:5
+#: .\bbconnection\templates\auth\avatar_change_billing.html:4
+#: .\bbconnection\templates\auth\avatar_change_billing.html:5
+#: .\bbconnection\templates\auth\avatar_change_middleware.html:4
+#: .\bbconnection\templates\auth\avatar_change_middleware.html:5
+#: .\bbconnection\templates\auth\user_form.html:4
+#: .\bbconnection\templates\auth\user_form.html:5
+#: .\bbconnection\templates\auth\user_form_billing.html:4
+#: .\bbconnection\templates\auth\user_form_billing.html:5
+msgid "Userprofile"
+msgstr "Profilpengguna"
+
+#: .\bbconnection\templates\auth\avatar_add.html:8
+#: .\bbconnection\templates\auth\avatar_add.html:16
+#: .\bbconnection\templates\auth\avatar_add_billing.html:8
+#: .\bbconnection\templates\auth\avatar_add_billing.html:16
+#: .\bbconnection\templates\auth\avatar_add_middleware.html:8
+#: .\bbconnection\templates\auth\avatar_add_middleware.html:16
+#: .\bbconnection\templates\auth\avatar_change.html:8
+#: .\bbconnection\templates\auth\avatar_change.html:16
+#: .\bbconnection\templates\auth\avatar_change_billing.html:8
+#: .\bbconnection\templates\auth\avatar_change_billing.html:16
+#: .\bbconnection\templates\auth\avatar_change_middleware.html:8
+#: .\bbconnection\templates\auth\avatar_change_middleware.html:16
+msgid "Change avatar"
+msgstr "Merubah avatar"
+
+#: .\bbconnection\templates\auth\avatar_add.html:17
+#: .\bbconnection\templates\auth\avatar_add_billing.html:17
+#: .\bbconnection\templates\auth\avatar_add_middleware.html:17
+#: .\bbconnection\templates\auth\avatar_change.html:17
+#: .\bbconnection\templates\auth\avatar_change_billing.html:17
+#: .\bbconnection\templates\auth\avatar_change_middleware.html:17
+msgid "Your current avatar: "
+msgstr "Avatar anda saat ini:"
+
+#: .\bbconnection\templates\auth\avatar_add.html:20
+#: .\bbconnection\templates\auth\avatar_add_billing.html:20
+#: .\bbconnection\templates\auth\avatar_add_middleware.html:20
+#: .\bbconnection\templates\auth\avatar_change.html:20
+#: .\bbconnection\templates\auth\avatar_change_billing.html:20
+#: .\bbconnection\templates\auth\avatar_change_middleware.html:20
+msgid "You haven't uploaded an avatar yet. Please upload one now."
+msgstr "Anda belum meng-upload avatar. Silakan upload sekarang."
+
+#: .\bbconnection\templates\auth\avatar_add.html:24
+#: .\bbconnection\templates\auth\avatar_add_billing.html:24
+#: .\bbconnection\templates\auth\avatar_add_middleware.html:24
+#: .\bbconnection\templates\auth\avatar_change.html:31
+#: .\bbconnection\templates\auth\avatar_change_billing.html:31
+#: .\bbconnection\templates\auth\avatar_change_middleware.html:31
+msgid "Upload New Image"
+msgstr "Upload gambar baru"
+
+#: .\bbconnection\templates\auth\avatar_change.html:26
+#: .\bbconnection\templates\auth\avatar_change_billing.html:26
+#: .\bbconnection\templates\auth\avatar_change_middleware.html:26
+msgid "Choose new Default"
+msgstr "Pilih Default baru"
+
+#: .\bbconnection\templates\auth\user_form.html:8
+#: .\bbconnection\templates\auth\user_form.html:17
+#: .\bbconnection\templates\auth\user_form_billing.html:8
+#: .\bbconnection\templates\auth\user_form_billing.html:17
+#: .\bbconnection\templates\auth\user_form_middleware.html:17
+msgid "Change userprofile"
+msgstr "Ubah profil pengguna"
+
+#: .\bbconnection\templates\auth\user_form.html:35
+#: .\bbconnection\templates\auth\user_form_billing.html:35
+#: .\bbconnection\templates\auth\user_form_middleware.html:35
+#: .\bbconnection\templates\bbconnlab\orders_form.html:25
+#: .\bbconnection\templates\bbconnlab\orders_form.html:49
+#: .\bbconnection\templates\bbconnlab\patients_form.html:25
+#: .\bbconnection\templates\bbconnlab\patients_form.html:40
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:25
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:49
+#: .\bbconnection\templates\billing\testgroups_form.html:23
+#: .\bbconnection\templates\billing\testgroups_form.html:38
+#: .\bbconnection\templates\billing\tests_form.html:23
+#: .\bbconnection\templates\billing\tests_form.html:38
+#: .\bbconnection\templates\inventory\product_form.html:23
+#: .\bbconnection\templates\inventory\product_form.html:38
+#: .\bbconnection\templates\inventory\returningproduct_form.html:23
+#: .\bbconnection\templates\inventory\returningproduct_form.html:40
+#: .\bbconnection\templates\inventory\stockin_form.html:30
+#: .\bbconnection\templates\inventory\stockin_form.html:55
+#: .\bbconnection\templates\inventory\stockinlot_form.html:11
+#: .\bbconnection\templates\inventory\stockinlot_form.html:67
+#: .\bbconnection\templates\inventory\supplier_form.html:23
+#: .\bbconnection\templates\inventory\supplier_form.html:69
+#: .\bbconnection\templates\inventory\usingproduct_form.html:23
+#: .\bbconnection\templates\inventory\usingproduct_form.html:40
+#: .\bbconnection\templates\inventory\vendor_form.html:23
+#: .\bbconnection\templates\inventory\vendor_form.html:69
+#: .\bbconnection\templates\middleware\order_results.html:27
+#: .\bbconnection\templates\middleware\order_results.html:123
+#: .\bbconnection\templates\select\add_patient.html:24
+#: .\bbconnection\templates\select\add_patient.html:39
+msgid "Save"
+msgstr "Simpan"
+
+#: .\bbconnection\templates\auth\user_form.html:40
+#: .\bbconnection\templates\auth\user_form_billing.html:40
+#: .\bbconnection\templates\auth\user_form_middleware.html:40
+#: .\bbconnection\templates\bbconnlab\orders_confirm_delete.html:36
+#: .\bbconnection\templates\bbconnlab\orders_form.html:30
+#: .\bbconnection\templates\bbconnlab\orders_form.html:54
+#: .\bbconnection\templates\bbconnlab\patients_form.html:30
+#: .\bbconnection\templates\bbconnlab\patients_form.html:45
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:30
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:54
+#: .\bbconnection\templates\billing\testgroups_confirm_delete.html:35
+#: .\bbconnection\templates\billing\testgroups_form.html:28
+#: .\bbconnection\templates\billing\testgroups_form.html:43
+#: .\bbconnection\templates\billing\tests_confirm_delete.html:35
+#: .\bbconnection\templates\billing\tests_form.html:28
+#: .\bbconnection\templates\billing\tests_form.html:43
+#: .\bbconnection\templates\inventory\product_confirm_delete.html:35
+#: .\bbconnection\templates\inventory\product_form.html:28
+#: .\bbconnection\templates\inventory\product_form.html:43
+#: .\bbconnection\templates\inventory\returningproduct_confirm_delete.html:35
+#: .\bbconnection\templates\inventory\returningproduct_form.html:28
+#: .\bbconnection\templates\inventory\returningproduct_form.html:45
+#: .\bbconnection\templates\inventory\stockin-qrcode.html:179
+#: .\bbconnection\templates\inventory\stockin_confirm_delete.html:35
+#: .\bbconnection\templates\inventory\stockin_form.html:35
+#: .\bbconnection\templates\inventory\stockin_form.html:60
+#: .\bbconnection\templates\inventory\stockinlot_form.html:15
+#: .\bbconnection\templates\inventory\stockinlot_form.html:71
+#: .\bbconnection\templates\inventory\supplier_confirm_delete.html:35
+#: .\bbconnection\templates\inventory\supplier_form.html:28
+#: .\bbconnection\templates\inventory\supplier_form.html:74
+#: .\bbconnection\templates\inventory\usingproduct_confirm_delete.html:35
+#: .\bbconnection\templates\inventory\usingproduct_form.html:28
+#: .\bbconnection\templates\inventory\usingproduct_form.html:45
+#: .\bbconnection\templates\inventory\vendor_confirm_delete.html:35
+#: .\bbconnection\templates\inventory\vendor_form.html:28
+#: .\bbconnection\templates\inventory\vendor_form.html:74
+#: .\bbconnection\templates\middleware\order_results.html:32
+#: .\bbconnection\templates\middleware\order_results.html:128
+#: .\bbconnection\templates\select\add_patient.html:29
+#: .\bbconnection\templates\select\add_patient.html:44
+#: .\bbconnection\templates\select\select_instrument.html:42
+#: .\bbconnection\templates\select\select_storage.html:42
+msgid "Cancel"
+msgstr "Batal"
+
+#: .\bbconnection\templates\auth\user_form_middleware.html:4
+#: .\bbconnection\templates\auth\user_form_middleware.html:5
+msgid "User profile"
+msgstr "Profil pengguna"
+
+#: .\bbconnection\templates\auth\user_form_middleware.html:8
+msgid "Change user profile"
+msgstr "Ubah profil pengguna"
+
+#: .\bbconnection\templates\base\base_billing.html:130
+#: .\bbconnection\templates\dashboard.html:4
+#: .\bbconnection\templates\dashboard.html:5
+#: .\bbconnection\templates\dashboard.html:8
+#: .\bbconnection\templates\dashboard_billing.html:4
+#: .\bbconnection\templates\dashboard_billing.html:5
+#: .\bbconnection\templates\dashboard_billing.html:8
+#: .\bbconnection\templates\dashboard_middleware.html:4
+#: .\bbconnection\templates\dashboard_middleware.html:5
+#: .\bbconnection\templates\dashboard_middleware.html:8
+#: .\bbconnection\templates\tables2\dashboard_billing.html:4
+#: .\bbconnection\templates\tables2\dashboard_billing.html:5
+#: .\bbconnection\templates\tables2\dashboard_billing.html:8
+msgid "Dashboard"
+msgstr "Dasbor"
+
+#: .\bbconnection\templates\base\base_billing.html:137
+msgid "Billing"
+msgstr "Billing"
+
+#: .\bbconnection\templates\base\base_billing.html:140
+#: .\bbconnection\templates\bbconnlab\orders_confirm_delete.html:14
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:16
+#: .\bbconnection\templates\bbconnlab\orders_form.html:5
+#: .\bbconnection\templates\bbconnlab\orders_form.html:10
+#: .\bbconnection\templates\bbconnlab\orders_form.html:14
+#: .\bbconnection\templates\bbconnlab\orders_list.html:7
+#: .\bbconnection\templates\bbconnlab\orders_list.html:11
+#: .\bbconnection\templates\bbconnlab\orders_list.html:15
+#: .\bbconnection\templates\bbconnlab\orders_list.html:19
+#: .\bbconnection\templates\bbconnlab\patients_form.html:14
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:10
+#: .\bbconnection\templates\middleware\order_results.html:10
+#: .\bbconnection\templates\orders_detail.html:16
+#: .\bbconnection\templates\select\add_patient.html:13
+#: .\bbconnection\templates\select\select_patient.html:15
+#: .\bbconnlab\models.py:409
+msgid "Orders"
+msgstr "Order"
+
+#: .\bbconnection\templates\base\base_billing.html:150
+msgid "Clinical Lab"
+msgstr "Lab Klinik"
+
+#: .\bbconnection\templates\base\base_billing.html:155
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:16
+msgid "Batch worklist"
+msgstr "Daftar kerja batch"
+
+#: .\bbconnection\templates\base\base_billing.html:159
+#: .\bbconnection\templates\middleware\order_history.html:15
+#: .\bbconnection\templates\middleware\order_results.html:14
+#: .\bbconnection\templates\middleware\workarea.html:7
+#: .\bbconnection\templates\middleware\workarea.html:11
+#: .\bbconnection\templates\middleware\workarea.html:15
+msgid "Workarea"
+msgstr "Area kerja"
+
+#: .\bbconnection\templates\base\base_billing.html:207
+#: .\bbconnection\templates\index.html:4 .\bbconnection\templates\index.html:5
+#: .\bbconnection\templates\index.html:8
+#: .\bbconnection\templates\index_billing.html:4
+#: .\bbconnection\templates\index_billing.html:5
+#: .\bbconnection\templates\index_billing.html:8
+#: .\bbconnection\templates\index_middleware.html:4
+#: .\bbconnection\templates\index_middleware.html:5
+#: .\bbconnection\templates\index_middleware.html:8
+msgid "Home"
+msgstr "Beranda"
+
+#: .\bbconnection\templates\bbconnlab\orders_confirm_delete.html:5
+#: .\bbconnection\templates\bbconnlab\orders_confirm_delete.html:10
+msgid "Order group"
+msgstr "Grup order"
+
+#: .\bbconnection\templates\bbconnlab\orders_confirm_delete.html:15
+#: .\bbconnection\templates\bbconnlab\orders_confirm_delete.html:19
+#: .\bbconnection\templates\includes\billing\orders_row_edit_toolbar.html:18
+msgid "Delete order"
+msgstr "Hapus order"
+
+#: .\bbconnection\templates\bbconnlab\orders_confirm_delete.html:27
+msgid "Are you you sure you want to delete the following order?"
+msgstr "Apakah anda yakin ingin menghapus order berikut?"
+
+#: .\bbconnection\templates\bbconnlab\orders_confirm_delete.html:31
+#: .\bbconnection\templates\billing\testgroups_confirm_delete.html:30
+#: .\bbconnection\templates\billing\tests_confirm_delete.html:30
+#: .\bbconnection\templates\inventory\product_confirm_delete.html:30
+#: .\bbconnection\templates\inventory\returningproduct_confirm_delete.html:30
+#: .\bbconnection\templates\inventory\stockin_confirm_delete.html:30
+#: .\bbconnection\templates\inventory\supplier_confirm_delete.html:30
+#: .\bbconnection\templates\inventory\usingproduct_confirm_delete.html:30
+#: .\bbconnection\templates\inventory\vendor_confirm_delete.html:30
+msgid "Delete"
+msgstr "Hapus"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:5
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:9
+#: .\bbconnection\templates\includes\billing\orders_row_edit_toolbar.html:6
+#: .\bbconnection\templates\includes\billing\selectpatient_row_edit_toolbar.html:6
+#: .\bbconnection\templates\orders_detail.html:5
+#: .\bbconnection\templates\orders_detail.html:9
+msgid "Order detail"
+msgstr "Detail order"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:21
+#: .\bbconnection\templates\orders_detail.html:21
+msgid "Order Details"
+msgstr "Detail order"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:34
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:34
+#: .\bbconnection\templates\inventory\product_detail.html:39
+#: .\bbconnection\templates\inventory\stockin_detail.html:39
+#: .\bbconnection\templates\inventory\supplier_detail.html:33
+#: .\bbconnection\templates\inventory\vendor_detail.html:33
+#: .\bbconnection\templates\orders_detail.html:34
+msgid "Created"
+msgstr "Dibuat"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:38
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:38
+#: .\bbconnection\templates\inventory\product_detail.html:43
+#: .\bbconnection\templates\inventory\stockin_detail.html:43
+#: .\bbconnection\templates\inventory\stockinlot_form.html:54
+#: .\bbconnection\templates\inventory\supplier_detail.html:37
+#: .\bbconnection\templates\inventory\vendor_detail.html:37
+#: .\bbconnection\templates\orders_detail.html:38 .\bbconnlab\models.py:21
+#: .\bbconnlab\models.py:39 .\bbconnlab\models.py:57 .\bbconnlab\models.py:75
+#: .\bbconnlab\models.py:93 .\bbconnlab\models.py:112 .\bbconnlab\models.py:131
+#: .\bbconnlab\models.py:165 .\bbconnlab\models.py:178
+#: .\bbconnlab\models.py:223 .\bbconnlab\models.py:250
+#: .\bbconnlab\models.py:279 .\bbconnlab\models.py:340
+#: .\bbconnlab\models.py:419 .\bbconnlab\models.py:443
+#: .\bbconnlab\models.py:466 .\bbconnlab\models.py:486
+#: .\bbconnlab\models.py:616 .\bbconnlab\models.py:640
+#: .\bbconnlab\models.py:653 .\bbconnlab\models.py:715
+#: .\bbconnlab\models.py:736 .\bbconnlab\models.py:854
+#: .\bbconnlab\models.py:880 .\bbconnlab\models.py:898
+#: .\bbconnlab\models.py:911 .\bbconnlab\models.py:941
+#: .\bbconnlab\models.py:953 .\bbconnlab\models.py:966
+#: .\bbconnlab\models.py:981 .\bbconnlab\models.py:990
+#: .\bbconnlab\models.py:1005
+msgid "Last modified"
+msgstr "Terakhir diubah"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:46
+#: .\bbconnection\templates\orders_detail.html:46 .\bbconnlab\models.py:51
+#: .\bbconnlab\models.py:246
+msgid "Priority"
+msgstr "Prioritas"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:50
+#: .\bbconnection\templates\orders_detail.html:50 .\bbconnlab\models.py:105
+#: .\bbconnlab\models.py:331
+msgid "Origin"
+msgstr "Asal"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:54
+#: .\bbconnection\templates\orders_detail.html:54 .\bbconnlab\models.py:332
+msgid "Sender doctor"
+msgstr "Dokter pengirim"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:58
+#: .\bbconnection\templates\orders_detail.html:58 .\bbconnlab\models.py:124
+#: .\bbconnlab\models.py:125 .\bbconnlab\models.py:333
+msgid "Diagnosis"
+msgstr "Diagnosa"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:62
+#: .\bbconnection\templates\orders_detail.html:62 .\bbconnlab\models.py:69
+msgid "Insurence"
+msgstr "Ansuransi"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:66
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:66
+#: .\bbconnection\templates\inventory\stockin_detail.html:56
+#: .\bbconnection\templates\orders_detail.html:66
+msgid "Created / Modified by"
+msgstr "Dibuat / diubah oleh"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:69
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:69
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:33
+#: .\bbconnection\templates\inventory\stockin_detail.html:59
+#: .\bbconnection\templates\orders_detail.html:69 .\bbconnlab\models.py:177
+#: .\bbconnlab\models.py:222 .\bbconnlab\models.py:249
+#: .\bbconnlab\models.py:278 .\bbconnlab\models.py:339
+#: .\bbconnlab\models.py:418 .\bbconnlab\models.py:442
+msgid "Created at"
+msgstr "Dibuat pada"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:78
+#: .\bbconnection\templates\orders_detail.html:78
+msgid "Patient Data"
+msgstr "Data Pasien"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:81
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:46
+#: .\bbconnection\templates\orders_detail.html:81 .\bbconnlab\models.py:270
+msgid "Patient ID"
+msgstr "ID Pasien"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:87
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:50
+#: .\bbconnection\templates\orders_detail.html:87 .\bbconnlab\models.py:18
+#: .\bbconnlab\models.py:163 .\bbconnlab\models.py:271
+#: .\bbconnlab\models.py:463 .\bbconnlab\models.py:562
+#: .\bbconnlab\models.py:939 .\bbconnlab\models.py:1001
+msgid "Name"
+msgstr "Nama"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:92
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:54
+#: .\bbconnection\templates\orders_detail.html:93 .\bbconnlab\models.py:143
+#: .\bbconnlab\models.py:272 .\bbconnlab\models.py:683
+msgid "Gender"
+msgstr "Jenis kelamin"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:96
+msgid "Date of Birth"
+msgstr "Tanggal lahir"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:99
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:62
+#: .\bbconnection\templates\orders_detail.html:100 .\bbconnlab\models.py:274
+msgid "Address"
+msgstr "Alamat"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:161
+#: .\bbconnection\templates\orders_detail.html:139
+msgid "Print Receipt"
+msgstr "Print kwitansi"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:166
+#: .\bbconnection\templates\orders_detail.html:142
+msgid "Print Bill"
+msgstr "Print nota"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:171
+#: .\bbconnection\templates\orders_detail.html:145
+msgid "Print Worklist"
+msgstr "Print daftar pekerjaan"
+
+#: .\bbconnection\templates\bbconnlab\orders_detail.html:190
+#: .\bbconnection\templates\orders_detail.html:148
+msgid "Send to LIS"
+msgstr "Kirim ke LIS"
+
+#: .\bbconnection\templates\bbconnlab\orders_form.html:15
+msgid "Edit Order"
+msgstr "Ubah order"
+
+#: .\bbconnection\templates\bbconnlab\orders_form.html:15
+msgid "Create Order"
+msgstr "Buat order"
+
+#: .\bbconnection\templates\bbconnlab\orders_form.html:19
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:19
+#: .\bbconnection\templates\includes\billing\orders_edit_toolbar.html:11
+#: .\bbconnection\templates\includes\billing\orders_row_edit_toolbar.html:12
+#: .\bbconnection\templates\includes\billing\selectpatient_row_edit_toolbar.html:12
+msgid "Edit order"
+msgstr "Ubah order"
+
+#: .\bbconnection\templates\bbconnlab\orders_form.html:19
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:19
+msgid "Create order"
+msgstr "Buat order"
+
+#: .\bbconnection\templates\bbconnlab\orders_list.html:25
+#: .\bbconnection\templates\middleware\receivedsamples_list.html:38
+msgid "Create Patient Order"
+msgstr "Buat order pasien"
+
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:5
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:9
+#: .\bbconnection\templates\includes\billing\patient_row_edit_toolbar.html:6
+msgid "Patient detail"
+msgstr "Detail pasien"
+
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:16
+#: .\bbconnection\templates\bbconnlab\patients_form.html:10
+#: .\bbconnection\templates\bbconnlab\patients_list.html:7
+#: .\bbconnection\templates\bbconnlab\patients_list.html:11
+#: .\bbconnection\templates\bbconnlab\patients_list.html:15
+#: .\bbconnection\templates\bbconnlab\patients_list.html:19
+#: .\bbconnlab\models.py:306
+msgid "Patients"
+msgstr "Pasien"
+
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:21
+msgid "Patient Details"
+msgstr "Detail pasien"
+
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:58
+msgid "DOB"
+msgstr "DOB"
+
+#: .\bbconnection\templates\bbconnlab\patients_detail.html:83
+msgid "Create new Lab order for this patient"
+msgstr "Buat order lab untuk pasien ini"
+
+#: .\bbconnection\templates\bbconnlab\patients_form.html:5
+#: .\bbconnection\templates\select\add_patient.html:5
+#: .\bbconnection\templates\select\add_patient.html:9 .\bbconnlab\models.py:305
+#: .\bbconnlab\models.py:337
+msgid "Patient"
+msgstr "Pasien"
+
+#: .\bbconnection\templates\bbconnlab\patients_form.html:15
+msgid "Edit Patient"
+msgstr "Ubah data pasien"
+
+#: .\bbconnection\templates\bbconnlab\patients_form.html:15
+#: .\bbconnection\templates\select\add_patient.html:15
+#: .\bbconnection\templates\select\select_patient.html:26
+msgid "Create Patient"
+msgstr "Buat data pasien"
+
+#: .\bbconnection\templates\bbconnlab\patients_form.html:19
+#: .\bbconnection\templates\includes\billing\patient_row_edit_toolbar.html:12
+#: .\bbconnection\templates\includes\billing\patients_edit_toolbar.html:11
+#: .\bbconnection\templates\select\add_patient.html:15
+#: .\bbconnection\templates\select\add_patient.html:19
+msgid "Edit patient"
+msgstr "Ubah data pasien"
+
+#: .\bbconnection\templates\bbconnlab\patients_form.html:19
+#: .\bbconnection\templates\select\add_patient.html:19
+msgid "Create patient"
+msgstr "Buat data pasien"
+
+#: .\bbconnection\templates\bbconnlab\patients_list.html:25
+msgid "Register Patient"
+msgstr "Register pasien"
+
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:5
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:9
+msgid "Batch worklist detail"
+msgstr "Detail daftar kerja batch"
+
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:21
+msgid "Batch worklist Details"
+msgstr "Detail daftar kerja batch"
+
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:37
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:51
+msgid "Batch : "
+msgstr "Batch :"
+
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:62
+msgid "Order No."
+msgstr "Order No."
+
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:63
+#: .\bbconnlab\models.py:271
+msgid "Patient Name"
+msgstr "Nama pasien"
+
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:64
+#: .\bbconnection\templates\billing\tests_confirm_delete.html:5
+#: .\bbconnection\templates\billing\tests_confirm_delete.html:9
+#: .\bbconnection\templates\billing\tests_confirm_delete.html:13
+#: .\bbconnlab\models.py:235 .\bbconnlab\models.py:245
+#: .\bbconnlab\models.py:417 .\bbconnlab\models.py:632
+#: .\bbconnlab\models.py:682 .\bbconnlab\models.py:727
+#: .\bbconnlab\models.py:866 .\bbconnlab\models.py:893
+#: .\bbconnlab\models.py:951 .\bbconnlab\models.py:988
+msgid "Test"
+msgstr "Tes"
+
+#: .\bbconnection\templates\bbconnlab\worklists_detail.html:83
+msgid "Print"
+msgstr "Print"
+
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:5
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:14
+msgid "Worklists"
+msgstr "Daftar pekerjaan"
+
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:15
+msgid "Edit batch"
+msgstr "Ubah batch"
+
+#: .\bbconnection\templates\bbconnlab\worklists_form.html:15
+msgid "Create batch"
+msgstr "Buat batch"
+
+#: .\bbconnection\templates\bbconnlab\worklists_list.html:7
+#: .\bbconnection\templates\bbconnlab\worklists_list.html:11
+#: .\bbconnection\templates\bbconnlab\worklists_list.html:15
+#: .\bbconnection\templates\bbconnlab\worklists_list.html:19
+msgid "Batch worklists"
+msgstr "Daftar pekerjaan batch"
+
+#: .\bbconnection\templates\bbconnlab\worklists_list.html:25
+msgid "Create batch worklists"
+msgstr "Buat daftar pekerjaan batch"
+
+#: .\bbconnection\templates\billing\testgroups_confirm_delete.html:5
+#: .\bbconnection\templates\billing\testgroups_confirm_delete.html:9
+#: .\bbconnection\templates\billing\testgroups_confirm_delete.html:13
+#: .\bbconnlab\models.py:190
+msgid "Test group"
+msgstr "Grup tes"
+
+#: .\bbconnection\templates\billing\testgroups_confirm_delete.html:14
+msgid "Delete test group"
+msgstr "Hapus grup tes"
+
+#: .\bbconnection\templates\billing\testgroups_confirm_delete.html:18
+msgid "Delete test groups"
+msgstr "Hapus grup tes"
+
+#: .\bbconnection\templates\billing\testgroups_confirm_delete.html:26
+#: .\bbconnection\templates\billing\tests_confirm_delete.html:26
+#: .\bbconnection\templates\inventory\product_confirm_delete.html:26
+#: .\bbconnection\templates\inventory\stockin_confirm_delete.html:26
+#: .\bbconnection\templates\inventory\supplier_confirm_delete.html:26
+#: .\bbconnection\templates\inventory\vendor_confirm_delete.html:26
+msgid "Are you you sure you want to delete the following item?"
+msgstr "Apakah anda yakin ingin menghapus item berikut?"
+
+#: .\bbconnection\templates\billing\testgroups_form.html:5
+#: .\bbconnection\templates\billing\testgroups_form.html:9
+#: .\bbconnection\templates\billing\testgroups_form.html:13
+#: .\bbconnection\templates\billing\testgroups_list.html:7
+#: .\bbconnection\templates\billing\testgroups_list.html:11
+#: .\bbconnection\templates\billing\testgroups_list.html:15
+#: .\bbconnection\templates\billing\testgroups_list.html:19
+#: .\bbconnection\templates\billing\tests_form.html:5
+#: .\bbconnection\templates\billing\tests_form.html:9
+#: .\bbconnection\templates\billing\tests_form.html:13
+#: .\bbconnlab\models.py:191
+msgid "Test groups"
+msgstr "Grup tes"
+
+#: .\bbconnection\templates\billing\testgroups_form.html:14
+#: .\bbconnection\templates\billing\testgroups_form.html:18
+#: .\bbconnection\templates\billing\tests_form.html:14
+#: .\bbconnection\templates\billing\tests_form.html:18
+msgid "Edit Test group"
+msgstr "Ubah grup tes"
+
+#: .\bbconnection\templates\billing\testgroups_form.html:14
+#: .\bbconnection\templates\billing\testgroups_form.html:18
+#: .\bbconnection\templates\billing\tests_form.html:14
+#: .\bbconnection\templates\billing\tests_form.html:18
+msgid "Create Test group"
+msgstr "Buat grup tes"
+
+#: .\bbconnection\templates\billing\testgroups_list.html:25
+msgid "Create Test groups"
+msgstr "Buat grup tes"
+
+#: .\bbconnection\templates\billing\tests_confirm_delete.html:14
+#: .\bbconnection\templates\billing\tests_confirm_delete.html:18
+#: .\bbconnection\templates\includes\billing\selectpatient_row_edit_toolbar.html:18
+#: .\bbconnection\templates\includes\tests_row_edit_toolbar.html:12
+msgid "Delete test"
+msgstr "Hapus tes"
+
+#: .\bbconnection\templates\billing\tests_list.html:7
+#: .\bbconnection\templates\billing\tests_list.html:11
+#: .\bbconnection\templates\billing\tests_list.html:15
+#: .\bbconnection\templates\billing\tests_list.html:19
+#: .\bbconnlab\models.py:236
+msgid "Tests"
+msgstr "Tes"
+
+#: .\bbconnection\templates\billing\tests_list.html:25
+msgid "Create Tests"
+msgstr "Buat tes"
+
+#: .\bbconnection\templates\dashboard.html:19
+msgid "suppliers in your database."
+msgstr "Supplier di database anda."
+
+#: .\bbconnection\templates\dashboard.html:26
+msgid "products in your database."
+msgstr "Produk di database anda."
+
+#: .\bbconnection\templates\dashboard_billing.html:19
+msgid "order(s) today."
+msgstr "order hari ini."
+
+#: .\bbconnection\templates\dashboard_billing.html:26
+msgid "patient(s) today."
+msgstr "pasien hari ini."
+
+#: .\bbconnection\templates\includes\billing\orders_edit_toolbar.html:5
+msgid "Add new patient order"
+msgstr "Tambah order pasien baru"
+
+#: .\bbconnection\templates\includes\billing\patients_edit_toolbar.html:5
+msgid "Register new patient"
+msgstr "Register pasien baru"
+
+#: .\bbconnection\templates\includes\product_edit_toolbar.html:5
+#: .\bbconnection\templates\inventory\product_form.html:14
+#: .\bbconnection\templates\inventory\product_form.html:18
+#: .\bbconnection\templates\inventory\product_list.html:25
+msgid "Create Product"
+msgstr "Buat produk"
+
+#: .\bbconnection\templates\includes\product_edit_toolbar.html:11
+#: .\bbconnection\templates\includes\product_row_edit_toolbar.html:12
+#: .\bbconnection\templates\inventory\product_form.html:14
+#: .\bbconnection\templates\inventory\product_form.html:18
+msgid "Edit Product"
+msgstr "Edit produk"
+
+#: .\bbconnection\templates\includes\product_edit_toolbar.html:17
+#: .\bbconnection\templates\includes\product_row_edit_toolbar.html:18
+msgid "Delete Product"
+msgstr "Hapus produk"
+
+#: .\bbconnection\templates\includes\product_row_edit_toolbar.html:6
+msgid "View Product"
+msgstr "Lihat produk"
+
+#: .\bbconnection\templates\includes\returningproduct_row_edit_toolbar.html:6
+#: .\bbconnection\templates\inventory\returningproduct_form.html:14
+#: .\bbconnection\templates\inventory\returningproduct_form.html:18
+msgid "Edit returning product"
+msgstr "Ubah produk yang dikembalikan"
+
+#: .\bbconnection\templates\includes\returningproduct_row_edit_toolbar.html:12
+#: .\bbconnection\templates\inventory\returningproduct_confirm_delete.html:14
+#: .\bbconnection\templates\inventory\returningproduct_confirm_delete.html:18
+msgid "Delete returning product"
+msgstr "Hapus produk yang dikembalikan"
+
+#: .\bbconnection\templates\includes\stockin_edit_toolbar.html:5
+#: .\bbconnection\templates\inventory\stockin-qrcode.html:14
+#: .\bbconnection\templates\inventory\stockin_form.html:14
+#: .\bbconnection\templates\inventory\stockin_form.html:18
+#: .\bbconnection\templates\inventory\stockin_list.html:26
+msgid "Add stock in"
+msgstr "Tambah stok masuk"
+
+#: .\bbconnection\templates\includes\stockin_edit_toolbar.html:11
+#: .\bbconnection\templates\includes\stockin_row_edit_toolbar.html:12
+#: .\bbconnection\templates\inventory\stockin_form.html:14
+#: .\bbconnection\templates\inventory\stockin_form.html:18
+msgid "Edit Stock in"
+msgstr "Ubah stok masuk"
+
+#: .\bbconnection\templates\includes\stockin_edit_toolbar.html:17
+#: .\bbconnection\templates\includes\stockin_row_edit_toolbar.html:18
+#: .\bbconnection\templates\inventory\stockin_confirm_delete.html:14
+msgid "Delete Stock in"
+msgstr "Hapus stok masuk"
+
+#: .\bbconnection\templates\includes\stockin_row_edit_toolbar.html:6
+msgid "View Stock in"
+msgstr "Lihat stok masuk"
+
+#: .\bbconnection\templates\includes\stockinlot_row_edit_toolbar.html:6
+msgid "Edit Lot"
+msgstr "Ubah lot"
+
+#: .\bbconnection\templates\includes\supplier_edit_toolbar.html:5
+#: .\bbconnection\templates\inventory\supplier_list.html:24
+msgid "Create Supplier"
+msgstr "Buat supplier"
+
+#: .\bbconnection\templates\includes\supplier_edit_toolbar.html:11
+#: .\bbconnection\templates\includes\supplier_row_edit_toolbar.html:12
+msgid "Edit Supplier"
+msgstr "Ubah supplier"
+
+#: .\bbconnection\templates\includes\supplier_edit_toolbar.html:17
+#: .\bbconnection\templates\includes\supplier_row_edit_toolbar.html:18
+msgid "Delete Supplier"
+msgstr "Hapus supplier"
+
+#: .\bbconnection\templates\includes\supplier_row_edit_toolbar.html:6
+msgid "View Supplier"
+msgstr "Lihat supplier"
+
+#: .\bbconnection\templates\includes\testgroups_row_edit_toolbar.html:6
+msgid "Edit Test groups"
+msgstr "Ubah grup tes"
+
+#: .\bbconnection\templates\includes\testgroups_row_edit_toolbar.html:12
+msgid "Delete Test groups"
+msgstr "Hapus grup tes"
+
+#: .\bbconnection\templates\includes\tests_row_edit_toolbar.html:6
+msgid "Edit test"
+msgstr "Ubah tes"
+
+#: .\bbconnection\templates\includes\usingproduct_row_edit_toolbar.html:6
+msgid "Edit Using product"
+msgstr "Ubah penggunaan produk"
+
+#: .\bbconnection\templates\includes\usingproduct_row_edit_toolbar.html:12
+#: .\bbconnection\templates\inventory\usingproduct_confirm_delete.html:14
+#: .\bbconnection\templates\inventory\usingproduct_confirm_delete.html:18
+msgid "Delete using product"
+msgstr "Hapus penggunaan produk"
+
+#: .\bbconnection\templates\includes\vendor_edit_toolbar.html:5
+#: .\bbconnection\templates\inventory\vendor_list.html:24
+msgid "Create Vendor"
+msgstr "Buat vendor"
+
+#: .\bbconnection\templates\includes\vendor_edit_toolbar.html:11
+#: .\bbconnection\templates\includes\vendor_row_edit_toolbar.html:12
+msgid "Edit Vendor"
+msgstr "Ubah vendor"
+
+#: .\bbconnection\templates\includes\vendor_edit_toolbar.html:17
+#: .\bbconnection\templates\includes\vendor_row_edit_toolbar.html:18
+msgid "Delete Vendor"
+msgstr "Hapus vendor"
+
+#: .\bbconnection\templates\includes\vendor_row_edit_toolbar.html:6
+msgid "View Vendor"
+msgstr "Lihat vendor"
+
+#: .\bbconnection\templates\includes\welcome_billing.html:3
+msgid "BBconnection Clinical Laboratory 0.0.1"
+msgstr "BBconnection Clinical Laboratory 0.0.1"
+
+#: .\bbconnection\templates\includes\worklist_row_edit_toolbar.html:6
+msgid "Worklist detail"
+msgstr "Detail daftar pekerjaan"
+
+#: .\bbconnection\templates\includes\worklist_row_edit_toolbar.html:11
+msgid "Print worklist"
+msgstr "Cetak daftar pekerjaan"
+
+#: .\bbconnection\templates\inventory\product_confirm_delete.html:5
+#: .\bbconnection\templates\inventory\product_confirm_delete.html:9
+#: .\bbconnection\templates\inventory\product_confirm_delete.html:13
+#: .\bbconnection\templates\inventory\product_detail.html:5
+#: .\bbconnection\templates\inventory\product_detail.html:9
+#: .\bbconnection\templates\inventory\stockin_confirm_delete.html:5
+#: .\bbconnection\templates\inventory\stockin_confirm_delete.html:9
+msgid "Product"
+msgstr "Produk"
+
+#: .\bbconnection\templates\inventory\product_confirm_delete.html:14
+#: .\bbconnection\templates\inventory\supplier_confirm_delete.html:14
+#: .\bbconnection\templates\inventory\supplier_confirm_delete.html:18
+msgid "Delete supplier"
+msgstr "Hapus supplier"
+
+#: .\bbconnection\templates\inventory\product_confirm_delete.html:18
+#: .\bbconnection\templates\inventory\stockin_confirm_delete.html:18
+msgid "Delete product"
+msgstr "Hapus produk"
+
+#: .\bbconnection\templates\inventory\product_detail.html:19
+#: .\bbconnection\templates\inventory\product_form.html:5
+#: .\bbconnection\templates\inventory\product_form.html:9
+#: .\bbconnection\templates\inventory\product_form.html:13
+#: .\bbconnection\templates\inventory\product_list.html:7
+#: .\bbconnection\templates\inventory\product_list.html:11
+#: .\bbconnection\templates\inventory\product_list.html:15
+#: .\bbconnection\templates\inventory\product_list.html:19
+#: .\bbconnection\templates\inventory\stock_list.html:21
+msgid "Products"
+msgstr "Produk"
+
+#: .\bbconnection\templates\inventory\product_detail.html:24
+msgid "Product Details"
+msgstr "Detail produk"
+
+#: .\bbconnection\templates\inventory\product_detail.html:53
+msgid "Lot controlled"
+msgstr "Kontrol lot"
+
+#: .\bbconnection\templates\inventory\product_detail.html:57
+msgid "Temp. condition"
+msgstr "Kondisi Temp."
+
+#: .\bbconnection\templates\inventory\product_detail.html:66
+#: .\bbconnection\templates\inventory\stockin_detail.html:68
+msgid "Product Data"
+msgstr "Data produk"
+
+#: .\bbconnection\templates\inventory\product_detail.html:78
+msgid "Unit"
+msgstr "Unit"
+
+#: .\bbconnection\templates\inventory\product_detail.html:82
+msgid "Base Multiplier"
+msgstr "Basis pengali"
+
+#: .\bbconnection\templates\inventory\product_detail.html:86
+msgid "Base Unit"
+msgstr "Basis unit"
+
+#: .\bbconnection\templates\inventory\returningproduct_confirm_delete.html:5
+#: .\bbconnection\templates\inventory\returningproduct_confirm_delete.html:9
+#: .\bbconnection\templates\inventory\returningproduct_confirm_delete.html:13
+#: .\bbconnection\templates\inventory\returningproduct_form.html:5
+#: .\bbconnection\templates\inventory\returningproduct_form.html:9
+#: .\bbconnection\templates\inventory\returningproduct_form.html:13
+#: .\bbconnection\templates\inventory\returningproduct_list.html:8
+#: .\bbconnection\templates\inventory\returningproduct_list.html:12
+#: .\bbconnection\templates\inventory\returningproduct_list.html:16
+#: .\bbconnection\templates\inventory\returningproduct_list.html:20
+#: .\bbconnection\templates\select\select_instrument.html:13
+#: .\bbconnection\templates\select\select_stockin.html:14
+#: .\bbconnection\templates\select\select_using.html:14
+msgid "Returning product"
+msgstr "Pengembalian produk"
+
+#: .\bbconnection\templates\inventory\returningproduct_confirm_delete.html:26
+#: .\bbconnection\templates\inventory\usingproduct_confirm_delete.html:26
+msgid "Are you sure you want to delete the following item?"
+msgstr "Apakah anda yakin ingin menghapus item berikut?"
+
+#: .\bbconnection\templates\inventory\returningproduct_list.html:26
+msgid "Return product"
+msgstr "Kembalikan produk"
+
+#: .\bbconnection\templates\inventory\stock_list.html:9
+#: .\bbconnection\templates\inventory\stock_list.html:13
+#: .\bbconnection\templates\inventory\stock_list.html:17
+msgid "Product stock"
+msgstr "Stok produk"
+
+#: .\bbconnection\templates\inventory\stock_list.html:26
+msgid "Export CSV"
+msgstr "Export CSV"
+
+#: .\bbconnection\templates\inventory\stockin-qrcode.html:5
+#: .\bbconnection\templates\inventory\stockin-qrcode.html:9
+#: .\bbconnection\templates\select\select_instrument.html:5
+#: .\bbconnection\templates\select\select_instrument.html:9
+#: .\bbconnection\templates\select\select_storage.html:5
+#: .\bbconnection\templates\select\select_storage.html:9
+#: .\bbconnection\templates\select\select_storage.html:14
+#: .\bbconnection\templates\select\select_storage.html:18
+msgid "Select storage"
+msgstr "Pilih penyimapan"
+
+#: .\bbconnection\templates\inventory\stockin-qrcode.html:13
+#: .\bbconnection\templates\inventory\stockin_detail.html:5
+#: .\bbconnection\templates\inventory\stockin_detail.html:9
+#: .\bbconnection\templates\inventory\stockin_detail.html:19
+#: .\bbconnection\templates\inventory\stockin_form.html:5
+#: .\bbconnection\templates\inventory\stockin_form.html:9
+#: .\bbconnection\templates\inventory\stockin_form.html:13
+#: .\bbconnection\templates\inventory\stockin_list.html:8
+#: .\bbconnection\templates\inventory\stockin_list.html:12
+#: .\bbconnection\templates\inventory\stockin_list.html:16
+#: .\bbconnection\templates\inventory\stockin_list.html:20
+#: .\bbconnection\templates\inventory\stockinlot_form.html:6
+#: .\bbconnection\templates\inventory\stockinlot_form.html:26
+msgid "Stock in"
+msgstr "Stok masuk"
+
+#: .\bbconnection\templates\inventory\stockin-qrcode.html:15
+msgid "QR Code"
+msgstr "QC Code"
+
+#: .\bbconnection\templates\inventory\stockin-qrcode.html:19
+msgid "Scan from camera"
+msgstr "Scan dari kamera"
+
+#: .\bbconnection\templates\inventory\stockin-qrcode.html:174
+#: .\bbconnection\templates\select\select_instrument.html:37
+#: .\bbconnection\templates\select\select_storage.html:37
+msgid "Continue"
+msgstr "Lanjut"
+
+#: .\bbconnection\templates\inventory\stockin_confirm_delete.html:13
+msgid "Stock In"
+msgstr "Stok masuk"
+
+#: .\bbconnection\templates\inventory\stockin_detail.html:24
+msgid "Stockin Details"
+msgstr "Detail stok masuk"
+
+#: .\bbconnection\templates\inventory\stockin_detail.html:52
+msgid "Received Quantity"
+msgstr "Kuantiti yang diterima"
+
+#: .\bbconnection\templates\inventory\stockin_detail.html:85
+msgid "Lot Number"
+msgstr "Nomor Lot"
+
+#: .\bbconnection\templates\inventory\stockin_detail.html:89
+msgid "Expired"
+msgstr "Expired"
+
+#: .\bbconnection\templates\inventory\stockin_form.html:21
+msgid "QR Code "
+msgstr "QC Code"
+
+#: .\bbconnection\templates\inventory\stockinlot_form.html:4
+#: .\bbconnection\templates\inventory\stockinlot_form.html:5
+msgid "Stock in Lot information"
+msgstr "Informasi lot stok masuk"
+
+#: .\bbconnection\templates\inventory\stockinlot_form.html:7
+msgid "Edit Stock in Lot"
+msgstr "Ubah lot stok masuk"
+
+#: .\bbconnection\templates\inventory\stockinlot_form.html:8
+msgid "Edit stock in Lot"
+msgstr "Ubah lot stok masuk"
+
+#: .\bbconnection\templates\inventory\stockinlot_form.html:9
+msgid "Edit Stock in lot"
+msgstr "Ubah loat stok masuk"
+
+#: .\bbconnection\templates\inventory\stockinlot_form.html:10
+msgid "Add stock in lot"
+msgstr "Tambah lot stok masuk"
+
+#: .\bbconnection\templates\inventory\stockinlot_form.html:30
+msgid "Qty"
+msgstr "Qty"
+
+#: .\bbconnection\templates\inventory\stockinlot_form.html:34
+msgid "Date of creation"
+msgstr "Tanggal dibuat"
+
+#: .\bbconnection\templates\inventory\stockinlot_form.html:58
+#: .\bbconnlab\models.py:24 .\bbconnlab\models.py:42 .\bbconnlab\models.py:60
+#: .\bbconnlab\models.py:78 .\bbconnlab\models.py:96 .\bbconnlab\models.py:115
+#: .\bbconnlab\models.py:134 .\bbconnlab\models.py:168
+#: .\bbconnlab\models.py:181 .\bbconnlab\models.py:226
+#: .\bbconnlab\models.py:253 .\bbconnlab\models.py:282
+#: .\bbconnlab\models.py:343 .\bbconnlab\models.py:422
+#: .\bbconnlab\models.py:446 .\bbconnlab\models.py:469
+#: .\bbconnlab\models.py:489 .\bbconnlab\models.py:619
+#: .\bbconnlab\models.py:643 .\bbconnlab\models.py:656
+#: .\bbconnlab\models.py:718 .\bbconnlab\models.py:739
+#: .\bbconnlab\models.py:857 .\bbconnlab\models.py:883
+#: .\bbconnlab\models.py:901 .\bbconnlab\models.py:914
+#: .\bbconnlab\models.py:944 .\bbconnlab\models.py:956
+#: .\bbconnlab\models.py:969 .\bbconnlab\models.py:984
+#: .\bbconnlab\models.py:993 .\bbconnlab\models.py:1008
+msgid "Last modified by"
+msgstr "Terakhir diubah oleh"
+
+#: .\bbconnection\templates\inventory\supplier_confirm_delete.html:5
+#: .\bbconnection\templates\inventory\supplier_confirm_delete.html:9
+#: .\bbconnection\templates\inventory\supplier_confirm_delete.html:13
+msgid "Supplier"
+msgstr "Supplier"
+
+#: .\bbconnection\templates\inventory\supplier_detail.html:5
+#: .\bbconnection\templates\inventory\supplier_detail.html:9
+#: .\bbconnection\templates\inventory\supplier_detail.html:13
+#: .\bbconnection\templates\inventory\supplier_form.html:5
+#: .\bbconnection\templates\inventory\supplier_form.html:9
+#: .\bbconnection\templates\inventory\supplier_form.html:13
+#: .\bbconnection\templates\inventory\supplier_list.html:6
+#: .\bbconnection\templates\inventory\supplier_list.html:10
+#: .\bbconnection\templates\inventory\supplier_list.html:14
+#: .\bbconnection\templates\inventory\supplier_list.html:18
+msgid "Suppliers"
+msgstr "Supplier"
+
+#: .\bbconnection\templates\inventory\supplier_detail.html:18
+msgid "Supplier Details"
+msgstr "Detail supplier"
+
+#: .\bbconnection\templates\inventory\supplier_detail.html:55
+#: .\bbconnection\templates\inventory\vendor_detail.html:55
+msgid "Contact Data"
+msgstr "Data kontak"
+
+#: .\bbconnection\templates\inventory\supplier_form.html:14
+#: .\bbconnection\templates\inventory\supplier_form.html:18
+msgid "Edit supplier"
+msgstr "Ubah supplier"
+
+#: .\bbconnection\templates\inventory\supplier_form.html:14
+#: .\bbconnection\templates\inventory\supplier_form.html:18
+msgid "Create supplier"
+msgstr "Buat supplier"
+
+#: .\bbconnection\templates\inventory\supplier_form.html:36
+#: .\bbconnection\templates\inventory\vendor_form.html:36
+msgid "Postal Address"
+msgstr "Alamat kodepos"
+
+#: .\bbconnection\templates\inventory\supplier_form.html:47
+#: .\bbconnection\templates\inventory\vendor_form.html:47
+msgid "Phone Address"
+msgstr "Alamat Telpon"
+
+#: .\bbconnection\templates\inventory\supplier_form.html:57
+#: .\bbconnection\templates\inventory\vendor_form.html:57
+msgid "Email Address"
+msgstr "Alamat email"
+
+#: .\bbconnection\templates\inventory\usingproduct_confirm_delete.html:5
+#: .\bbconnection\templates\inventory\usingproduct_confirm_delete.html:9
+#: .\bbconnection\templates\inventory\usingproduct_confirm_delete.html:13
+#: .\bbconnection\templates\inventory\usingproduct_form.html:5
+#: .\bbconnection\templates\inventory\usingproduct_form.html:9
+#: .\bbconnection\templates\inventory\usingproduct_form.html:13
+#: .\bbconnection\templates\inventory\usingproduct_list.html:8
+#: .\bbconnection\templates\inventory\usingproduct_list.html:12
+#: .\bbconnection\templates\inventory\usingproduct_list.html:16
+#: .\bbconnection\templates\inventory\usingproduct_list.html:20
+#: .\bbconnection\templates\select\select_storage.html:13
+msgid "Using product"
+msgstr "Penggunaan produk"
+
+#: .\bbconnection\templates\inventory\usingproduct_form.html:14
+msgid "Edit using product"
+msgstr "Ubah penggunaan produk"
+
+#: .\bbconnection\templates\inventory\usingproduct_form.html:18
+msgid "Edit usingproduct"
+msgstr "Ubah penggunaan produk"
+
+#: .\bbconnection\templates\inventory\usingproduct_list.html:26
+msgid "Use product"
+msgstr "Gunakan produk"
+
+#: .\bbconnection\templates\inventory\vendor_confirm_delete.html:5
+#: .\bbconnection\templates\inventory\vendor_confirm_delete.html:9
+#: .\bbconnection\templates\inventory\vendor_confirm_delete.html:13
+msgid "Vendor"
+msgstr "Vendor"
+
+#: .\bbconnection\templates\inventory\vendor_confirm_delete.html:14
+#: .\bbconnection\templates\inventory\vendor_confirm_delete.html:18
+msgid "Delete vendor"
+msgstr "Hapus vendor"
+
+#: .\bbconnection\templates\inventory\vendor_detail.html:5
+#: .\bbconnection\templates\inventory\vendor_detail.html:9
+#: .\bbconnection\templates\inventory\vendor_detail.html:13
+#: .\bbconnection\templates\inventory\vendor_form.html:5
+#: .\bbconnection\templates\inventory\vendor_form.html:9
+#: .\bbconnection\templates\inventory\vendor_form.html:13
+#: .\bbconnection\templates\inventory\vendor_list.html:6
+#: .\bbconnection\templates\inventory\vendor_list.html:10
+#: .\bbconnection\templates\inventory\vendor_list.html:14
+#: .\bbconnection\templates\inventory\vendor_list.html:18
+msgid "Vendors"
+msgstr "Vendor"
+
+#: .\bbconnection\templates\inventory\vendor_detail.html:18
+msgid "Vendor Details"
+msgstr "Detail vendor"
+
+#: .\bbconnection\templates\inventory\vendor_form.html:14
+#: .\bbconnection\templates\inventory\vendor_form.html:18
+msgid "Edit vendor"
+msgstr "Ubah vendor"
+
+#: .\bbconnection\templates\inventory\vendor_form.html:14
+#: .\bbconnection\templates\inventory\vendor_form.html:18
+msgid "Create vendor"
+msgstr "Buat vendor"
+
+#: .\bbconnection\templates\middleware\include\orders_row_edit_toolbar.html:8
+msgid "View/Edit Result"
+msgstr "Lihat/Ubah hasil"
+
+#: .\bbconnection\templates\middleware\order_history.html:7
+#: .\bbconnection\templates\middleware\order_history.html:11
+#: .\bbconnection\templates\middleware\order_history.html:21
+msgid "Order History"
+msgstr "Riwayat order"
+
+#: .\bbconnection\templates\middleware\order_history.html:17
+#: .\bbconnection\templates\middleware\order_results.html:155
+msgid "History"
+msgstr "Riwayat"
+
+#: .\bbconnection\templates\middleware\order_history.html:28
+msgid "Back"
+msgstr "Kembali"
+
+#: .\bbconnection\templates\middleware\order_results.html:5
+msgid "Order Results"
+msgstr "Hasil order"
+
+#: .\bbconnection\templates\middleware\order_results.html:19
+msgid "Edit order results"
+msgstr "Ubah hasil order"
+
+#: .\bbconnection\templates\middleware\order_results.html:19
+msgid "Create order results"
+msgstr "Buat hasil order"
+
+#: .\bbconnection\templates\middleware\order_results.html:109
+msgid "Conclusion:"
+msgstr "Kesimpulan:"
+
+#: .\bbconnection\templates\middleware\order_results.html:132
+msgid "Technical Validate"
+msgstr "Validasi teknis"
+
+#: .\bbconnection\templates\middleware\order_results.html:136
+#: .\bbconnection\templates\middleware\order_results.html:144
+msgid "Medical Validate"
+msgstr "Validasi medis"
+
+#: .\bbconnection\templates\middleware\order_results.html:141
+msgid "Techical Validate"
+msgstr "Validasi teknis"
+
+#: .\bbconnection\templates\middleware\order_results.html:148
+msgid "Repeat"
+msgstr "Mengulang"
+
+#: .\bbconnection\templates\middleware\order_results.html:152
+msgid "Print Result"
+msgstr "Print hasil"
+
+#: .\bbconnection\templates\middleware\receivedsamples_list.html:7
+#: .\bbconnection\templates\middleware\receivedsamples_list.html:11
+#: .\bbconnection\templates\middleware\receivedsamples_list.html:15
+#: .\bbconnection\templates\middleware\receivedsamples_list.html:19
+msgid "Received sample"
+msgstr "Menerima sampel"
+
+#: .\bbconnection\templates\middleware\workarea.html:19
+msgid "Worekarea"
+msgstr "Area kerja"
+
+#: .\bbconnection\templates\orders_detail.html:97
+msgid "Date od Birth"
+msgstr "Tanggal lahir"
+
+#: .\bbconnection\templates\registration\login.html:51
+#: .\bbconnection\templates\registration\login2.html:39
+#: .\bbconnection\templates\registration\login_billing.html:51
+#: .\bbconnection\templates\registration\login_middleware.html:51
+msgid "sign in now"
+msgstr "masuk sekarang"
+
+#: .\bbconnection\templates\registration\login.html:64
+#: .\bbconnection\templates\registration\login2.html:52
+#: .\bbconnection\templates\registration\login_billing.html:64
+#: .\bbconnection\templates\registration\login_middleware.html:64
+msgid "Forgotten your password or username?"
+msgstr "Lupa kata sandi atau id pengguna anda?"
+
+#: .\bbconnection\templates\registration\login.html:68
+#: .\bbconnection\templates\registration\login2.html:56
+#: .\bbconnection\templates\registration\login_billing.html:68
+#: .\bbconnection\templates\registration\login_middleware.html:68
+msgid "Log in"
+msgstr "Masuk"
+
+#: .\bbconnection\templates\registration\login2.html:4
+#: .\bbconnection\templates\registration\login2.html:5
+#: .\bbconnection\templates\registration\login2.html:8
+msgid "Login"
+msgstr "Masuk"
+
+#: .\bbconnection\templates\registration\login2.html:25
+msgid "Please correct the error below."
+msgstr "Harap perbaiki kesalahan dibawah ini."
+
+#: .\bbconnection\templates\registration\login2.html:25
+msgid "Please correct the errors below."
+msgstr "Harap perbaiki kesalahan dibawah ini."
+
+#: .\bbconnection\templates\registration\login_billing.html:55
+msgid "User ID"
+msgstr "ID pengguna"
+
+#: .\bbconnection\templates\registration\login_billing.html:57
+msgid "Password"
+msgstr "Sandi"
+
+#: .\bbconnection\templates\report\insurance.html:7
+#: .\bbconnection\templates\report\jm.html:7
+#: .\bbconnection\templates\report\jm.html:11
+msgid "Report Jasa Medis"
+msgstr "Laporan Jasa Medis"
+
+#: .\bbconnection\templates\report\insurance.html:11
+msgid "Report cara bayar"
+msgstr "Laporan cara bayar"
+
+#: .\bbconnection\templates\report\insurance.html:18
+msgid "Cara bayar"
+msgstr "Cara bayar"
+
+#: .\bbconnection\templates\report\insurance.html:24
+#: .\bbconnection\templates\report\jm.html:24
+#: .\bbconnection\templates\report\origin.html:24
+#: .\bbconnection\templates\report\tests.html:24
+msgid "Export to CSV"
+msgstr "Export ke CSV"
+
+#: .\bbconnection\templates\report\jm.html:18
+msgid "Jasa Medis"
+msgstr "Jasa Medis"
+
+#: .\bbconnection\templates\report\origin.html:7
+#: .\bbconnection\templates\report\origin.html:11
+msgid "Report origin"
+msgstr "Laporan asal"
+
+#: .\bbconnection\templates\report\origin.html:18
+msgid "Origin/Asal pasien"
+msgstr "Asal pasien"
+
+#: .\bbconnection\templates\report\tests.html:7
+#: .\bbconnection\templates\report\tests.html:11
+msgid "Report pemeriksaan"
+msgstr "Laporan pemeriksaan"
+
+#: .\bbconnection\templates\report\tests.html:18
+msgid "Pemeriksaan"
+msgstr "Pemeriksaan"
+
+#: .\bbconnection\templates\select\add_patient.html:14
+#: .\bbconnection\templates\select\select_patient.html:7
+#: .\bbconnection\templates\select\select_patient.html:11
+#: .\bbconnection\templates\select\select_patient.html:16
+#: .\bbconnection\templates\select\select_patient.html:20
+msgid "Select patient"
+msgstr "Pilih pasien"
+
+#: .\bbconnection\templates\select\select_instrument.html:14
+#: .\bbconnection\templates\select\select_instrument.html:18
+msgid "Select instrument"
+msgstr "Pilih instrument"
+
+#: .\bbconnection\templates\select\select_instrument.html:18
+msgid "No instrument available?"
+msgstr "Tidak ada instrumen yang tersedia?"
+
+#: .\bbconnection\templates\select\select_stockin.html:6
+#: .\bbconnection\templates\select\select_stockin.html:10
+#: .\bbconnection\templates\select\select_stockin.html:15
+#: .\bbconnection\templates\select\select_stockin.html:19
+#: .\bbconnection\templates\select\select_using.html:6
+#: .\bbconnection\templates\select\select_using.html:10
+#: .\bbconnection\templates\select\select_using.html:15
+#: .\bbconnection\templates\select\select_using.html:19
+msgid "Select using product"
+msgstr "Pilih pengguaan produk"
+
+#: .\bbconnection\templates\select\select_stockin.html:15
+#: .\bbconnection\templates\select\select_using.html:15
+msgid "Select Using product"
+msgstr "Pilih penggunaan produk"
+
+#: .\bbconnection\templates\select\select_storage.html:18
+msgid "No storage available?"
+msgstr "Tidak ada penyimpanan tersedia?"
+
+#: .\bbconnlab\labels.py:64 .\bbconnlab\labels.py:132
+msgid "Printer [%(name)] OK with serial port [%(port)]."
+msgstr "Printer [%(name)] OK dengan port serial [%(port)]."
+
+#: .\bbconnlab\models.py:19
+msgid "Char value"
+msgstr "Nilai karakter"
+
+#: .\bbconnlab\models.py:20
+msgid "Numeric value"
+msgstr "Nilai angka"
+
+#: .\bbconnlab\models.py:33
+msgid "Parameter"
+msgstr "Parameter"
+
+#: .\bbconnlab\models.py:34
+msgid "Parameters"
+msgstr "Parameter"
+
+#: .\bbconnlab\models.py:37 .\bbconnlab\models.py:175
+msgid "Group Name"
+msgstr "Nama grup"
+
+#: .\bbconnlab\models.py:38 .\bbconnlab\models.py:56 .\bbconnlab\models.py:74
+#: .\bbconnlab\models.py:92 .\bbconnlab\models.py:111 .\bbconnlab\models.py:130
+#: .\bbconnlab\models.py:221
+msgid "External code"
+msgstr "Kode eksternal"
+
+#: .\bbconnlab\models.py:52
+msgid "Priorities"
+msgstr "Prioritas"
+
+#: .\bbconnlab\models.py:55
+msgid "Insurence Name"
+msgstr "Nama ansuransi"
+
+#: .\bbconnlab\models.py:70
+msgid "Insurences"
+msgstr "Ansuransi"
+
+#: .\bbconnlab\models.py:73
+msgid "Doctor Name"
+msgstr "Nama dokter"
+
+#: .\bbconnlab\models.py:87
+msgid "Doctor"
+msgstr "Dokter"
+
+#: .\bbconnlab\models.py:88
+msgid "Doctors"
+msgstr "Dokter"
+
+#: .\bbconnlab\models.py:91
+msgid "Origin Name"
+msgstr "Nama asal"
+
+#: .\bbconnlab\models.py:106
+msgid "Origins"
+msgstr "Asal"
+
+#: .\bbconnlab\models.py:110
+msgid "Diangosis Name"
+msgstr "Nama diagnosa"
+
+#: .\bbconnlab\models.py:128
+msgid "Gender Name"
+msgstr "Nama jns. Kelamin"
+
+#: .\bbconnlab\models.py:129 .\bbconnlab\models.py:561
+#: .\bbconnlab\models.py:1000
+msgid "Code"
+msgstr "Kode"
+
+#: .\bbconnlab\models.py:144
+msgid "Genders"
+msgstr "Jenis kelamin"
+
+#: .\bbconnlab\models.py:148
+msgid "Specimen Name"
+msgstr "Nama spesimen"
+
+#: .\bbconnlab\models.py:149
+msgid "Suffix code"
+msgstr "Kode akhiran"
+
+#: .\bbconnlab\models.py:158 .\bbconnlab\models.py:218
+#: .\bbconnlab\models.py:440 .\bbconnlab\models.py:484
+msgid "Specimen"
+msgstr "Spesimen"
+
+#: .\bbconnlab\models.py:159
+msgid "Specimens"
+msgstr "Spesimen"
+
+#: .\bbconnlab\models.py:162
+msgid "Abbreviation"
+msgstr "Singkatan"
+
+#: .\bbconnlab\models.py:174 .\bbconnlab\models.py:485
+msgid "Super Group"
+msgstr "Grup super"
+
+#: .\bbconnlab\models.py:176 .\bbconnlab\models.py:220
+msgid "Sort"
+msgstr "Urut"
+
+#: .\bbconnlab\models.py:176 .\bbconnlab\models.py:220
+msgid "Sorted priority"
+msgstr "Urutan prioritas"
+
+#: .\bbconnlab\models.py:209
+msgid "Test Group"
+msgstr "Grup tes"
+
+#: .\bbconnlab\models.py:211
+msgid "Test Name"
+msgstr "Nama tes"
+
+#: .\bbconnlab\models.py:214
+msgid "Result Type"
+msgstr "Tipe hasil"
+
+#: .\bbconnlab\models.py:219
+msgid "Can request?"
+msgstr "Dapat di-request"
+
+#: .\bbconnlab\models.py:247
+msgid "tariff"
+msgstr "tarif"
+
+#: .\bbconnlab\models.py:247
+msgid "base tariff"
+msgstr "tarif dasar"
+
+#: .\bbconnlab\models.py:248
+msgid "Medc.Serv"
+msgstr "Pelayanan medis"
+
+#: .\bbconnlab\models.py:248
+msgid "Medical service rate"
+msgstr "Tarif layanan medis"
+
+#: .\bbconnlab\models.py:262
+msgid "Test price"
+msgstr "Harga tes"
+
+#: .\bbconnlab\models.py:263
+msgid "Test prices"
+msgstr "Harga tes"
+
+#: .\bbconnlab\models.py:270
+msgid "Medical record number"
+msgstr "Nomor rekam medis"
+
+#: .\bbconnlab\models.py:273
+msgid "Date of birth"
+msgstr "Tanggal lahir"
+
+#: .\bbconnlab\models.py:273
+msgid "Date format: DD-MM-YYYY"
+msgstr "Format tanggal: DD-MM-YYYY"
+
+#: .\bbconnlab\models.py:274
+msgid "Patient Address"
+msgstr "Alamat pasien"
+
+#: .\bbconnlab\models.py:275
+msgid "Data 0"
+msgstr "Data 0"
+
+#: .\bbconnlab\models.py:275
+msgid "Additional data 0"
+msgstr "Tambahan data 0"
+
+#: .\bbconnlab\models.py:276
+msgid "Data 1"
+msgstr "Data 1"
+
+#: .\bbconnlab\models.py:276
+msgid "Additional data 1"
+msgstr "Tambahan data 1"
+
+#: .\bbconnlab\models.py:277
+msgid "Data 2"
+msgstr "Data 2"
+
+#: .\bbconnlab\models.py:277
+msgid "Additional data 3"
+msgstr "Tambahan data 3"
+
+#: .\bbconnlab\models.py:329
+msgid "Order date"
+msgstr "Tanggal order"
+
+#: .\bbconnlab\models.py:330
+msgid "Number"
+msgstr "Nomor"
+
+#: .\bbconnlab\models.py:334
+msgid "Order priority"
+msgstr "Prioritas order"
+
+#: .\bbconnlab\models.py:335
+msgid "Insurance"
+msgstr "Ansuransi"
+
+#: .\bbconnlab\models.py:336
+msgid "Note/Comment"
+msgstr "Catatan/Komentar"
+
+#: .\bbconnlab\models.py:338
+msgid "Conclusion"
+msgstr "Kesimpulan"
+
+#: .\bbconnlab\models.py:408 .\bbconnlab\models.py:416
+#: .\bbconnlab\models.py:439 .\bbconnlab\models.py:483
+#: .\bbconnlab\models.py:726 .\bbconnlab\models.py:864
+#: .\bbconnlab\models.py:892 .\bbconnlab\models.py:979
+msgid "Order"
+msgstr "Order"
+
+#: .\bbconnlab\models.py:431
+msgid "Order test"
+msgstr "Tes order"
+
+#: .\bbconnlab\models.py:432
+msgid "Order tests"
+msgstr "Tes order"
+
+#: .\bbconnlab\models.py:441
+msgid "sample id"
+msgstr "id sampel"
+
+#: .\bbconnlab\models.py:441
+msgid "Sample id"
+msgstr "Id sampel"
+
+#: .\bbconnlab\models.py:455 .\bbconnlab\models.py:456
+msgid "Order samples"
+msgstr "Sampel order"
+
+#: .\bbconnlab\models.py:463
+msgid "Printer barcode name"
+msgstr "Nama printer barcode"
+
+#: .\bbconnlab\models.py:464
+msgid "is active?"
+msgstr "apakah aktif?"
+
+#: .\bbconnlab\models.py:465
+msgid "Com serial port name"
+msgstr "Nama port COM serial"
+
+#: .\bbconnlab\models.py:465
+msgid "eq: COM10,COM11"
+msgstr "mis: COM10,COM11"
+
+#: .\bbconnlab\models.py:563 .\bbconnlab\models.py:1002
+msgid "Active?"
+msgstr "Aktif?"
+
+#: .\bbconnlab\models.py:564
+msgid "Driver name"
+msgstr "Nama driver"
+
+#: .\bbconnlab\models.py:567
+msgid "Connection type"
+msgstr "Tipe koneksi"
+
+#: .\bbconnlab\models.py:574
+msgid "Serial port name"
+msgstr "Nama port serial"
+
+#: .\bbconnlab\models.py:581
+msgid "Serial baud rate"
+msgstr "Serial baud rate"
+
+#: .\bbconnlab\models.py:588
+msgid "Serial data bit"
+msgstr "Serial data bit"
+
+#: .\bbconnlab\models.py:595
+msgid "Serial stop bit"
+msgstr "Serial stop bit"
+
+#: .\bbconnlab\models.py:602
+msgid "Serial parity"
+msgstr "Serial parity"
+
+#: .\bbconnlab\models.py:609
+msgid "TCP/IP Connection type"
+msgstr "Tipe koneksi TCP/IP"
+
+#: .\bbconnlab\models.py:614
+msgid "TCP Host name (IP Address)"
+msgstr "Nama TCP Host (IP Address)"
+
+#: .\bbconnlab\models.py:615
+msgid "TCP Port"
+msgstr "Port TCP"
+
+#: .\bbconnlab\models.py:631 .\bbconnlab\models.py:649
+#: .\bbconnlab\models.py:734
+msgid "Instrument"
+msgstr "Instrumen"
+
+#: .\bbconnlab\models.py:633
+msgid "Host test code"
+msgstr "Kode tes host"
+
+#: .\bbconnlab\models.py:636
+msgid "Result type"
+msgstr "Tipe hasil"
+
+#: .\bbconnlab\models.py:650
+msgid "Host flag code"
+msgstr "kode flag host"
+
+#: .\bbconnlab\models.py:651
+msgid "Host flag description"
+msgstr "Deskripsi flag host"
+
+#: .\bbconnlab\models.py:652
+msgid "Host flag mark"
+msgstr "Flag mark host"
+
+#: .\bbconnlab\models.py:684
+msgid "Age from"
+msgstr "Usia dari"
+
+#: .\bbconnlab\models.py:687
+msgid "Age from unit"
+msgstr "Usia dari unit"
+
+#: .\bbconnlab\models.py:692
+msgid "Age to"
+msgstr "Usia sampai"
+
+#: .\bbconnlab\models.py:695
+msgid "Age to unit"
+msgstr "Usia sampai unit"
+
+#: .\bbconnlab\models.py:702
+msgid "Operator"
+msgstr "Operator"
+
+#: .\bbconnlab\models.py:707
+msgid "Any age?"
+msgstr "Semua umur?"
+
+#: .\bbconnlab\models.py:708
+msgid "lower limit"
+msgstr "Batas bawah"
+
+#: .\bbconnlab\models.py:709
+msgid "upper limit"
+msgstr "Batas atas"
+
+#: .\bbconnlab\models.py:710
+msgid "operator value"
+msgstr "Nilai operator"
+
+#: .\bbconnlab\models.py:711
+msgid "Alfanumberic value"
+msgstr "Nilai alfanumerik"
+
+#: .\bbconnlab\models.py:712 .\bbconnlab\models.py:852
+msgid "Special information"
+msgstr "Informasi spesial"
+
+#: .\bbconnlab\models.py:728
+msgid "Numeric result"
+msgstr "Hasil numerik"
+
+#: .\bbconnlab\models.py:729
+msgid "Alfanumeric result"
+msgstr "Hasil alfanumerik"
+
+#: .\bbconnlab\models.py:730
+msgid "Text result"
+msgstr "Hasil text"
+
+#: .\bbconnlab\models.py:731
+msgid "Image result"
+msgstr "Hasil gambar"
+
+#: .\bbconnlab\models.py:732 .\bbconnlab\models.py:870
+msgid "Reference range"
+msgstr "Nilai normal"
+
+#: .\bbconnlab\models.py:733
+msgid "Result mark"
+msgstr "Mark hasil"
+
+#: .\bbconnlab\models.py:735
+msgid "Instrument flag"
+msgstr "Flag instrument"
+
+#: .\bbconnlab\models.py:849
+msgid "Method"
+msgstr "Metode"
+
+#: .\bbconnlab\models.py:850
+msgid "Test unit"
+msgstr "Tes unit"
+
+#: .\bbconnlab\models.py:851
+msgid "Decimal place"
+msgstr "Tempat desimal"
+
+#: .\bbconnlab\models.py:865
+msgid "Order Sample"
+msgstr "Sampel Order"
+
+#: .\bbconnlab\models.py:867
+msgid "is header?"
+msgstr "apakah header?"
+
+#: .\bbconnlab\models.py:868
+msgid "Result"
+msgstr "Hasil"
+
+#: .\bbconnlab\models.py:869
+msgid "Result unit"
+msgstr "Unit hasil"
+
+#: .\bbconnlab\models.py:871
+msgid "Patologi mark"
+msgstr "Patologi mark"
+
+#: .\bbconnlab\models.py:872
+msgid "Validation status"
+msgstr "Status validasi"
+
+#: .\bbconnlab\models.py:873
+msgid "Techical validated by"
+msgstr "Divalidasi teknis oleh"
+
+#: .\bbconnlab\models.py:874
+msgid "Technical Validated date"
+msgstr "Divalidasi teknis tanggal"
+
+#: .\bbconnlab\models.py:875
+msgid "Medical validated by"
+msgstr "Divalidasi medis oleh"
+
+#: .\bbconnlab\models.py:876
+msgid "Medical validated date"
+msgstr "Divalidasi medis tanggal"
+
+#: .\bbconnlab\models.py:877
+msgid "Print status"
+msgstr "Status cetak"
+
+#: .\bbconnlab\models.py:878
+msgid "Print by"
+msgstr "Dicetak oleh"
+
+#: .\bbconnlab\models.py:879
+msgid "Print date"
+msgstr "Tanggal cetak"
+
+#: .\bbconnlab\models.py:894
+msgid "Action code"
+msgstr "Kode aksi"
+
+#: .\bbconnlab\models.py:895
+msgid "Action by"
+msgstr "Aksi oleh"
+
+#: .\bbconnlab\models.py:896
+msgid "Action date"
+msgstr "Tanggal aksi"
+
+#: .\bbconnlab\models.py:897
+msgid "Action text"
+msgstr "Text aksi"
+
+#: .\bbconnlab\models.py:909
+msgid "Result PDF url"
+msgstr "url hasil PDF"
+
+#: .\bbconnlab\models.py:950 .\bbconnlab\models.py:964
+msgid "Batch group"
+msgstr "Grup batch"
+
+#: .\bbconnlab\models.py:963
+msgid "Batch date"
+msgstr "Tanggal batch"
+
+#: .\bbconnlab\models.py:978
+msgid "Worklist"
+msgstr "Daftar pekerjaan"
+
+#: .\bbconnlab\models.py:987
+msgid "Worklist order"
+msgstr "Daftar pekerjaan order"
+
+#: .\bbconnlab\models.py:1003
+msgid "input path"
+msgstr "input path"
+
+#: .\bbconnlab\tables.py:45
+msgid "Total Price"
+msgstr "Total harga"
+
+#: .\bbconnlab\views.py:84
+msgid "Wrong username and/or password."
+msgstr "Salah id pengguna dan/atau kata sandi"
+
+#: .\bbconnlab\views.py:126
+msgid "Successfully updated your avatar."
+msgstr "Berhasil update avatar anda."
+
+#: .\bbconnlab\views.py:157
+msgid "Successfully uploaded a new avatar."
+msgstr "Berhasil upload avatar baru."
