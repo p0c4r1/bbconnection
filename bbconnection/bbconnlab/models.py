@@ -32,6 +32,24 @@ class Parameters(models.Model):
     class Meta:
         verbose_name = _("Parameter")
         verbose_name_plural = _("Parameters")
+        
+class Service(models.Model):
+    name = models.CharField(max_length=100,verbose_name=_("Service Name"))
+    ext_code = models.CharField(max_length=30,verbose_name=_("External code"))
+    lastmodification = ModificationDateTimeField(verbose_name=_("Last modified"))
+    lastmodifiedby = models.ForeignKey(
+        settings.AUTH_USER_MODEL, limit_choices_to={'is_staff': True},
+        blank=True, verbose_name=_("Last modified by"), null=True)
+    
+    def get_absolute_url(self):
+        return reverse('service_detail', args=[str(self.id)])
+    
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("Service")
+        verbose_name_plural = _("Services")
 
 class Priority(models.Model):
     name = models.CharField(max_length=100,verbose_name=_("Group Name"))
@@ -328,6 +346,7 @@ def auto_order_no():
 class Orders(models.Model):
     order_date = models.DateField(verbose_name=_("Order date"),auto_now_add=True)
     number = models.CharField(max_length=100,verbose_name=_("Number"),default=auto_order_no,blank=True,null=True,unique=True)
+    service = models.ForeignKey(Service,on_delete=models.PROTECT,verbose_name=_("Service"),null=True,blank=True)
     origin = models.ForeignKey(Origins,on_delete=models.PROTECT,verbose_name=_("Origin"),null=True,blank=True)
     doctor = models.ForeignKey(Doctors,on_delete=models.PROTECT,verbose_name=_("Sender doctor"),null=True,blank=True)
     diagnosis = models.ForeignKey(Diagnosis,on_delete=models.PROTECT,verbose_name=_("Diagnosis"),null=True,blank=True)
@@ -434,6 +453,29 @@ class OrderTests(models.Model):
             ('view_ordertests', 'Can view order tests'),
         )
         ordering = ['order','test']
+
+class OrderDiagnosis(models.Model):
+    order = models.ForeignKey(Orders,on_delete=models.PROTECT,verbose_name=_("Order"),related_name='order_diagitems')
+    diagnosis = models.ForeignKey(Diagnosis,on_delete=models.PROTECT,verbose_name=_("Diagnosis"),related_name='order_diagnosis')
+    dateofcreation = CreationDateTimeField(verbose_name=_("Created at"),auto_now_add=True)
+    lastmodification = ModificationDateTimeField(verbose_name=_("Last modified"))
+    lastmodifiedby = models.ForeignKey(
+        settings.AUTH_USER_MODEL, limit_choices_to={'is_staff': True},
+        blank=True, verbose_name=_("Last modified by"), null=True)
+    
+    def get_absolute_url(self):
+        return reverse('ordertests_detail', args=[str(self.id)])
+    
+    def __str__(self):
+        return '%s %s' % (self.order,self.test)
+
+    class Meta:
+        verbose_name = _("Order diagnosis")
+        verbose_name_plural = _("Order diagnosis")
+        permissions = (
+            ('view_ordertests', 'Can view order tests'),
+        )
+        ordering = ['order','diagnosis']
 
 class OrderSamples(models.Model):
     order = models.ForeignKey(Orders,on_delete=models.PROTECT,verbose_name=_("Order"),related_name='sample_order')
@@ -845,7 +887,7 @@ class Results(models.Model):
         return "%s %s %s %s" % (self.order,self.numeric_result,self.alfa_result,self.text_result)
     
 class TestParameters(models.Model):
-    test = models.OneToOneField(Tests,on_delete=models.CASCADE,primary_key=True,)
+    test = models.OneToOneField(Tests,on_delete=models.PROTECT,primary_key=True,)
     method = models.CharField(max_length=100,verbose_name=_("Method"),null=True,blank=True)
     unit = models.CharField(max_length=100,verbose_name=_("Test unit"),null=True,blank=True)
     decimal_place = models.IntegerField(verbose_name=_("Decimal place"),null=True,default=1)
@@ -863,7 +905,7 @@ class TestParameters(models.Model):
 class OrderResults(models.Model):
     order =  models.ForeignKey(Orders,on_delete=models.PROTECT,verbose_name=_("Order"),related_name='orderresults_order')
     sample = models.ForeignKey(OrderSamples,on_delete=models.PROTECT,verbose_name=_("Order Sample"),related_name='sampleresults_order',null=True)
-    test = models.ForeignKey(Tests,on_delete=models.PROTECT,verbose_name=_("Test"),related_name='orderresults_test')
+    test = models.ForeignKey(Tests,on_delete=models.PROTECT,verbose_name=_("Test"),related_name='orderresults_test',null=True)
     is_header = models.BooleanField(default=False,verbose_name=_("is header?"))
     result = models.ForeignKey(Results,on_delete=models.PROTECT,verbose_name=_("Result"),related_name='orderresults_result',null=True)
     unit = models.CharField(max_length=100,verbose_name=_("Result unit"),null=True)
@@ -888,6 +930,13 @@ class OrderResults(models.Model):
     def previous_result(self):
         return 'xxx'
     
+    class Meta:
+        permissions = (
+            ("techval", "Technical validating results"),
+            ("medval", "Medical validating result"),
+            ("repeat", "Repeating result"),
+        )
+    
 class HistoryOrders(models.Model):
     order =  models.ForeignKey(Orders,on_delete=models.PROTECT,verbose_name=_("Order"),related_name='historyorder_order')
     test = models.ForeignKey(Tests,on_delete=models.PROTECT,verbose_name=_("Test"),related_name='historyorder_test',null=True)
@@ -905,7 +954,7 @@ class HistoryOrders(models.Model):
     
     
 class OrderExtended(models.Model):
-    order = models.OneToOneField(Orders,on_delete=models.CASCADE,primary_key=True,)
+    order = models.OneToOneField(Orders,on_delete=models.PROTECT,primary_key=True,)
     result_pdf_url = models.CharField(max_length=500,verbose_name=_("Result PDF url"),null=True)
     
     lastmodification = ModificationDateTimeField(verbose_name=_("Last modified"))

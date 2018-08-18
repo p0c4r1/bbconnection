@@ -23,7 +23,7 @@
 {% csrf_token %}
 
 {% block main_toolbar %}
-    <button type='submit' class='btn btn-primary'>
+   <!-- <button type='submit' class='btn btn-primary'>
         {% trans "Save" %}
     </button>
 
@@ -31,6 +31,7 @@
             onclick="window.location.assign('{% url 'workarea' %}')">
         {% trans "Cancel" %}
     </button>
+    -->
 {% endblock %}
 
 {% block main_inner %}
@@ -43,6 +44,7 @@
 	<thead>
 		<tr>
 			<th><input type="checkbox" name="check_all" tabindex="-1" class="all" value=""</th>
+			<th>&nbsp;</th>
 			<th>Name</th>
 			<th>Result</th>
 			<th>Unit</th>
@@ -103,7 +105,7 @@
 	     </tr> 
     {% endfor %}
     <tr>
-    	<td colspan="9">
+    	<td colspan="10">
     	<div class="form-group">
     	<input type="checkbox" name="check_conclusion" tabindex="-1" value="">
   <label for="conclusion">{% trans "Conclusion:" %}</label>
@@ -128,17 +130,29 @@
         {% trans "Cancel" %}
     </button>
     
+    {% if perms.bbconnlab.techval %}
     <button type='submit' class="btn btn-default" name="techval" role="button">
     <span class="fa fa-check"></span>&nbsp;{% trans "Technical Validate" %}
     </button>
+    {% endif %}
     
+    {% if perms.bbconnlab.mdeval %}
     <button type='submit' class="btn btn-default" name="medval" role="button">
     <span class="fa fa-check"></span>&nbsp;{% trans "Medical Validate" %}
     </button>
+    {% endif %}
     
+    {% if perms.bbconnlab.repeat %}
     <button type='submit' class="btn btn-default" name="repeat" role="button">
     <span class="fa fa-repeat"></span>&nbsp;{% trans "Repeat" %}
     </button>
+    {% endif %}
+    
+    {% if perms.bbconnlab.delete_ordertests %}
+    <button type='submit' class="btn btn-default" name="delete" role="button">
+    <span class="fa fa-times"></span>&nbsp;{% trans "Delete" %}
+    </button>
+    {% endif %}
     
     <a href="print" target="_blank" class="btn btn-default" role="button">
     <span class="fa fa-print"></span>&nbsp;{% trans "Print Result" %}</a>

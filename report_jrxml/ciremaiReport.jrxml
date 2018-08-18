@@ -101,10 +101,6 @@ order by bbconnlab_tests.sort]]>
 				</textElement>
 				<text><![CDATA[HASIL PEMERIKSAAN LABORATORIUM KLINIK]]></text>
 			</staticText>
-			<image>
-				<reportElement x="0" y="0" width="79" height="69" uuid="c8039f79-db25-4da8-8e16-2c3d0fcb26e0"/>
-				<imageExpression><![CDATA["D:\\git\\ciremai\\ciremai\\media\\image\\logo.png"]]></imageExpression>
-			</image>
 			<line>
 				<reportElement x="2" y="79" width="550" height="1" uuid="acbf5d7a-82a5-413c-8fa1-0c459cc1012b"/>
 			</line>
@@ -122,6 +118,10 @@ order by bbconnlab_tests.sort]]>
 				</textElement>
 				<text><![CDATA[(Terpercaya, Efisien, Ramah, Berkualitas, Akurat, Inovatif, dan Komunikatif)]]></text>
 			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="5" y="0" width="70" height="77" uuid="e2f0576a-7135-4887-8784-9f3498b961f6"/>
+				<imageExpression><![CDATA["logo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

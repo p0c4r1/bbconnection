@@ -137,10 +137,10 @@
                           <span>{% trans "Billing" %}</span>
                       </a>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/orders/' %} class="active"{% endif %} ><a href="/orders/">{% trans "Orders" %}</a></li>{% endif %}
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/orders/' %} class="active"{% endif %} ><a href="/orders/">{% trans "Orders" %}</a></li>{% endif %}
                       </ul>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/patients/'%} class="active"{% endif %} ><a href="/patients/">Patients</a></li>{% endif %}
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/patients/'%} class="active"{% endif %} ><a href="/patients/">Patients</a></li>{% endif %}
                       </ul>
                   </li>
                   
@@ -151,11 +151,11 @@
                       </a>
                       	
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/worklists/'%} class="active"{% endif %} >
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/worklists/'%} class="active"{% endif %} >
                           <a href="/worklists/">{% trans "Batch worklist" %}</a></li>{% endif %}
                       </ul>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/workarea/'%} class="active"{% endif %} >
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/workarea/'%} class="active"{% endif %} >
                           <a href="/workarea/">{% trans "Workarea" %}</a></li>{% endif %}
                       </ul>
                   </li>
@@ -166,16 +166,16 @@
                           <span>{% trans "Report" %}</span>
                       </a>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/jm/'%} class="active"{% endif %} ><a href="/reports/jm/">{% trans "Order list" %}</a></li>{% endif %}
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/jm/'%} class="active"{% endif %} ><a href="/reports/jm/">{% trans "Order list" %}</a></li>{% endif %}
                       </ul>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/origin/'%} class="active"{% endif %} ><a href="/reports/origin/">{% trans "Origin" %}</a></li>{% endif %}
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/origin/'%} class="active"{% endif %} ><a href="/reports/origin/">{% trans "Origin" %}</a></li>{% endif %}
                       </ul>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/insurance/'%} class="active"{% endif %} ><a href="/reports/insurance/">{% trans "Cara bayar" %}</a></li>{% endif %}
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/insurance/'%} class="active"{% endif %} ><a href="/reports/insurance/">{% trans "Cara bayar" %}</a></li>{% endif %}
                       </ul>
                       <ul class="sub">
-                          {% if perms.billing.view_orders %} <li {% if request.path == '/reports/tests/'%} class="active"{% endif %} ><a href="/reports/tests/">Test</a></li>{% endif %}
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/tests/'%} class="active"{% endif %} ><a href="/reports/tests/">Test</a></li>{% endif %}
                       </ul>
                   </li>
                   

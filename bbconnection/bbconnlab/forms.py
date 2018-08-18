@@ -6,7 +6,9 @@ from django.utils.translation import ugettext
 from django import forms
 from crispy_forms.helper import FormHelper
 
-from .models import TestGroups,Tests,Patients,Orders,OrderTests,Origins,Insurance,Doctors,Diagnosis,Priority
+from .models import TestGroups,Tests,Patients,Orders,\
+OrderTests,Origins,Insurance,Doctors,Diagnosis,Priority,\
+Service
 
 from itertools import groupby
 from django.forms.models import (
@@ -105,15 +107,20 @@ class OrderForm(forms.ModelForm):
                    
     class Meta:
         model = Orders
-        fields = ('id','number','priority','origin','insurance','doctor','diagnosis','note')
+        fields = ('id','number','service','priority','origin','insurance','doctor','diagnosis','note')
 
 
 class OrderForm2(forms.ModelForm):
+    service = forms.ModelChoiceField(queryset=Service.objects.all(), widget=Select2Widget,empty_label=None,label=_('Service'))
     origin = forms.ModelChoiceField(queryset=Origins.objects.all(), widget=Select2Widget,empty_label=None,label=_('Origin'))
     priority = forms.ModelChoiceField(queryset=Priority.objects.all(), widget=Select2Widget,empty_label=None,label=_('Priority'))
     insurance = forms.ModelChoiceField(queryset=Insurance.objects.all(), widget=Select2Widget,empty_label=None,required=False,label=_('Insurence'))
     doctor = forms.ModelChoiceField(queryset=Doctors.objects.all(), widget=Select2Widget,empty_label=None,required=False,label=_('Doctor'))
-    diagnosis = forms.ModelChoiceField(queryset=Diagnosis.objects.all(),widget=Select2Widget,empty_label=None,required=False,label=_('Diagnosis'))
+    #diagnosis = forms.ModelChoiceField(queryset=Diagnosis.objects.all(),widget=Select2Widget,empty_label=None,required=False,label=_('Diagnosis'))
+    diagnosis_selections = forms.ModelMultipleChoiceField(queryset=Diagnosis.objects.all(),
+                                          widget=Select2MultipleWidget,
+                                          #empty_label=None,
+                                          required=False)
     test_selections =  GroupedModelMultiChoiceField(queryset = Tests.objects.filter(can_request=True), 
         group_by_field='test_group',
         widget  = forms.CheckboxSelectMultiple,
@@ -129,7 +136,14 @@ class OrderForm2(forms.ModelForm):
         widget  = forms.CheckboxSelectMultiple,
         initial = list(Orders.objects.get(id=instance.pk).order_items.all().values_list('test_id',flat=True).order_by('id')),
         )
+            
             self.fields['test_selections'].required = False
+            #self.fields['diagnosis_selections'].initial = list(Orders.objects.get(id=instance.pk)
+            #                                        .order_diagitems.all().
+            #                                        values_list('diagnosis_id',flat=True).order_by('id'))
+        
+            #self.fields['diagnosis_selections'].required = False
+            self.fields['diagnosis_selections'].initial = list(Orders.objects.get(id=instance.pk).order_diagitems.all().values_list('diagnosis_id',flat=True).order_by('id'))
 
     def clean_number(self):
         instance = getattr(self, 'instance', None)
@@ -139,4 +153,4 @@ class OrderForm2(forms.ModelForm):
             return self.cleaned_data['number']
     class Meta:
         model = Orders
-        fields = ('id','number','origin','priority','insurance','doctor','diagnosis','note')
+        fields = ('id','number','service','origin','priority','insurance','doctor','diagnosis_selections','note')

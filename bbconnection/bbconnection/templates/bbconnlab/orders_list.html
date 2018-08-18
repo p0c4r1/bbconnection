@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block main_toolbar %}
-    {% if perms.billing.add_orders %}
+    {% if perms.bbconnlab.add_orders %}
         <button class="btn btn-success" onclick="location.href='{% url 'order_patient' %}'"
                 title="{% trans 'Create Patient Order' %}" data-toggle="tooltip" data-placement="top">
             <span class="glyphicon glyphicon-plus"></span></button>
@@ -38,6 +38,18 @@
 
 {% block main_inner %}
 
+<div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="more-less glyphicon glyphicon-filter"></i>
+                        Filter
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+
 <form method="get">
     <div class="well">
       <h4 style="margin-top: 0"><a href='{{ request.path }}' >Clear</a></h4>
@@ -45,6 +57,18 @@
       <div class="form-group col-sm-4 col-md-3">
           {{ filter.form.order_date.label_tag }}
           {% render_field filter.form.order_date class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.service.label_tag }}
+          {% render_field filter.form.service class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.origin.label_tag }}
+          {% render_field filter.form.origin class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.insurance.label_tag }}
+          {% render_field filter.form.insurance class="form-control" %}
         </div>
         <div class="form-group col-sm-4 col-md-3">
           {{ filter.form.number.label_tag }}
@@ -66,6 +90,10 @@
        
     </div>
   </form>
+  
+  </div>
+            </div>
+        </div>
   
  <script type="text/javascript">
  $('input[name="order_date"]').daterangepicker({locale: {

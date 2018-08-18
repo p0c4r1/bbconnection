@@ -1,4 +1,7 @@
 from django.conf import settings
+from calendar import monthrange
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 from . import models
 
 
@@ -8,6 +11,9 @@ def is_float(str):
       return True
     except ValueError:
       return False
+  
+def diff_month(d1, d2):
+    return (d1.year - d2.year) * 12 + d1.month - d2.month
 
 class MiddlewareTask(object):
     order_id = 0
@@ -96,7 +102,7 @@ class MiddlewareTask(object):
                         # date range
                         # Days
                         if range['age_from_type']=='D':
-                            if int(range['age_from']) <= (self.order.order_date - self.order.patient.dob).days <= int(range['age_to']):
+                            if int(range['age_from']) <= relativedelta(self.order.order_date - self.order.patient.dob).days <= int(range['age_to']):
                                 if (not range['gender']) or (range['gender'] == self.order.patient.gender_id) :
                                     return self.setup_range(alfa_value=range['alfa_value'],
                                              operator=range['operator'],
@@ -105,7 +111,7 @@ class MiddlewareTask(object):
                                              upper=range['upper'])
                         # Months
                         if range['age_from_type']=='M':
-                            if int(range['age_from']) <= (self.order.order_date - self.order.patient.dob).months <= int(range['age_to']):
+                            if int(range['age_from']) <= relativedelta(self.order.order_date - self.order.patient.dob).months <= int(range['age_to']):
                                 if (not range['gender']) or (range['gender'] == self.order.patient.gender_id) :
                                     return self.setup_range(alfa_value=range['alfa_value'],
                                              operator=range['operator'],
@@ -113,8 +119,9 @@ class MiddlewareTask(object):
                                              lower=range['lower'],
                                              upper=range['upper'])
                         # Years
+                        print range
                         if range['age_from_type']=='Y':
-                            if int(range['age_from']) <= (self.order.order_date - self.order.patient.dob).months <= int(range['age_to']):
+                            if int(range['age_from']) <= relativedelta(self.order.order_date - self.order.patient.dob).month <= int(range['age_to']):
                                 if (not range['gender']) or (range['gender'] == self.order.patient.gender_id) :
                                     self.setup_range(alfa_value=range['alfa_value'],
                                              operator=range['operator'],

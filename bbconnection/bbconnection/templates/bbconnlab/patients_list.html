@@ -1,7 +1,7 @@
 {% extends "base/table_view_base_billing.html" %}
 {% load i18n %}
 {% load render_table from django_tables2 %}
-{% load widget_tweaks %}
+{% load widget_tweaks static %}
 
 {% block meta_title %}
     {% trans "Patients" %}
@@ -20,14 +20,35 @@
 {% endblock %}
 
 {% block main_toolbar %}
-    {% if perms.billing.add_patients %}
+    {% if perms.bbconnlab.add_patients %}
         <button class="btn btn-success" onclick="location.href='{% url 'patient_create' %}'"
                 title="{% trans 'Register Patient' %}" data-toggle="tooltip" data-placement="top">
             <span class="glyphicon glyphicon-plus"></span></button>
     {% endif %}
 {% endblock %}
 
+{% block extra_css %}
+ <link rel="stylesheet" href="{% static "assets/css/daterangepicker.css" %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static "assets/js/moment.min.js" %}"></script>
+<script src="{% static "assets/js/daterangepicker.js" %}"></script>
+{% endblock %}
+
 {% block main_inner %}
+
+<div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="more-less glyphicon glyphicon-filter"></i>
+                        Filter
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
 
 <form method="get">
     <div class="well">
@@ -53,6 +74,12 @@
        
     </div>
   </form>
+  
+  
+  </div>
+            </div>
+        </div>
+  
 
     {% render_table patientstable "tables2/bootstrapped-tables2.html" %}
 {% endblock %}

@@ -100,10 +100,21 @@ class Label(object):
                 zpl_str += '24^FWN^FD'+order.number+'^FS^FO16,'
                 zpl_str += '56^A^A0N,'
                 zpl_str += '24,'
-                zpl_str += '24^FWN^FDNo.MR^FS^FO16,'
+                
+                
+                zpl_str += '24^FWN^FDNo.MR'
+                
+                # --- Patient Name
+                zpl_str += '^FS^FO16,'
                 zpl_str += '32^A^A0N,'
                 zpl_str += '24,'
-                zpl_str += '24^FWN^FD'+order.patient.name+'^FS^FO88,'
+                zpl_str += '24^FWN^FD'+order.patient.name
+                
+                # --- Origin
+                zpl_str += '^FS^FO248,32^A^A0N,24,24^FWN^FD'+order.origin.name
+                
+                
+                zpl_str += '^FS^FO88,'
                 zpl_str += '56^A^A0N,'
                 zpl_str += '24,'
                 zpl_str += '24^FWN^FD'+order.patient.patient_id+'^FS^FO248,'
@@ -123,6 +134,8 @@ class Label(object):
                 zpl_str += '136,'
                 zpl_str += 'Y^FD'+label['sample_no']+'^FS^XZ,'
                 zpl_str += '~HM'+LF
+                
+                #print zpl_str
                 
                 label_com.write(zpl_str.encode())
                 time.sleep(0.3)

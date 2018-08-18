@@ -614,6 +614,7 @@ def order_results(request,pk):
         repeat = False
         techval = False
         medval = False
+        delete = False
         for par in request.POST:
             if par == 'save':
                 save = True
@@ -625,6 +626,8 @@ def order_results(request,pk):
                 techval = True
             if par == 'medval':
                 medval = True
+            if par == 'delete':
+                delete = True
             
                 
         for p_tes in request.POST:
@@ -737,7 +740,20 @@ def order_results(request,pk):
         
                 
                 
-                 
+            if p_tes.startswith('check_') and delete:
+                o_order = models.Orders.objects.get(pk=pk)
+                test = models.Tests.objects.get(pk=p_tes.split('_')[1])
+                ord_res = models.OrderResults.objects.get(order=o_order,test=test)
+                ord_res.delete() 
+                # delete
+                ord_test = models.OrderTests.objects.get(order=o_order,test=test)
+                ord_test.delete()
+                #order_res = models.OrderResults.objects.filter(order=o_order,test=test,validation_status=1).update(validation_status=2,techval_user=str(request.user),techval_date=timezone.now())
+                # history
+                act_txt = 'Test %s deleted' % (test)
+                his_order = models.HistoryOrders(order_id=pk,test=test,action_code='DELETE',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
+                his_order.save()
+                         
             if p_tes.startswith('check_') and repeat:
                 if p_tes == 'check_conclusion':
                     cl = models.Orders.objects.get(pk=pk)
@@ -748,7 +764,6 @@ def order_results(request,pk):
                     his_order = models.HistoryOrders(order=order,action_code='CONCREPEAT',action_user=str(request.user),action_date=timezone.now(),action_text=act_txt)
                     his_order.save()
                     repeat_conclusion = True
-                    
                 if p_tes <> 'check_conclusion':
                     if is_float(p_tes.split('_')[1]):
                         o_order = models.Orders.objects.get(pk=pk)
@@ -792,6 +807,8 @@ def order_results(request,pk):
                                                                            'medval_user'
                                                                            ).order_by('test__test_group__sort','test__sort')
     # save report URL
+    if ordertests.count() == 0:
+        messages.warning(request, _("Test is empty, Do you forget to print the sample barcode?"))
     oe, _created = models.OrderExtended.objects.get_or_create(order_id=pk)
     tempate = 'middleware/order_results.html'
     context = {'order':order,'orders':orders,'ordertests':ordertests}
@@ -836,7 +853,7 @@ class FilteredSingleTableView(SingleTableView):
     
 class ListTestGroups(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTableView):    
     model = models.TestGroups
-    permission_required = 'billing.view_testgroups'
+    permission_required = 'bbconnlab.view_testgroups'
     login_url = settings.LOGIN_URL_BILLING
     table_class = TestGroupsTable
     table_data = models.TestGroups.objects.all()
@@ -847,19 +864,19 @@ class ListTestGroups(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingle
 class CreateTestGroup(LoginRequiredMixin,PermissionRequiredMixin,
                      NamedFormsetsMixin,CreateWithInlinesAndModifiedByMixin):
     model = models.TestGroups
-    permission_required = 'billing.add_testgroups'
+    permission_required = 'bbconnlab.add_testgroups'
     login_url = settings.LOGIN_URL_BILLING
     fields = ['name','sort']
     success_url = reverse_lazy('testgroups_list')
     
 class ViewTestGroup(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = models.TestGroups
-    permission_required = 'billing.view_testgroups'
+    permission_required = 'bbconnlab.view_testgroups'
     login_url = settings.LOGIN_URL_BILLING
     
 class EditTestGroup(LoginRequiredMixin, PermissionRequiredMixin, NamedFormsetsMixin, UpdateWithInlinesAndModifiedByMixin):
     model = models.TestGroups
-    permission_required = 'billing.change_testgroups'
+    permission_required = 'bbconnlab.change_testgroups'
     login_url = settings.LOGIN_URL_BILLING
     success_url = reverse_lazy('testgroups_list')
     form_class = forms.TestGroupForm
@@ -867,7 +884,7 @@ class EditTestGroup(LoginRequiredMixin, PermissionRequiredMixin, NamedFormsetsMi
 
 class DeleteTestGroup(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = models.TestGroups
-    permission_required = 'billing.delete_testgroups'
+    permission_required = 'bbconnlab.delete_testgroups'
     login_url = settings.LOGIN_URL_BILLING
     success_url = reverse_lazy('testgroups_list')
     table_pagination = 10
@@ -875,7 +892,7 @@ class DeleteTestGroup(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     
 class ListTests(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTableView):    
     model = models.Tests
-    permission_required = 'billing.view_tests'
+    permission_required = 'bbconnlab.view_tests'
     login_url = settings.LOGIN_URL_BILLING
     table_class = tables.TestsTable
     table_data = models.Tests.objects.all()
@@ -886,19 +903,19 @@ class ListTests(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTable
 class CreateTests(LoginRequiredMixin,PermissionRequiredMixin,
                      NamedFormsetsMixin,CreateWithInlinesAndModifiedByMixin):
     model = models.Tests
-    permission_required = 'billing.add_tests'
+    permission_required = 'bbconnlab.add_tests'
     login_url = settings.LOGIN_URL_BILLING
     fields = ['test_group','name','sort']
     success_url = reverse_lazy('tests_list')
     
 class ViewTests(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = models.Tests
-    permission_required = 'billing.view_tests'
+    permission_required = 'bbconnlab.view_tests'
     login_url = settings.LOGIN_URL_BILLING
     
 class EditTests(LoginRequiredMixin, PermissionRequiredMixin, NamedFormsetsMixin, UpdateWithInlinesAndModifiedByMixin):
     model = models.Tests
-    permission_required = 'billing.change_tests'
+    permission_required = 'bbconnlab.change_tests'
     login_url = settings.LOGIN_URL_BILLING
     success_url = reverse_lazy('tests_list')
     form_class = forms.TestForm
@@ -906,7 +923,7 @@ class EditTests(LoginRequiredMixin, PermissionRequiredMixin, NamedFormsetsMixin,
 
 class DeleteTests(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = models.Tests
-    permission_required = 'billing.delete_testgroups'
+    permission_required = 'bbconnlab.delete_testgroups'
     login_url = settings.LOGIN_URL_BILLING
     success_url = reverse_lazy('tests_list')
     table_pagination = 10
@@ -914,7 +931,7 @@ class DeleteTests(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     
 class ListOrders(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTableView):    
     model = models.Orders
-    permission_required = 'billing.view_orders'
+    permission_required = 'bbconnlab.view_orders'
     login_url = settings.LOGIN_URL_BILLING
     table_class = tables.OrdersTable
     table_data = models.Orders.objects.filter()
@@ -926,7 +943,7 @@ class ListOrders(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTabl
 class EditOrder(LoginRequiredMixin, PermissionRequiredMixin, NamedFormsetsMixin, UpdateWithInlinesAndModifiedByMixin):
     model = models.Orders
     template_name = 'bbconnlab/orders_form.html'
-    permission_required = 'billing.change_orders'
+    permission_required = 'bbconnlab.change_orders'
     login_url = settings.LOGIN_URL_BILLING
     success_url = reverse_lazy('orders_list')
     form_class = forms.OrderForm2
@@ -938,18 +955,30 @@ class EditOrder(LoginRequiredMixin, PermissionRequiredMixin, NamedFormsetsMixin,
             form.save()
             tes = models.OrderTests.objects.filter(order=order)
             tes.delete()
+            dg = models.OrderDiagnosis.objects.filter(order=order)
+            dg.delete()
+            #print form
             for test in form.cleaned_data['test_selections']:
+                print test
                 order_item = models.OrderTests()
                 order_item.order = order
                 order_item.test = test
+                print type(test)
                 order_item.save()
+            for diagnosis in form.cleaned_data['diagnosis_selections']:
+                print diagnosis
+                print type(diagnosis)
+                order_diagitems = models.OrderDiagnosis()
+                order_diagitems.order = order
+                order_diagitems.diagnosis = diagnosis
+                order_diagitems.save()
             return redirect('order_detail', pk=order.pk)
         
         return render(request,self.template_name,{'form':form})
     
 class ViewOrder(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = models.Orders
-    permission_required = 'billing.view_orders'
+    permission_required = 'bbconnlab.view_orders'
     login_url = settings.LOGIN_URL_BILLING
     
     def get_context_data(self, **kwargs):
@@ -964,7 +993,7 @@ class ViewOrder(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
 
 class DeleteOrder(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = models.Orders
-    permission_required = 'billing.delete_order'
+    permission_required = 'bbconnlab.delete_order'
     login_url = settings.LOGIN_URL_BILLING
     success_url = reverse_lazy('orders_list')
     table_pagination = 10
@@ -972,7 +1001,7 @@ class DeleteOrder(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
 
 class ListPatients(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTableView):    
     model = models.Patients
-    permission_required = 'billing.view_patients'
+    permission_required = 'bbconnlab.view_patients'
     login_url = settings.LOGIN_URL_BILLING
     table_class = PatientsTable
     table_data = models.Patients.objects.all()
@@ -983,19 +1012,19 @@ class ListPatients(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTa
 class CreatePatient(LoginRequiredMixin,PermissionRequiredMixin,
                      NamedFormsetsMixin,CreateWithInlinesView):
     model = models.Patients
-    permission_required = 'billing.add_patients'
+    permission_required = 'bbconnlab.add_patients'
     login_url = settings.LOGIN_URL_BILLING
     fields = ['patient_id','name','gender','dob','address',]
     success_url = reverse_lazy('patients_list')
     
 class ViewPatients(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = models.Patients
-    permission_required = 'billing.view_patients'
+    permission_required = 'bbconnlab.view_patients'
     login_url = settings.LOGIN_URL_BILLING
     
 class EditPatient(LoginRequiredMixin, PermissionRequiredMixin, NamedFormsetsMixin, UpdateWithInlinesAndModifiedByMixin):
     model = models.Patients
-    permission_required = 'billing.change_patient'
+    permission_required = 'bbconnlab.change_patient'
     login_url = settings.LOGIN_URL_BILLING
     success_url = reverse_lazy('patients_list')
     form_class = forms.PatientForm
@@ -1003,14 +1032,14 @@ class EditPatient(LoginRequiredMixin, PermissionRequiredMixin, NamedFormsetsMixi
 
 class DeletePatient(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = models.Patients
-    permission_required = 'billing.delete_patient'
+    permission_required = 'bbconnlab.delete_patient'
     login_url = settings.LOGIN_URL_BILLING
     success_url = reverse_lazy('patient_list')
     table_pagination = 10
     
 class Listjm(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTableView):    
     model = models.Orders
-    permission_required = 'billing.view_patients'
+    permission_required = 'bbconnlab.view_patients'
     login_url = settings.LOGIN_URL_BILLING
     table_class = JMTable
     table_data = models.Orders.objects.all()
@@ -1020,7 +1049,7 @@ class Listjm(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTableVie
     
 class ListWorklists(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleTableView):    
     model = models.Worklists
-    permission_required = 'billing.view_wokrlists'
+    permission_required = 'bbconnlab.view_wokrlists'
     login_url = settings.LOGIN_URL_BILLING
     table_class = WorklistTable
     table_data = models.Worklists.objects.all()
@@ -1031,7 +1060,7 @@ class ListWorklists(LoginRequiredMixin, PermissionRequiredMixin, FilteredSingleT
 class CreateWorklist(LoginRequiredMixin,PermissionRequiredMixin,
                      NamedFormsetsMixin,CreateWithInlinesAndModifiedByMixin):
     model = models.Worklists
-    permission_required = 'billing.add_worklists'
+    permission_required = 'bbconnlab.add_worklists'
     login_url = settings.LOGIN_URL_BILLING
     fields = ['batch_group']
     success_url = reverse_lazy('worklists_list')
@@ -1042,6 +1071,6 @@ class CreateWorklist(LoginRequiredMixin,PermissionRequiredMixin,
     
 class ViewWorklist(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = models.Worklists
-    permission_required = 'billing.view_worklists'
+    permission_required = 'bbconnlab.view_worklists'
     login_url = settings.LOGIN_URL_BILLING
     

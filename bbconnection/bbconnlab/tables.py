@@ -55,7 +55,7 @@ class OrdersTable(tables.Table):
         model = Orders
         exclude = ('id')
         #sequence = ('number')
-        fields = ('order_date','number','priority','origin','patient.patient_id','patient.name','total_price')
+        fields = ('order_date','service','number','priority','origin','patient.patient_id','patient.name','total_price')
         order_by = ('-number',)
         
         
@@ -159,7 +159,7 @@ class OrderResultTable(tables.Table):
         model = Orders
         exclude = ('id')
         #sequence = ('number')
-        fields = ('order_date','number','priority','origin','patient.patient_id','patient.name')
+        fields = ('order_date','service','number','priority','origin','patient.patient_id','patient.name')
         order_by = ('-number',)
 
 

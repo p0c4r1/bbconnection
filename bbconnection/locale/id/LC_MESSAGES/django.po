@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-15 22:32+0700\n"
+"POT-Creation-Date: 2018-07-15 22:43+0700\n"
 "PO-Revision-Date: 2018-07-15 HO:MI+ZONE\n"
 "Last-Translator: pocari <p0c4r1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -255,7 +255,7 @@ msgstr "Area kerja"
 #, fuzzy
 #| msgid "Report origin"
 msgid "Report"
-msgstr "Laporan asal"
+msgstr "Laporan Ruangan/Poli"
 
 #: .\bbconnection\templates\base\base_billing.html:169
 #, fuzzy
@@ -268,7 +268,7 @@ msgstr "Tes order"
 #: .\bbconnection\templates\orders_detail.html:50 .\bbconnlab\forms.py:87
 #: .\bbconnlab\forms.py:112 .\bbconnlab\models.py:105 .\bbconnlab\models.py:331
 msgid "Origin"
-msgstr "Asal"
+msgstr "Ruangan/Poli"
 
 #: .\bbconnection\templates\base\base_billing.html:175
 #: .\bbconnection\templates\report\insurance.html:18
@@ -385,7 +385,7 @@ msgstr "Diagnosa"
 #: .\bbconnection\templates\orders_detail.html:62 .\bbconnlab\forms.py:114
 #: .\bbconnlab\models.py:69
 msgid "Insurence"
-msgstr "Angakatan"
+msgstr "Angkatan"
 
 #: .\bbconnection\templates\bbconnlab\orders_detail.html:66
 #: .\bbconnection\templates\bbconnlab\patients_detail.html:66
@@ -708,10 +708,8 @@ msgid "order(s) today."
 msgstr "order hari ini."
 
 #: .\bbconnection\templates\dashboard_billing.html:26
-#, fuzzy
-#| msgid "Register new patient"
-msgid "register new"
-msgstr "Register pasien baru"
+msgid "you add new"
+msgstr "Register "
 
 #: .\bbconnection\templates\dashboard_billing.html:26
 msgid "patient(s) today."
@@ -1315,11 +1313,11 @@ msgstr "Jasa Medis"
 #: .\bbconnection\templates\report\origin.html:7
 #: .\bbconnection\templates\report\origin.html:11
 msgid "Report origin"
-msgstr "Laporan asal"
+msgstr "Laporan Ruangan/Poli"
 
 #: .\bbconnection\templates\report\origin.html:18
 msgid "Origin/Asal pasien"
-msgstr "Asal pasien"
+msgstr "Ruangan/Poli pasien"
 
 #: .\bbconnection\templates\report\tests.html:7
 #: .\bbconnection\templates\report\tests.html:11
@@ -1415,11 +1413,11 @@ msgstr "Prioritas"
 #, fuzzy
 #| msgid "Insurence Name"
 msgid "Insurance Name"
-msgstr "Nama Angkatan"
+msgstr "Nama Status"
 
 #: .\bbconnlab\models.py:70
 msgid "Insurences"
-msgstr "Angkatan"
+msgstr "Status"
 
 #: .\bbconnlab\models.py:73
 msgid "Doctor Name"
@@ -1431,11 +1429,11 @@ msgstr "Dokter"
 
 #: .\bbconnlab\models.py:91
 msgid "Origin Name"
-msgstr "Nama asal"
+msgstr "Nama Ruangan/Poli"
 
 #: .\bbconnlab\models.py:106
 msgid "Origins"
-msgstr "Asal"
+msgstr "Ruangan/Poli"
 
 #: .\bbconnlab\models.py:110
 msgid "Diangosis Name"
@@ -1581,7 +1579,7 @@ msgstr "Prioritas order"
 
 #: .\bbconnlab\models.py:335
 msgid "Insurance"
-msgstr "Angkatan"
+msgstr "Status"
 
 #: .\bbconnlab\models.py:336
 msgid "Note/Comment"
@@ -1894,6 +1892,11 @@ msgstr "Berhasil update avatar anda."
 #: .\bbconnlab\views.py:153
 msgid "Successfully uploaded a new avatar."
 msgstr "Berhasil upload avatar baru."
+
+#, fuzzy
+#~| msgid "Register new patient"
+#~ msgid "register new"
+#~ msgstr "Register pasien baru"
 
 #~ msgid "Techical Validate"
 #~ msgstr "Validasi teknis"
