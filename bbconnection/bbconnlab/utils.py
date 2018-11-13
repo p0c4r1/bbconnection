@@ -121,7 +121,7 @@ class MiddlewareTask(object):
                         # Years
                         print range
                         if range['age_from_type']=='Y':
-                            if int(range['age_from']) <= relativedelta(self.order.order_date - self.order.patient.dob).month <= int(range['age_to']):
+                            if int(range['age_from']) <= relativedelta(self.order.order_date - self.order.patient.dob).years <= int(range['age_to']):
                                 if (not range['gender']) or (range['gender'] == self.order.patient.gender_id) :
                                     self.setup_range(alfa_value=range['alfa_value'],
                                              operator=range['operator'],

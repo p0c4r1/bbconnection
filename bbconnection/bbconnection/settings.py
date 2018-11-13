@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+VERSION = '0.0.0.2'
+
+UPDATE = """
+20180910 - Unik untuk price dan priority<br>
+20181101 - Workarea bisa disetting di administration
+"""
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -142,7 +149,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')
 
@@ -152,7 +159,6 @@ DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')
 AVATAR_AUTO_GENERATE_SIZES = (60,)
 AVATAR_PROVIDERS = (
     'avatar.providers.PrimaryAvatarProvider',
-    #'avatar.providers.GravatarAvatarProvider',
     'avatar.providers.DefaultAvatarProvider',
 )
 AVATAR_DEFAULT_URL = 'http://127.0.0.1:8000/media/avatars/logo_avatar.jpg'
@@ -207,5 +213,10 @@ JASPER_CONN = {
         'host': '127.0.0.1',
         'database': 'bbconn'
     }
+
+# JASPER SERVER
+JASPER_USER = 'jasperadmin'
+JASPER_PASS = 'P@ssw0rd'
+JASPER_REST = 'http://localhost:8080/jasperserver/rest_v2/' # dengan / dibelakang
 
 #########################

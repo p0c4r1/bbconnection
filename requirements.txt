@@ -1,3 +1,6 @@
+certifi
+requests
+python-dateutil>=2.7.5
 Django==1.11
 django-annoying==0.10.4
 django-appconf==1.0.2

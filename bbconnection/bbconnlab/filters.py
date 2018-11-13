@@ -37,6 +37,13 @@ class JMFilter(django_filters.FilterSet):
         model = Orders
         fields = ['order_date']
         
+class inpatmedsrvFilter(django_filters.FilterSet):
+    patient__patient_id = django_filters.CharFilter(lookup_expr='icontains')
+    patient__name = django_filters.CharFilter(lookup_expr='icontains')
+    class Meta:
+        model = Orders
+        fields = ['patient__patient_id','patient__name']
+        
 class InsuranceFilter(django_filters.FilterSet):
     class Meta:
         model = Orders

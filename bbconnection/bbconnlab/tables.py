@@ -2,7 +2,7 @@ import django_tables2 as tables
 from pprint import pprint
 
 from .models import TestGroups,Tests,Orders,Patients,HistoryOrders
-from .custom.custom_columns import ModelDetailLinkColumn, IncludeColumn, CssFieldColumn, LabelIconColumn,ButtonColumn
+from .custom.custom_columns import ModelDetailLinkColumn, IncludeColumn, CssFieldColumn, LabelIconColumn,ButtonColumn,WaStatusIconColumn
 from django.contrib.humanize.templatetags.humanize import intcomma
 
 from django.utils.html import format_html
@@ -57,7 +57,23 @@ class OrdersTable(tables.Table):
         #sequence = ('number')
         fields = ('order_date','service','number','priority','origin','patient.patient_id','patient.name','total_price')
         order_by = ('-number',)
+
+class OrdersTableWaGroup(tables.Table):
+    total_price = CssFieldColumn('record.get_total_price.total',verbose_name=_('Total Price'),attrs = {"td":{"align":"right"}})
+    edit_order = IncludeColumn(
+        'includes/orders_wa_row_edit_toolbar.html',
+        attrs={"th": {"width": "120px"}},
+        verbose_name=" ",
+        orderable=False
+    )
         
+    
+    class Meta:
+        model = Orders
+        exclude = ('id')
+        #sequence = ('number')
+        fields = ('order_date','service','number','priority','origin','patient.patient_id','patient.name','total_price')
+        order_by = ('-number',)
         
 class PatientsTable(tables.Table):
     edit_order = IncludeColumn(
@@ -92,6 +108,16 @@ class JMTable(tables.Table):
     class Meta:
         model = Orders
         fields = ('order_date','number','priority','patient','insurance','origin','get_test_str','doctor','get_sub_total_price_tariff','get_sub_total_price_service',)
+        exclude = ('id')
+        template = 'django_tables2/bootstrap.html'
+        
+class InpatMedSrvTable(tables.Table):
+    ColumnWithThausandSeparator('get_sub_total_price_tariff')
+    ColumnWithThausandSeparator('get_sub_total_price_service')
+    
+    class Meta:
+        model = Orders
+        fields = ('patient__patient_id','patient__name','origin__name','insurance__name',)
         exclude = ('id')
         template = 'django_tables2/bootstrap.html'
  
@@ -150,11 +176,8 @@ class OrderResultTable(tables.Table):
         verbose_name=" ",
         orderable=False,
         accessor="orderextended.result_pdf_url"
-    )
+    )  
     
-    
-    
-
     class Meta:
         model = Orders
         exclude = ('id')
@@ -163,7 +186,23 @@ class OrderResultTable(tables.Table):
         order_by = ('-number',)
 
 
-        
+class OrderResultTableWa(tables.Table):
+    #progs = progressColumn(accessor="orderextended.get_progress",verbose_name='')
+    pdf_url = pdfColumn(accessor="orderextended.result_pdf_url",verbose_name='')
+    edit_order = IncludeColumn(
+        'includes/orders_wa_row_edit_toolbar.html',
+        attrs={"th": {"width": "120px"}},
+        verbose_name=" ",
+        orderable=False,
+        accessor="orderextended.result_pdf_url"
+    )  
+    
+    class Meta:
+        model = Orders
+        exclude = ('id')
+        #sequence = ('number')
+        fields = ('order_date','service','number','priority','origin','patient.patient_id','patient.name')
+        order_by = ('-number',)     
     
 
         

@@ -25,6 +25,7 @@
     {% block extra_css %}
     {% endblock %}
 
+    
     <script src="{% static "assets/js/common-scripts.js" %}"></script>
     <script src="{% static "assets/js/chart-master/Chart.js" %}"></script>
     <script src="{% static "assets/js/jquery-3.3.1.js" %}"></script>
@@ -61,7 +62,7 @@
               </div>
             <!--logo start-->
             <p style="float: left;margin-top: -8px;">
-                <a href="/billing" class="logo" style="float: left"><b>BBConnection</b></a>
+                <a href="/" class="logo" style="float: left"><b>BBConnection</b></a>
                 <br><span style="float: left" class="muted small">Clinical Laboratory</span>
             </p>
             <!--logo end-->
@@ -132,7 +133,7 @@
                   </li>
                   
                   <li class="sub-menu">
-                      <a {% if request.path == '/orders/' or request.path == '/patients/' %} class="active"{% endif %} href="javascript:;" >
+                      <a {% if request.path == '/orders/' or request.path == '/patients/'  %} class="active"{% endif %} href="javascript:;" >
                           <i class="fa fa-list"></i>
                           <span>{% trans "Billing" %}</span>
                       </a>
@@ -145,7 +146,7 @@
                   </li>
                   
                   <li class="sub-menu">
-                      <a {% if request.path == '/workarea/' or request.path == '/worklists/'%} class="active"{% endif %} href="javascript:;" >
+                      <a {% if request.path == '/workarea/' or request.path == '/worklists/' or request.path == '/workarea/{{ area_pk }}/'  %} class="active"{% endif %} href="javascript:;" >
                           <i class="fa fa-list"></i>
                           <span>{% trans "Clinical Lab" %}</span>
                       </a>
@@ -154,9 +155,25 @@
                           {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/worklists/'%} class="active"{% endif %} >
                           <a href="/worklists/">{% trans "Batch worklist" %}</a></li>{% endif %}
                       </ul>
-                      <ul class="sub">
-                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/workarea/'%} class="active"{% endif %} >
-                          <a href="/workarea/">{% trans "Workarea" %}</a></li>{% endif %}
+                      <ul class="sub" style>
+                          {% if perms.bbconnlab.view_orders %} 
+                          <li {% if request.path == '/workarea/' or request.path == '/workarea/{{ area_pk }}/' %} class="active"{% endif %} >
+                          <a {% if request.path == '/workarea/' or request.path == '/workarea/{{ area_pk }}/' %} class="active"{% endif %}>
+                          {% trans "Workarea" %}</a>
+                  
+                          	<ul class="sub">
+                          		<li {% if request.path == '/workarea/' or request.path == '/workarea/{{ area.id }}/' %} class="active"{% endif %} >
+                          		 <a href="/workarea/">{% trans "All area" %}</a></li>
+                          		 {% for area in workareas %}
+                          		
+                          		 <li {% if request.path == '/workarea/{{ workarea.id }}/'%} class="active"{% endif %} >
+                          		 <a href="/workarea/{{ area.id }}/">{{ area }}</a></li>
+                          		 {% endfor %}
+                          	</ul>
+                          </li>
+                          	
+                          {% endif %}
+                          
                       </ul>
                   </li>
                   
@@ -165,6 +182,9 @@
                           <i class="fa fa-file-o"></i>
                           <span>{% trans "Report" %}</span>
                       </a>
+                      <!-- <ul class="sub">
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/inpatmedsrv/'%} class="active"{% endif %} ><a href="/reports/inpatmedsrv/">{% trans "Inpatient med. service" %}</a></li>{% endif %}   
+                      </ul> -->
                       <ul class="sub">
                           {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/jm/'%} class="active"{% endif %} ><a href="/reports/jm/">{% trans "Order list" %}</a></li>{% endif %}
                       </ul>
@@ -175,8 +195,9 @@
                           {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/insurance/'%} class="active"{% endif %} ><a href="/reports/insurance/">{% trans "Cara bayar" %}</a></li>{% endif %}
                       </ul>
                       <ul class="sub">
-                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/tests/'%} class="active"{% endif %} ><a href="/reports/tests/">Test</a></li>{% endif %}
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/tests/'%} class="active"{% endif %} ><a href="/reports/tests/">{% trans "Test" %}</a></li>{% endif %}
                       </ul>
+                      
                   </li>
                   
                    

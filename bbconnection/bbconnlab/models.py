@@ -7,11 +7,16 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django_extensions.db.fields import CreationDateTimeField, ModificationDateTimeField
-import datetime
 from datetime import date
 from collections import defaultdict
 from num2words import num2words
 
+
+from calendar import monthrange
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
+def diff_month(d1, d2):
+    return (d1.year - d2.year) * 12 + d1.month - d2.month
 
 
 class Parameters(models.Model):
@@ -146,6 +151,7 @@ class Genders(models.Model):
     name = models.CharField(max_length=100,verbose_name=_("Gender Name"))
     code = models.CharField(max_length=30,verbose_name=_("Code"),null=True)
     ext_code = models.CharField(max_length=30,verbose_name=_("External code"))
+    inst_code = models.CharField(max_length=30,verbose_name=_("Instrument code"),null=True)
     lastmodification = ModificationDateTimeField(verbose_name=_("Last modified"))
     lastmodifiedby = models.ForeignKey(
         settings.AUTH_USER_MODEL, limit_choices_to={'is_staff': True},
@@ -179,7 +185,7 @@ class Specimens(models.Model):
 class SuperGroups(models.Model):
     abbreviation = models.CharField(max_length=100,verbose_name=_("Abbreviation"))
     name = models.CharField(max_length=100,verbose_name=_("Name"))
-    
+        
     lastmodification = ModificationDateTimeField(verbose_name=_("Last modified"))
     lastmodifiedby = models.ForeignKey(
         settings.AUTH_USER_MODEL, limit_choices_to={'is_staff': True},
@@ -187,6 +193,14 @@ class SuperGroups(models.Model):
     
     def __str__(self):
         return "%s %s" % (self.abbreviation,self.name)
+    
+    class Meta:
+        verbose_name = _("Super group")
+        verbose_name_plural = _("Super groups")
+        permissions = (
+            ('view_supergroups', 'Can view supergroups'),
+        )
+        ordering = ['name']
 
 class TestGroups(models.Model):
     supergroup = models.ForeignKey(SuperGroups,on_delete=models.PROTECT,verbose_name=_("Super Group"),related_name='testgroup_supergroup',null=True)
@@ -211,6 +225,48 @@ class TestGroups(models.Model):
             ('view_testgroups', 'Can view testgroups'),
         )
         ordering = ['name']
+        
+        
+class Workarea(models.Model):
+    name = models.CharField(max_length=100,verbose_name=_("Name"))
+    sort = models.IntegerField(verbose_name=_("Sort"),help_text=_("Sorted priority"))
+        
+    lastmodification = ModificationDateTimeField(verbose_name=_("Last modified"))
+    lastmodifiedby = models.ForeignKey(
+        settings.AUTH_USER_MODEL, limit_choices_to={'is_staff': True},
+        blank=True, verbose_name=_("Last modified by"), null=True)
+    
+    def __str__(self):
+        return "%s" % (self.name)
+    
+    class Meta:
+        verbose_name = _("Workarea")
+        verbose_name_plural = _("Workareas")
+        permissions = (
+            ('view_workarea', 'Can view worakarea'),
+        )
+        ordering = ['name']
+        
+class WorkareaTestGroups(models.Model):
+    workarea = models.ForeignKey(Workarea,on_delete=models.PROTECT,verbose_name=_("Workarea"),related_name='workareatestgroup_workarea',null=True)
+    testgroup = models.ForeignKey(TestGroups,on_delete=models.PROTECT,verbose_name=_("Testgroup"),related_name='workareatestgroup_testgroup',null=True)
+    sort = models.IntegerField(verbose_name=_("Sort"),help_text=_("Sorted priority"))
+        
+    lastmodification = ModificationDateTimeField(verbose_name=_("Last modified"))
+    lastmodifiedby = models.ForeignKey(
+        settings.AUTH_USER_MODEL, limit_choices_to={'is_staff': True},
+        blank=True, verbose_name=_("Last modified by"), null=True)
+    
+    def __str__(self):
+        return "%s %s" % (self.workarea,self.testgroup)
+    
+    class Meta:
+        verbose_name = _("Workareatestgroup")
+        verbose_name_plural = _("Workareatestgroups")
+        permissions = (
+            ('view_workareatestgroups', 'Can view workareatestgroups'),
+        )
+        ordering = ['sort']
         
         
 TEST_RESULT_TYPE = (
@@ -277,6 +333,7 @@ class TestPrices(models.Model):
         return '%s %s' % (self.test,self.priority)
 
     class Meta:
+        #unique_together = ('test', 'priority',)
         verbose_name = _("Test price")
         verbose_name_plural = _("Test prices")
         permissions = (
@@ -328,7 +385,7 @@ class Patients(models.Model):
         ordering = ['patient_id','name']
         
 def auto_order_no():
-        dtf = datetime.datetime.today().strftime('%y%m%d')
+        dtf = datetime.today().strftime('%y%m%d')
         par = Parameters.objects.filter(name='ORDER_NO',char_value=dtf)
         if par.count()==0:
             Parameters.objects.filter(name='ORDER_NO').delete()
@@ -353,7 +410,7 @@ class Orders(models.Model):
     priority = models.ForeignKey(Priority,on_delete=models.PROTECT,verbose_name=_("Order priority"),null=True,blank=True)
     insurance = models.ForeignKey(Insurance,on_delete=models.PROTECT,verbose_name=_("Insurance"),null=True,blank=True)
     note = models.CharField(max_length=100,verbose_name=_("Note/Comment"),blank=True,null=True)
-    patient = models.ForeignKey(Patients,on_delete=models.PROTECT,verbose_name=_("Patient"))
+    patient = models.ForeignKey(Patients,on_delete=models.SET_NULL,verbose_name=_("Patient"),null=True,blank=True)
     conclusion = models.CharField(max_length=1000,verbose_name=_("Conclusion"),blank=True,null=True)
     dateofcreation = CreationDateTimeField(verbose_name=_("Created at"),auto_now_add=True)
     lastmodification = ModificationDateTimeField(verbose_name=_("Last modified"))
@@ -367,6 +424,10 @@ class Orders(models.Model):
             return True
         else:
             return False
+        
+    def get_diagnosis(self):
+        return  ",".join(str(msg.diagnosis) for msg in OrderDiagnosis.objects.filter(order=self.pk))
+        
     
     def get_tests(self):
         return Orders.objects.filter(pk=self.pk,
@@ -467,7 +528,7 @@ class OrderDiagnosis(models.Model):
         return reverse('ordertests_detail', args=[str(self.id)])
     
     def __str__(self):
-        return '%s %s' % (self.order,self.test)
+        return '%s %s' % (self.order,self.diagnosis.name)
 
     class Meta:
         verbose_name = _("Order diagnosis")
@@ -852,7 +913,7 @@ class Results(models.Model):
                     # Days
                     if range['age_from_type']=='D':
                         #print str((self.order.order_date - self.order.patient.dob).days)
-                        if int(range['age_from']) <= (self.order.order_date - self.order.patient.dob).days <= int(range['age_to']):
+                        if int(range['age_from']) <= relativedelta(self.order.order_date - self.order.patient.dob).days <= int(range['age_to']):
                             if (not range['gender']) or (range['gender'] == self.order.patient.gender_id) :
                                 self.setup_range(alfa_value=range['alfa_value'],
                                          operator=range['operator'],
@@ -861,7 +922,7 @@ class Results(models.Model):
                                          upper=range['upper'])
                     # Months
                     if range['age_from_type']=='M':
-                        if int(range['age_from']) <= (self.order.order_date - self.order.patient.dob).months <= int(range['age_to']):
+                        if int(range['age_from']) <= relativedelta(self.order.order_date - self.order.patient.dob).months <= int(range['age_to']):
                             if (not range['gender']) or (range['gender'] == self.order.patient.gender_id) :
                                 self.setup_range(alfa_value=range['alfa_value'],
                                          operator=range['operator'],
@@ -870,7 +931,7 @@ class Results(models.Model):
                                          upper=range['upper'])
                     # Years
                     if range['age_from_type']=='Y':
-                        if int(range['age_from']) <= (self.order.order_date - self.order.patient.dob).months <= int(range['age_to']):
+                        if int(range['age_from']) <= relativedelta(self.order.order_date - self.order.patient.dob).years <= int(range['age_to']):
                             if (not range['gender']) or (range['gender'] == self.order.patient.gender_id) :
                                 self.setup_range(alfa_value=range['alfa_value'],
                                          operator=range['operator'],
@@ -931,6 +992,7 @@ class OrderResults(models.Model):
         return 'xxx'
     
     class Meta:
+        unique_together = ('order', 'test',)
         permissions = (
             ("techval", "Technical validating results"),
             ("medval", "Medical validating result"),

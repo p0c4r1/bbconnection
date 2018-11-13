@@ -1,0 +1,199 @@
+{% extends "base/form_view_base_billing.html" %}
+{% load i18n bootstrap3 %}
+
+{% block meta_title %}
+    {% trans "Order Results" %}[{{ wa_group }}]
+    {{ orders.number }} {{ orders.patient.name }}
+{% endblock %}
+
+{% block title %}
+    {% trans "Orders" %} [{{ wa_group }}]
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active"><a href="{% url 'workarea_group' area_pk %}">{% trans "Workarea" %}[{{ wa_group }}]</a></li>
+    <li class="active">{{ order }}</li>
+{% endblock %}
+
+{% block main_header %}
+    {% if orders %}{% trans "Edit order results" %}{% else %}{% trans "Create order results" %}{% endif%}
+    <br>{{ orders.number }} <br>{{ orders.patient.name }}
+{% endblock %}
+<form method="post">
+{% csrf_token %}
+
+{% block main_toolbar %}
+   <!-- <button type='submit' class='btn btn-primary'>
+        {% trans "Save" %}
+    </button>
+
+    <button type="button" class="btn btn-default"
+            onclick="window.location.assign('{% url 'workarea' %}')">
+        {% trans "Cancel" %}
+    </button>
+    -->
+{% endblock %}
+
+{% block main_inner %}
+<style>
+.form-control-ok {
+  color:  red;
+}
+</style>
+<table class="table table-responsive table-hover">
+	<thead>
+		<tr>
+			<th><input type="checkbox" name="check_all" tabindex="-1" class="all" value=""</th>
+			<th>&nbsp;</th>
+			<th>Name</th>
+			<th>Result</th>
+			<th>Unit</th>
+			<th>Ref.Range</th>
+			<th>Mark</th>
+			<th>Instrument</th>
+			<th>Tech.Val</th>
+			<th>Med.Val</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+    {% for o in ordertests %}
+	    <tr><td><input type="checkbox" name="check_{{ o.test_id }}" tabindex="-1" value=""></td>
+	    	{% if o.is_header %}
+	    	<td></td>
+	    	<td colspan="2"><strong>{{ o.test__name }}</strong></td>
+	    	{% else %}
+	     	<td>	
+	     	<div class='progress progress-striped'>
+	     		{% if o.validation_status == 0 %}
+                	<div class="progress-bar progress-bar-danger" role="progressbar" style="width: 0%;">
+                {% endif %}
+                {% if o.validation_status == 1 %}
+                	<div class="progress-bar progress-bar-danger" role="progressbar" style="width: 25%;">
+                {% endif %}
+                {% if o.validation_status == 2 %}
+                	<div class="progress-bar progress-bar-warning" role="progressbar" style="width: 50%;">
+                {% endif %}
+                {% if o.validation_status == 3 %}
+                	<div class="progress-bar progress-bar-success" role="progressbar" style="width: 75%;">
+                {% endif %}
+                {% if o.validation_status == 4 %}
+                	<div class="progress-bar progress-bar-info" role="progressbar" style="width: 100%;">
+                {% endif %}
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</div>
+            </div>
+			</td>
+	     	<td>{{ o.test__name }}</td>
+	     	
+	     	{% endif %}
+	     	
+	     	<td>
+	     	{% if not o.is_header %}
+	     	{% if  o.test__result_type  == 'ALF' %}<input type="text" name="test_{{ o.test_id }}" class="form-control form-control-ok"   value="{{ o.result__alfa_result|default:"" }}" />{% endif %}
+	     	{% if  o.test__result_type  == 'NUM' %}<input type="text" name="test_{{ o.test_id }}" class="form-control {% if o.patologi_mark and o.patologi_mark != '' and o.patologi_mark != 'N' %} form-control-ok {% endif %}" value="{{ o.result__alfa_result|default:"" }}" />{% endif %}
+	     	{% if  o.test__result_type  == 'TXT' %}<textarea name="test_{{ o.test_id }}" class="form-control text-danger has-warning" id="" cols="45" rows="10"></textarea> {% endif %}
+	     	</td>
+	     	<td>{{ o.unit|default:"" }}</td>
+	     	<td>{{ o.ref_range|default:"" }}</td>
+	     	<td>{{ o.patologi_mark|default:"" }}</td>
+	     	<td>{{ o.result__instrument__name|default:"" }}</td>
+	     	<td>{{ o.techval_user|default:"" }}</td>
+	     	<td>{{ o.medval_user|default:"" }}</td>
+	     	{% endif %}
+	     	
+	     	
+	     </tr> 
+    {% endfor %}
+    <tr>
+    	<td colspan="10">
+    	<div class="form-group">
+    	<input type="checkbox" name="check_conclusion" tabindex="-1" value="">
+  <label for="conclusion">{% trans "Conclusion:" %}</label>
+  <textarea class="form-control" rows="5" id="conclusion" name="conclusion">{{ orders.conclusion|default:"" }}</textarea>
+</div>
+    	</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+{% endblock %}
+
+{% block main_footer %}
+    <button type='submit' class='btn btn-primary' name="save">
+        {% trans "Save" %}
+    </button>
+
+    <button type="button" class="btn btn-default"
+            onclick="window.location.assign('{% url 'workarea_group' area_pk %}')">
+        {% trans "Cancel" %}
+    </button>
+    
+    {% if perms.bbconnlab.techval %}
+    <button type='submit' class="btn btn-default" name="techval" role="button">
+    <span class="fa fa-check"></span>&nbsp;{% trans "Technical Validate" %}
+    </button>
+    {% endif %}
+    
+    {% if perms.bbconnlab.mdeval %}
+    <button type='submit' class="btn btn-default" name="medval" role="button">
+    <span class="fa fa-check"></span>&nbsp;{% trans "Medical Validate" %}
+    </button>
+    {% endif %}
+    
+    {% if perms.bbconnlab.repeat %}
+    <button type='submit' class="btn btn-default" name="repeat" role="button">
+    <span class="fa fa-repeat"></span>&nbsp;{% trans "Repeat" %}
+    </button>
+    {% endif %}
+    
+    {% if perms.bbconnlab.delete_ordertests %}
+    <button type='submit' class="btn btn-default" name="delete" role="button">
+    <span class="fa fa-times"></span>&nbsp;{% trans "Delete" %}
+    </button>
+    {% endif %}
+    
+    <div class="btn-group dropup">
+	    <button type="button dropup" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	    <span class="fa fa-print"></span>&nbsp;
+	      {% trans "Print Result" %}
+	      <span class="caret"></span>
+	    </button>
+	    <ul class="dropdown-menu">
+	    <li><a href="print/" target="_blank">{% trans "All" %}</a></li>
+	    <li role="separator" class="divider"></li>
+	    {% for tg in testgroup %}
+	      <li><a href="print/?group_id={{ tg.test__test_group }}" target="_blank">{{ tg.test__test_group__name }}</a></li>
+	     {% endfor %}
+	    </ul>
+	</div>
+    
+    <div class="btn-group">
+						    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						      Dropdown
+						      <span class="caret"></span>
+						    </button>
+						    <ul class="dropdown-menu">
+						      <li><a href="#">Dropdown link</a></li>
+						      <li><a href="#">Dropdown link</a></li>
+						    </ul>
+						  </div>
+    
+    <a href="history" class="btn btn-default" role="button">
+    <span class="fa fa-clock-o"></span>&nbsp;{% trans "History" %}</a>
+    
+    
+   
+    
+    </form>
+    
+ <script type="text/javascript">
+   $('.all').on('click', function(e){
+    $this = this;
+    $.each($(this).parents('table').find('input'), function(i, item){
+      $(item).prop('checked', $this.checked);
+    });
+  });
+</script>
+{% endblock %}

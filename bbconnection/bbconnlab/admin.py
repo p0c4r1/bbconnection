@@ -3,7 +3,7 @@ from .models import Tests,TestPrices,TestGroups,Priority,Insurance,Doctors, \
 Genders,Patients,Orders,OrderTests,Parameters,Origins,Diagnosis,SuperGroups, \
 Specimens,LabelPrinters,Instruments,Results,OrderResults,TestParameters, \
 TestRefRanges,InstrumentTests,InstrumentFlags,BatchGroups,BatchGroupTests, \
-Service
+Service,Workarea,WorkareaTestGroups
 
 class TestsInline(admin.TabularInline):
     model = Tests
@@ -115,7 +115,8 @@ admin.site.register(OrderResults)
 admin.site.register(TestParameters,TestAdmin2)
 admin.site.register(TestRefRanges,TestRefAdmin)
 admin.site.register(Service)
-
+admin.site.register(Workarea)
+admin.site.register(WorkareaTestGroups)
 
 
 

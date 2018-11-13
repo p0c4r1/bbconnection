@@ -154,11 +154,26 @@
     </button>
     {% endif %}
     
-    <a href="print" target="_blank" class="btn btn-default" role="button">
-    <span class="fa fa-print"></span>&nbsp;{% trans "Print Result" %}</a>
+    <div class="btn-group dropup">
+	    <button type="button dropup" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	    <span class="fa fa-print"></span>&nbsp;
+	      {% trans "Print Result" %}
+	      <span class="caret"></span>
+	    </button>
+	    <ul class="dropdown-menu">
+	    <li><a href="print/" target="_blank">{% trans "All" %}</a></li>
+	    <li role="separator" class="divider"></li>
+	    {% for tg in testgroup %}
+	      <li><a href="print/?group_id={{ tg.test__test_group }}" target="_blank">{{ tg.test__test_group__name }}</a></li>
+	     {% endfor %}
+	    </ul>
+	</div>
     
     <a href="history" class="btn btn-default" role="button">
     <span class="fa fa-clock-o"></span>&nbsp;{% trans "History" %}</a>
+    
+    
+   
     
     </form>
     

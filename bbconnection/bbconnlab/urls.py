@@ -56,6 +56,7 @@ urlpatterns = [
     url(r'^patients/create/$', views.CreatePatient.as_view(), name='patient_create'),
     url(r'^patients/edit/(?P<pk>\d+)/$', views.EditPatient.as_view(), name='patient_edit'),
     url(r'^patients/delete/(?P<pk>\d+)/$', views.DeletePatient.as_view(), name='patient_delete'),
+    url(r'^patients/bill-report/(?P<pk>\d+)/$', views.patient_print_bill, name='patient_bill_report'),
     
     #################
     # Worklist
@@ -75,7 +76,22 @@ urlpatterns = [
     url(r'^orders/results/(?P<pk>\d+)/print/$', views.order_results_print, name='order_results_print'),
     url(r'^orders/results/(?P<pk>\d+)/repeat/$', views.order_results_repeat, name='order_results_repeat'),
     url(r'^orders/results/(?P<pk>\d+)/history/$', views.order_results_history, name='order_results_history'),
+    url(r'^orders/results/(?P<pk>\d+)/print_draft/$', views.order_result_print_draft, name='order_results_print_draft'),
     url(r'^orders/resultreport/(?P<pk>\d+)/$', views.order_result_report, name='order_results_report'),
+    
+    #################
+    # Workareas
+    #################
+    url(r'^workarea/(?P<pk>\d+)/$', views.show_workarea_group, name='workarea_group'),
+    url(r'^workarea/(?P<area_pk>\d+)/(?P<order_pk>\d+)/$', views.order_results_wa, name='order_results_wa'),
+    url(r'^workarea/(?P<area_pk>\d+)/(?P<order_pk>\d+)/techval/$', views.order_results_techval, name='order_results_techval_wa'),
+    url(r'^workarea/(?P<area_pk>\d+)/(?P<order_pk>\d+)/medval/$', views.order_results_medval, name='order_results_medval_wa'),
+    url(r'^workarea/(?P<area_pk>\d+)/(?P<order_pk>\d+)/print/$', views.order_results_print_wa, name='order_results_print_wa'),
+    url(r'^workarea/(?P<area_pk>\d+)/(?P<order_pk>\d+)/repeat/$', views.order_results_repeat, name='order_results_repeat_wa'),
+    url(r'^workarea/(?P<area_pk>\d+)/(?P<order_pk>\d+)/history/$', views.order_results_history, name='order_results_history_wa'),
+    url(r'^workarea/(?P<area_pk>\d+)/(?P<order_pk>\d+)/print_draft/$', views.order_result_print_draft, name='order_results_print_draft_wa'),
+    url(r'^workarea/(?P<area_pk>\d+)/(?P<order_pk>\d+)/$', views.order_result_report, name='order_results_report_wa'),
+
     
      # #############
     # Report urls
@@ -84,6 +100,7 @@ urlpatterns = [
     url(r'^reports/origin/$', views.report_origin, name='origin_list'),
     url(r'^reports/insurance/$', views.report_insurance, name='insurance_list'),
     url(r'^reports/tests/$', views.report_tests, name='tests_list'),
+     url(r'^reports/inpatmedsrv/$', views.report_inpatmedsrv, name='inpatmedsrv_list'),
     
     url(r'^avatar/', include('avatar.urls')),
     ]

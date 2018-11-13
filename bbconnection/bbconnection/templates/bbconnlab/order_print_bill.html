@@ -7,10 +7,9 @@
 <title>BILL</title>
 <script type="text/javascript">
 window.print();
-window.onfocus=function(){ window.close(); }
 </script>
 </head>
-<body style="font-family: Ruda; font-size: 6pt;">
+<body style="font-family: Ruda; font-size: 11pt;">
 	<!-- awal header-->
 	<!-- akhir -->
 
@@ -20,7 +19,7 @@ window.onfocus=function(){ window.close(); }
 			<tr>
 				<td align="center"><big><span style="font-weight: bold;">
 							{% for lab_name in org_lab_name %}{{ lab_name.char_value }}{% endfor %}
-							<br>{% for lab_addr in org_lab_address %}{{ lab_addr.char_value }}{% endfor %}
+							{% for lab_addr in org_lab_address %}{{ lab_addr.char_value }}{% endfor %}
 							<br>BON
 					</span></big></td>
 			</tr>

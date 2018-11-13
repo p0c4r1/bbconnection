@@ -1,8 +1,9 @@
 {% load i18n %}
 <div style="margin-left: 50px;">
-    <h3>{% trans "BBconnection Clinical Laboratory 0.0.1" %}</h3>
+    <h3>{% trans "BBconnection Clinical Laboratory " %}{{ version }} </h3>
     <h5></h5>
     <br><br>
+   
 	<fieldset>
     
     <br><br>
@@ -11,6 +12,11 @@
 		{% for lab_addr in org_lab_address %}{{ lab_addr.char_value }}{% endfor %}
     
     </fieldset>
+    <br><br>
+    <div class="pn">
+     {{ update |safe }}
+     </div>
+     
     {% if not request.user.is_authenticated %}
     
     

@@ -75,11 +75,32 @@
 </div>
 
 
-
+<div class="col-lg-4">
+	<fieldset>		
+		<table class="table">
+			<thead>
+			<tr>
+				<td>{% trans "Visit" %}</td>
+				<td>{% trans "Insurance" %}</td>
+				<td>{% trans "Count" %}</td>
+				<td>{% trans "Report" %}</td>
+			</tr>
+		</thead>
+		{% for vs in visit %}
+			<tr>
+				<td>{{ vs.origin__name }}</td>
+				<td>{{ vs.insurance__name }}</td>
+				<td>{{ vs.number__count }}</td>
+				<td><a href="../../bill-report/{{ patients.id }}/?origin_id={{ vs.origin__id }}&insurance_id={{ vs.insurance__id }}" target="_blank" class="btn btn-default" role="button">
+    <span class="fa fa-print"></span></td>
+			</tr>
+		{% endfor %}
+		</table>
+	</fieldset>
+</div>
 {% endblock %}
 
 {% block main_footer %}
     <a href="../../../orders/patient/create/{{ patients.id }}/" class="btn btn-default" role="button">
     <span class="glyphicon glyphicon-plus"></span>&nbsp;{% trans "Create new Lab order for this patient" %}</a>
-    
 {% endblock %}

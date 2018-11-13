@@ -73,3 +73,11 @@ class LabelIconColumn(tables.TemplateColumn):
         extra['template_code'] = """{{ record.product }} {% if record.warning %} <img src="/static/assets/img/lot_empty.png" /></a> {% endif %}"""
         #<span class="label label-{{ record.get_state_class }}">{{ record.get_state }}</span>"""
         super(LabelIconColumn, self).__init__(**extra)
+        
+        
+class WaStatusIconColumn(tables.TemplateColumn):
+
+    def __init__(self,area_pk,order_pk, **extra):
+        extra['template_code'] = """{{ '12312'  | status_wa }}"""
+        #<span class="label label-{{ record.get_state_class }}">{{ record.get_state }}</span>"""
+        super(WaStatusIconColumn, self).__init__(**extra)
