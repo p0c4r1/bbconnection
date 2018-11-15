@@ -518,10 +518,17 @@ def show_workarea_group(request,pk):
     test_group = models.WorkareaTestGroups.objects.filter(workarea=wa_group).values('testgroup')
     
     order_wa = models.OrderTests.objects.filter(test__test_group__in=test_group).values('order')
-    
-    
     data = models.Orders.objects.filter(pk__in = order_wa)
+    
+    
+    request.GET = request.GET.copy()
+    s = request.GET.get('number')
+    if s:
+        request.GET['number'] =  ''.join([i for i in s  if i.isnumeric()])
+
+
     filter = filters.OrderFilter(request.GET,queryset=data)
+    
     ordertable = tables.OrderResultTableWa(filter.qs)
     ordertable.paginate(page=request.GET.get('page', 1), per_page=10)
     
@@ -536,6 +543,13 @@ def show_workarea_group(request,pk):
 def show_workarea(request):
     workareas = models.Workarea.objects.all().order_by('sort') 
     data = models.Orders.objects.all()
+    
+    request.GET = request.GET.copy()
+    s = request.GET.get('number')
+    if s:
+        request.GET['number'] =  ''.join([i for i in s  if i.isnumeric()])
+    
+    
     filter = filters.OrderFilter(request.GET,queryset=data)
     ordertable = tables.OrderResultTable(filter.qs)
     ordertable.paginate(page=request.GET.get('page', 1), per_page=10)
@@ -723,6 +737,8 @@ def order_results_print_wa(request,area_pk,order_pk):
     
     group_id = request.GET.get('group_id')
     
+    print group_id
+    
     input_file_header = settings.RESULT_REPORT_FILE_HEADER
     input_file_footer = settings.RESULT_REPORT_FILE_FOOTER
     input_file_main = settings.RESULT_REPORT_FILE_MAIN
@@ -751,7 +767,7 @@ def order_results_print_wa(request,area_pk,order_pk):
         url_pdf = base_url+'/media/report/'+str(order.number)+'_'+ts+'.pdf'
         
         # save report URL
-        oe, _created = models.OrderExtended.objects.get_or_create(order_id=pk)
+        oe, _created = models.OrderExtended.objects.get_or_create(order_id=order_pk)
     
         oe.result_pdf_url = url_pdf
         oe.save()

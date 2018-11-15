@@ -510,7 +510,7 @@ msgstr "Detail pasien"
 
 #: .\bbconnection\templates\bbconnlab\patients_detail.html:58
 msgid "DOB"
-msgstr "DOB"
+msgstr "Tanggal lahir"
 
 #: .\bbconnection\templates\bbconnlab\patients_detail.html:83
 msgid "Create new Lab order for this patient"

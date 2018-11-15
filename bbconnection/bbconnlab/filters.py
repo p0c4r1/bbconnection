@@ -17,6 +17,7 @@ class TestFilter(django_filters.FilterSet):
 class OrderFilter(django_filters.FilterSet):
     order_date = django_filters.DateRangeFilter()
     number = django_filters.CharFilter(lookup_expr='icontains')
+    #sample_order__sample_no = django_filters.CharFilter(lookup_expr='icontains')
     patient__patient_id = django_filters.CharFilter(lookup_expr='icontains')
     patient__name = django_filters.CharFilter(lookup_expr='icontains')
     
