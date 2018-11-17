@@ -1,5 +1,5 @@
 {% extends "base/form_view_base_billing.html" %}
-{% load i18n bootstrap3 %}
+{% load i18n bootstrap3 wa_status %}
 
 {% block meta_title %}
     {% trans "Order Results" %}[{{ wa_group }}]
@@ -23,15 +23,6 @@
 {% csrf_token %}
 
 {% block main_toolbar %}
-   <!-- <button type='submit' class='btn btn-primary'>
-        {% trans "Save" %}
-    </button>
-
-    <button type="button" class="btn btn-default"
-            onclick="window.location.assign('{% url 'workarea' %}')">
-        {% trans "Cancel" %}
-    </button>
-    -->
 {% endblock %}
 
 {% block main_inner %}
@@ -53,6 +44,9 @@
 			<th>Instrument</th>
 			<th>Tech.Val</th>
 			<th>Med.Val</th>
+			<th>{% trans "Pervious 1" %}</th>
+			<th>{% trans "Pervious 2" %}</th>
+			<th>{% trans "Pervious 3" %}</th>
 		</tr>
 	</thead>
 	
@@ -99,13 +93,16 @@
 	     	<td>{{ o.result__instrument__name|default:"" }}</td>
 	     	<td>{{ o.techval_user|default:"" }}</td>
 	     	<td>{{ o.medval_user|default:"" }}</td>
+	     	<td>{{ orders.id | pervious_result_1:o.test_id }}</td>
+	     	<td>{{ orders.id | pervious_result_2:o.test_id }}</td>
+	     	<td>{{ orders.id | pervious_result_3:o.test_id }}</td>
 	     	{% endif %}
 	     	
 	     	
 	     </tr> 
     {% endfor %}
     <tr>
-    	<td colspan="10">
+    	<td colspan="13">
     	<div class="form-group">
     	<input type="checkbox" name="check_conclusion" tabindex="-1" value="">
   <label for="conclusion">{% trans "Conclusion:" %}</label>

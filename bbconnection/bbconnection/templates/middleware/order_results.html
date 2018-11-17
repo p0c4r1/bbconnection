@@ -1,5 +1,5 @@
 {% extends "base/form_view_base_billing.html" %}
-{% load i18n bootstrap3 %}
+{% load i18n bootstrap3 wa_status %}
 
 {% block meta_title %}
     {% trans "Order Results" %}
@@ -23,15 +23,6 @@
 {% csrf_token %}
 
 {% block main_toolbar %}
-   <!-- <button type='submit' class='btn btn-primary'>
-        {% trans "Save" %}
-    </button>
-
-    <button type="button" class="btn btn-default"
-            onclick="window.location.assign('{% url 'workarea' %}')">
-        {% trans "Cancel" %}
-    </button>
-    -->
 {% endblock %}
 
 {% block main_inner %}
@@ -45,14 +36,17 @@
 		<tr>
 			<th><input type="checkbox" name="check_all" tabindex="-1" class="all" value=""</th>
 			<th>&nbsp;</th>
-			<th>Name</th>
-			<th>Result</th>
-			<th>Unit</th>
-			<th>Ref.Range</th>
-			<th>Mark</th>
-			<th>Instrument</th>
-			<th>Tech.Val</th>
-			<th>Med.Val</th>
+			<th>{% trans "Name" %}</th>
+			<th>{% trans "Result" %}</th>
+			<th>{% trans "Unit" %}</th>
+			<th>{% trans "Ref.Range" %}</th>
+			<th>{% trans "Mark" %}</th>
+			<th>{% trans "Instrument" %}</th>
+			<th>{% trans "Tech.Val" %}</th>
+			<th>{% trans "Med.Val" %}</th>
+			<th>{% trans "Pervious 1" %}</th>
+			<th>{% trans "Pervious 2" %}</th>
+			<th>{% trans "Pervious 3" %}</th>
 		</tr>
 	</thead>
 	
@@ -99,13 +93,16 @@
 	     	<td>{{ o.result__instrument__name|default:"" }}</td>
 	     	<td>{{ o.techval_user|default:"" }}</td>
 	     	<td>{{ o.medval_user|default:"" }}</td>
+	     	<td>{{ orders.id | pervious_result_1:o.test_id }}</td>
+	     	<td>{{ orders.id | pervious_result_2:o.test_id }}</td>
+	     	<td>{{ orders.id | pervious_result_3:o.test_id }}</td>
 	     	{% endif %}
 	     	
 	     	
 	     </tr> 
     {% endfor %}
     <tr>
-    	<td colspan="10">
+    	<td colspan="13">
     	<div class="form-group">
     	<input type="checkbox" name="check_conclusion" tabindex="-1" value="">
   <label for="conclusion">{% trans "Conclusion:" %}</label>

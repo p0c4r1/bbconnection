@@ -1122,7 +1122,23 @@ class Hosts(models.Model):
         return "%s - %s" % (self.code,self.name)
     
     
-    
+
+
+"""
+
+@receiver(models.signals.post_save, sender=HistoryOrders)
+def historyorder_clean_old_record(sender, instance, created, **kwargs):
+    if created:
+        # cek if pareameter set in parameters
+        parameter = Parameters.objects.filter(name = 'HISTORYORDER_DAYS_KEEP').values('num_value')
+        if parameter.count() < 1:
+            # doest have default value, create it default 30 days
+            create_par = Parameters(name = 'HISTORYORDER_DAYS_KEEP', num_value = 30 )
+            create_par.save()
+            parameter = Parameters.objects.filter(name = 'HISTORYORDER_DAYS_KEEP').values('num_value')
+        history = HistoryOrders.objects.filter(action_date__gte=datetime.now()-timedelta(days=int(parameter[0]['num_value'])))
+        history.delete()
+"""
     
 @receiver(models.signals.post_save, sender=Worklists)
 def create_worklist_test(sender, instance, created, **kwargs):
