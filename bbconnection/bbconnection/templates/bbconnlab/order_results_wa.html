@@ -29,12 +29,16 @@
 <style>
 .form-control-ok {
   color:  red;
+ }
+ 
+input[type=checkbox].cb-big {
+	transform: scale(1.5);
 }
 </style>
 <table class="table table-responsive table-hover">
 	<thead>
 		<tr>
-			<th><input type="checkbox" name="check_all" tabindex="-1" class="all" value=""</th>
+			<th><input type="checkbox" name="check_all" tabindex="-1" class="all cb-big" value=""</th>
 			<th>&nbsp;</th>
 			<th>Name</th>
 			<th>Result</th>
@@ -52,7 +56,7 @@
 	
 	<tbody>
     {% for o in ordertests %}
-	    <tr><td><input type="checkbox" name="check_{{ o.test_id }}" tabindex="-1" value=""></td>
+	    <tr><td><input type="checkbox" name="check_{{ o.test_id }}" tabindex="-1" value="" class="cb-big"></td>
 	    	{% if o.is_header %}
 	    	<td></td>
 	    	<td colspan="2"><strong>{{ o.test__name }}</strong></td>
@@ -104,7 +108,7 @@
     <tr>
     	<td colspan="13">
     	<div class="form-group">
-    	<input type="checkbox" name="check_conclusion" tabindex="-1" value="">
+    	<input type="checkbox" name="check_conclusion" tabindex="-1" value="" class="cb-big">
   <label for="conclusion">{% trans "Conclusion:" %}</label>
   <textarea class="form-control" rows="5" id="conclusion" name="conclusion">{{ orders.conclusion|default:"" }}</textarea>
 </div>

@@ -178,13 +178,19 @@
                   </li>
                   
                   <li class="sub-menu">
-                      <a {% if request.path == '/reptest/' or request.path == '/reports/jm/' or request.path == '/reports/insurance/' or request.path == '/reports/tests/' %} class="active"{% endif %} href="javascript:;" >
+                      <a {% if request.path == '/reptest/' or request.path == '/reports/orders/' or request.path == '/reports/jm/' or request.path == '/reports/insurance/' or request.path == '/reports/tests/' or request.path == '/reports/tats/' %} class="active"{% endif %} href="javascript:;" >
                           <i class="fa fa-file-o"></i>
                           <span>{% trans "Report" %}</span>
                       </a>
                       <!-- <ul class="sub">
                           {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/inpatmedsrv/'%} class="active"{% endif %} ><a href="/reports/inpatmedsrv/">{% trans "Inpatient med. service" %}</a></li>{% endif %}   
                       </ul> -->
+                      <ul class="sub">
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/orders/'%} class="active"{% endif %} ><a href="/reports/orders/">{% trans "Orders" %}</a></li>{% endif %}
+                      </ul>
+                      <ul class="sub">
+                          {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/tats/'%} class="active"{% endif %} ><a href="/reports/tats/">{% trans "Response time" %}</a></li>{% endif %}
+                      </ul>
                       <ul class="sub">
                           {% if perms.bbconnlab.view_orders %} <li {% if request.path == '/reports/jm/'%} class="active"{% endif %} ><a href="/reports/jm/">{% trans "Order list" %}</a></li>{% endif %}
                       </ul>

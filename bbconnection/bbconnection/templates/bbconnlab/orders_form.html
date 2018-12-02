@@ -32,11 +32,18 @@
 {% endblock %}
 
 {% block extra_css %}
-{{ form.media.css }}
+<link href="/static/css/select2.min.css" type="text/css" media="screen" rel="stylesheet" />
+<style>
+input[type=checkbox].cb-big {
+	transform: scale(1.5);
+	}
+</style>
 {% endblock %}
     
 {% block extra_js %}
-{{ form.media.js }}
+<script type="text/javascript" src="/static/js/select2.min.js"></script>
+<script type="text/javascript" src="/static/js/locales/id.js"></script>
+<script type="text/javascript" src="/static/django_select2/django_select2.js"></script>
 {% endblock %}
     
 

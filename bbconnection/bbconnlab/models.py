@@ -11,6 +11,9 @@ from datetime import date
 from collections import defaultdict
 from num2words import num2words
 
+from django.db.models.signals import post_save
+from rest_framework.authtoken.models import Token
+
 
 from calendar import monthrange
 from datetime import datetime, timedelta
@@ -1139,7 +1142,11 @@ def historyorder_clean_old_record(sender, instance, created, **kwargs):
         history = HistoryOrders.objects.filter(action_date__gte=datetime.now()-timedelta(days=int(parameter[0]['num_value'])))
         history.delete()
 """
-    
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
+        
 @receiver(models.signals.post_save, sender=Worklists)
 def create_worklist_test(sender, instance, created, **kwargs):
     if created:

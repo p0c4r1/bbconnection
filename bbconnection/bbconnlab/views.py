@@ -5,6 +5,7 @@ from django.utils.translation import activate
 from django.utils import timezone
 from django.http import HttpResponse
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from . import models,tables,forms,filters,query,report
 from braces.views import PermissionRequiredMixin, LoginRequiredMixin
@@ -46,6 +47,26 @@ user_language = 'id'
 translation.activate(user_language)
 #request.session[translation.LANGUAGE_SESSION_KEY] = user_language
 
+import django_filters.rest_framework
+
+from django.contrib.auth.models import User, Group
+from rest_framework import generics,viewsets
+from rest_framework import filters as resfilters
+from rest_framework.views import APIView
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from serializers import OrdersSerializer,PatientsSerializer,OriginsSerializer,DoctorsSerializer,ResultsSerializer,InsuranceSerializer
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from rest_framework.status import (
+    HTTP_400_BAD_REQUEST,
+    HTTP_404_NOT_FOUND,
+    HTTP_200_OK
+)
 
 # ######################
 # ##   Helper Views   ##
@@ -319,7 +340,68 @@ def report_inpatmedsrv(request):
     
     
     
+ 
+@login_required(login_url='login_billing')
+def report_orders(request):
+    template = 'report/orders.html'
+    data = models.Orders.objects.all()
+    today = timezone.now().date()
     
+    output = 'html'
+    
+    if request.GET.get('export'):
+        output = request.GET.get('export')
+        
+      
+    if request.GET.get('order_date'):
+        d_range = request.GET.get('order_date')
+        start_date = d_range[:10]
+        end_date = d_range[13:23]
+    else:
+        start_date = today
+        end_date = today
+        
+    data = data.filter(order_date__range=[start_date,end_date] )
+    
+    filter = filters.JMFilter(request.GET,queryset=data)
+    
+    report_content = ''
+    
+    res_rep = report.JasperServer()
+    
+    b_ok,content = res_rep.get_report_orders(start_date,end_date,output)
+    
+    
+    report_content = content
+    
+    
+    #orderstable = JMTable(data)
+    #orderstable.paginate(page=request.GET.get('page', 1), per_page=10)
+    
+    
+    #RequestConfig(request).configure(orderstable)
+
+    #export_format = request.GET.get('_export', None)
+    #if TableExport.is_valid_format(export_format):
+    #    exporter = TableExport(export_format, orderstable)
+    #    return exporter.response('table.{}'.format(export_format))
+    
+    response = ''
+    
+    if output<>'html':
+        if output == 'xlsx':
+            response = HttpResponse(content, content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        if output == 'pdf':
+            response = HttpResponse(content, content_type="application/pdf")
+        if output == 'docx':
+            response = HttpResponse(content, content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+            
+        return response
+        
+
+        
+    context = {'report':report_content,'filter':filter}
+    return render(request,template,context)    
     
 @login_required(login_url='login_billing')
 def report_jm(request):
@@ -414,8 +496,21 @@ def create_order_from_patient(request,patient_pk):
     order = patient.create_order()
     return redirect('order_edit', pk=order.pk)
 
+
 @login_required(login_url='login_billing') 
 def order_print_receipt(request,order_pk):
+    report_content = ''
+    res_rep = report.JasperServer()
+    b_ok,content = res_rep.get_report_order(order_pk,'order_receipt','html')
+    if b_ok:
+        response = HttpResponse(content)
+    else:
+        response = JsonResponse(content)
+        
+    return response
+    
+@login_required(login_url='login_billing') 
+def order_print_receipt_old(request,order_pk):
     order = models.Orders.objects.get(pk=order_pk)
     org_lab_name = models.Parameters.objects.filter(name = 'ORG_LAB_NAME')
     org_lab_address = models.Parameters.objects.filter(name = 'ORG_LAB_ADDRESS')
@@ -426,6 +521,19 @@ def order_print_receipt(request,order_pk):
 
 @login_required(login_url='login_billing') 
 def order_print_bill(request,order_pk):
+    report_content = ''
+    res_rep = report.JasperServer()
+    b_ok,content = res_rep.get_report_order(order_pk,'order_bill','html')
+    if b_ok:
+        response = HttpResponse(content)
+    else:
+        response = JsonResponse(content)
+        
+    return response
+    
+
+@login_required(login_url='login_billing') 
+def order_print_bill_old(request,order_pk):
     order = models.Orders.objects.get(pk=order_pk)
     org_lab_name = models.Parameters.objects.filter(name = 'ORG_LAB_NAME')
     org_lab_address = models.Parameters.objects.filter(name = 'ORG_LAB_ADDRESS')
@@ -1524,3 +1632,69 @@ class ViewWorklist(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     permission_required = 'bbconnlab.view_worklists'
     login_url = settings.LOGIN_URL_BILLING
     
+    
+    
+    
+################### API #############################
+@csrf_exempt
+@api_view(["POST"])
+@permission_classes((AllowAny,))
+def api_login(request):
+    username = request.data.get("username")
+    password = request.data.get("password")
+    if username is None or password is None:
+        return Response({'error': 'Please provide both username and password'},
+                        status=HTTP_400_BAD_REQUEST)
+    user = authenticate(username=username, password=password)
+    if not user:
+        return Response({'error': 'Invalid Credentials'},
+                        status=HTTP_404_NOT_FOUND)
+    token, _ = Token.objects.get_or_create(user=user)
+    return Response({'token': token.key},
+                    status=HTTP_200_OK)
+    
+@csrf_exempt
+@api_view(["GET"])
+def api_test(request):
+    data = {'sample_data': 123}
+    return Response(data, status=HTTP_200_OK)
+    
+class OrderListViewSet(generics.ListAPIView):
+    queryset = models.Orders.objects.all()
+    serializer_class = OrdersSerializer
+    filter_backends = (resfilters.SearchFilter,)
+    search_fields = ('id','number', 'order_date',)
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = models.Orders.objects.all()
+    serializer_class = OrdersSerializer
+    
+class PatientViewSet(viewsets.ModelViewSet):
+    queryset = models.Patients.objects.all()
+    serializer_class = PatientsSerializer
+
+class DoctorViewSet(viewsets.ModelViewSet):
+    queryset = models.Doctors.objects.all()
+    serializer_class = DoctorsSerializer
+
+class OriginViewSet(viewsets.ModelViewSet):
+    queryset = models.Origins.objects.all()
+    serializer_class = OriginsSerializer
+    
+class InsuranceViewSet(viewsets.ModelViewSet):
+    queryset = models.Insurance.objects.all()
+    serializer_class = InsuranceSerializer
+
+class ResultViewSet(viewsets.ModelViewSet):
+    queryset = models.OrderResults.objects.all()
+    serializer_class = ResultsSerializer
+    
+    
+########### AJAX CALL ########################
+
+@login_required(login_url='login_billing') 
+def json_pervious_result(request,order_pk,test_pk):
+    order = models.Orders.objects.get(pk=order_pk)
+    test = models.Tests.objects.get(pk=test_pk)
+    order_result = models.OrderResults.objects.filter(order_id__lt = order.id, order__patient_id = order.patient_id, test = test, validation_status__gte = 3).values('id','order__number','order__order_date','result__alfa_result').order_by('-order_id')
+    return JsonResponse({'results': list(order_result)})

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_orders" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="071e5c0e-7f8a-4914-93b7-d36993fc20f4">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ciremaiLIS"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.reportUnit" value="/reports/bbconn/report_orders"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="ireport.jasperserver.report.resource" value="/reports/bbconn/report_orders_files/main_jrxml"/>
+	<parameter name="START_DATE" class="java.sql.Date" nestedType="java.math.BigDecimal"/>
+	<parameter name="END_DATE" class="java.sql.Date" nestedType="java.sql.Date"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+bbconnlab_orders.order_date,
+bbconnlab_orders.number,
+bbconnlab_priority.name priority,
+bbconnlab_patients.name patient,
+bbconnlab_patients.data0 nosep,
+bbconnlab_patients.data1 tglsep,
+bbconnlab_insurance.name insurance,
+bbconnlab_origins.name origin,
+bbconnlab_doctors.name doctor,
+sum(bbconnlab_testprices.tariff) tariff,
+sum(bbconnlab_testprices.service) service,
+sum(bbconnlab_testprices.tariff+bbconnlab_testprices.service) price
+FROM
+bbconnlab_orders
+LEFT JOIN bbconnlab_priority ON bbconnlab_priority.id = bbconnlab_orders.priority_id
+LEFT JOIN bbconnlab_patients ON bbconnlab_patients.id = bbconnlab_orders.patient_id
+LEFT JOIN bbconnlab_insurance ON bbconnlab_insurance.id = bbconnlab_orders.insurance_id
+LEFT JOIN bbconnlab_origins ON bbconnlab_origins.id = bbconnlab_orders.origin_id
+LEFT JOIN bbconnlab_doctors ON bbconnlab_doctors.id = bbconnlab_orders.doctor_id
+LEFT JOIN bbconnlab_ordertests ON bbconnlab_ordertests.order_id = bbconnlab_orders.origin_id
+RIGHT JOIN bbconnlab_testprices ON bbconnlab_testprices.test_id = bbconnlab_ordertests.test_id AND bbconnlab_testprices.priority_id = bbconnlab_orders.priority_id
+WHERE
+bbconnlab_orders.order_date between  $P{START_DATE}  AND  $P{END_DATE} 
+AND bbconnlab_orders.order_date is not null
+group by
+bbconnlab_orders.order_date,
+bbconnlab_orders.number,
+bbconnlab_priority.name,
+bbconnlab_patients.name,
+bbconnlab_patients.data0,
+bbconnlab_patients.data1,
+bbconnlab_insurance.name,
+bbconnlab_origins.name,
+bbconnlab_doctors.name]]>
+	</queryString>
+	<field name="order_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="order_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_orders"/>
+	</field>
+	<field name="number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_orders"/>
+	</field>
+	<field name="priority" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="priority"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_priority"/>
+	</field>
+	<field name="patient" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="patient"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_patients"/>
+	</field>
+	<field name="nosep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nosep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_patients"/>
+	</field>
+	<field name="tglsep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tglsep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_patients"/>
+	</field>
+	<field name="insurance" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="insurance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_insurance"/>
+	</field>
+	<field name="origin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="origin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_origins"/>
+	</field>
+	<field name="doctor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="doctor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bbconnlab_doctors"/>
+	</field>
+	<field name="tariff" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="tariff"/>
+	</field>
+	<field name="service" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="service"/>
+	</field>
+	<field name="price" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="price"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="20" uuid="528e1b6a-110d-44dc-b097-2557f6b693d2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["dari tanggal "+$P{START_DATE}+" s/d "+$P{END_DATE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="15" uuid="9298adf9-1d17-47e7-a9d6-3bb6483ffa63">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a1d2dd3b-7528-4980-aae7-862a126fe29d"/>
+				</reportElement>
+				<text><![CDATA[order_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="0" width="66" height="15" uuid="4e030faa-c5ad-415b-9526-bf5b51c2235d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cf24e9c7-68e9-4e82-b59a-a6b77b69d050"/>
+				</reportElement>
+				<text><![CDATA[number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="0" width="66" height="15" uuid="e504d630-2561-49b2-9fd6-9dd8020c3850">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d8125eb9-5ec1-46f5-b744-5fe89a1bc7af"/>
+				</reportElement>
+				<text><![CDATA[priority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="0" width="84" height="15" uuid="02ff7cd4-1178-4867-90d2-09eee2f5525a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8f11d46-fbc4-4513-ab1a-c04634cd3de0"/>
+				</reportElement>
+				<text><![CDATA[patient]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="274" y="0" width="66" height="15" uuid="543cc197-753f-4a6e-aefa-74b7f6979db6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="942aee99-df2a-4a43-bf54-56be8121d86b"/>
+				</reportElement>
+				<text><![CDATA[nosep]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="0" width="66" height="15" uuid="8a44ff01-2aa6-43b7-a720-1cae779e097b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="928e1303-9249-439c-b4d9-f7e0897a9098"/>
+				</reportElement>
+				<text><![CDATA[tglsep]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="0" width="66" height="15" uuid="003ad2b9-9b76-4b18-b011-a078f1b627f5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="909b41b9-052a-442e-8ef4-26164ef1b53f"/>
+				</reportElement>
+				<text><![CDATA[insurance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="0" width="66" height="15" uuid="efb4e44b-ef64-4d91-a0de-e49197063ef0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e7bf4949-dfe1-4b37-b3c6-27463ce65abc"/>
+				</reportElement>
+				<text><![CDATA[origin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="538" y="0" width="66" height="15" uuid="38a7e3ed-afe5-4526-92cb-94b0b49f78f7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fcc61e77-ed90-443b-b27d-7276784b533e"/>
+				</reportElement>
+				<text><![CDATA[doctor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="604" y="0" width="66" height="15" uuid="12eec45a-7e0c-4b1c-aee7-b02b7028fe4e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f54ffb3f-64ee-40fc-89bf-f01b716869f4"/>
+				</reportElement>
+				<text><![CDATA[tariff]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="670" y="0" width="66" height="15" uuid="d17a9572-83a9-4003-b9a9-dcfac4cf5cfd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72c0cfaa-9dc1-4d9b-9852-fe6933b60d83"/>
+				</reportElement>
+				<text><![CDATA[service]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="736" y="0" width="66" height="15" uuid="c0d11071-c977-4f2c-b11f-711bd36d7254">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d57cb937-26a7-4b77-9312-d54c8cd8d135"/>
+				</reportElement>
+				<text><![CDATA[price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="M/d/yy" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="50" height="15" uuid="9402a9a4-a09f-4465-8c68-bc5ad4133860">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a1d2dd3b-7528-4980-aae7-862a126fe29d"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{order_date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="54" y="0" width="66" height="15" uuid="6244b81b-8fe7-49eb-b5b2-419afde3794c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cf24e9c7-68e9-4e82-b59a-a6b77b69d050"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{number}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="124" y="0" width="66" height="15" uuid="f48ff6fd-1f4d-4231-97e9-674b09a31d7b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d8125eb9-5ec1-46f5-b744-5fe89a1bc7af"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{priority}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="190" y="0" width="84" height="15" uuid="2b2881d3-63b8-49b4-9cc8-117f2be36d41">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8f11d46-fbc4-4513-ab1a-c04634cd3de0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{patient}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="274" y="0" width="66" height="15" uuid="97b56e00-1229-49a6-ac50-67ed63f40d43">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="942aee99-df2a-4a43-bf54-56be8121d86b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nosep}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="340" y="0" width="66" height="15" uuid="d5977082-bf44-451c-b72b-b3888b8abab5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="928e1303-9249-439c-b4d9-f7e0897a9098"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{tglsep}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="406" y="0" width="66" height="15" uuid="0812aa17-3c16-4431-98f0-f8754710735a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="909b41b9-052a-442e-8ef4-26164ef1b53f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{insurance}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="472" y="0" width="66" height="15" uuid="b271b888-dbb7-4a0f-add6-188985804ea3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e7bf4949-dfe1-4b37-b3c6-27463ce65abc"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{origin}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="538" y="0" width="66" height="15" uuid="73dd2f19-65f2-437a-b05d-8050ad6b380d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fcc61e77-ed90-443b-b27d-7276784b533e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{doctor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.###;(-#,##0.###)" isBlankWhenNull="true">
+				<reportElement x="604" y="0" width="66" height="15" uuid="2fa01431-fe43-4fdf-9b46-c26219d898c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f54ffb3f-64ee-40fc-89bf-f01b716869f4"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{tariff}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.###;(-#,##0.###)" isBlankWhenNull="true">
+				<reportElement x="670" y="0" width="66" height="15" uuid="5c748a91-a482-4d42-8625-3dfb683a6973">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72c0cfaa-9dc1-4d9b-9852-fe6933b60d83"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{service}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.###;(-#,##0.###)" isBlankWhenNull="true">
+				<reportElement x="736" y="0" width="66" height="15" uuid="e8da7218-068a-4dad-83b5-89b892209f4e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d57cb937-26a7-4b77-9312-d54c8cd8d135"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="21">
+			<textField>
+				<reportElement x="670" y="5" width="100" height="15" uuid="fb1fe42e-b56c-46c3-936e-946798fb66a1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="770" y="5" width="30" height="15" uuid="894fab97-966e-412a-9119-ad5ba39a9c23"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

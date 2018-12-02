@@ -30,11 +30,18 @@
 .form-control-ok {
   color:  red;
 }
+
+input[type=checkbox].cb-big {
+	transform: scale(1.5);
+}
 </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
 <table class="table table-responsive table-hover">
 	<thead>
 		<tr>
-			<th><input type="checkbox" name="check_all" tabindex="-1" class="all" value=""</th>
+			<th><input type="checkbox" name="check_all" tabindex="-1" class="all cb-big" value=""></th>
 			<th>&nbsp;</th>
 			<th>{% trans "Name" %}</th>
 			<th>{% trans "Result" %}</th>
@@ -52,7 +59,7 @@
 	
 	<tbody>
     {% for o in ordertests %}
-	    <tr><td><input type="checkbox" name="check_{{ o.test_id }}" tabindex="-1" value=""></td>
+	    <tr><td><input type="checkbox" name="check_{{ o.test_id }}" tabindex="-1" value="" class="cb-big"></td>
 	    	{% if o.is_header %}
 	    	<td></td>
 	    	<td colspan="2"><strong>{{ o.test__name }}</strong></td>
@@ -77,7 +84,7 @@
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</div>
             </div>
 			</td>
-	     	<td>{{ o.test__name }}</td>
+	     	<td><a href="#" data-id="{{ o.test_id }}" class="viewdetails">{{ o.test__name }}</a></td>
 	     	
 	     	{% endif %}
 	     	
@@ -96,6 +103,7 @@
 	     	<td>{{ orders.id | pervious_result_1:o.test_id }}</td>
 	     	<td>{{ orders.id | pervious_result_2:o.test_id }}</td>
 	     	<td>{{ orders.id | pervious_result_3:o.test_id }}</td>
+	     	
 	     	{% endif %}
 	     	
 	     	
@@ -104,7 +112,7 @@
     <tr>
     	<td colspan="13">
     	<div class="form-group">
-    	<input type="checkbox" name="check_conclusion" tabindex="-1" value="">
+    	<input type="checkbox" name="check_conclusion" tabindex="-1" value="" class="cb-big">
   <label for="conclusion">{% trans "Conclusion:" %}</label>
   <textarea class="form-control" rows="5" id="conclusion" name="conclusion">{{ orders.conclusion|default:"" }}</textarea>
 </div>
@@ -113,6 +121,26 @@
     </tbody>
 </table>
 
+ <!-- Modal -->
+  <div class="modal fade" id="ModalDetails" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{% trans "All pervious results" %}</h4>
+        </div>
+        <div class="modal-body">
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 
 {% endblock %}
@@ -175,6 +203,28 @@
     </form>
     
  <script type="text/javascript">
+ (function($) {
+    var infoModal = $('#ModalDetails');
+    $('.viewdetails').on('click', function(){
+        $.ajax({ 
+          type: "GET", 
+          url: '/json/pervious_results/4333/'+$(this).data('id')+'/',
+          dataType: 'json',
+          success: function(data){ 
+            htmlData = '<table class="table"><thead><tr><th>Date</th><th>Order number</th><th>Result</th></tr></thead><tbody>';
+           for (var i = 0; i < data.results.length; i++) {
+                    console.log(data.results[i].id);
+                    htmlData = htmlData + '<tr><td>'+data.results[i].order__order_date+'</td><td>'+data.results[i].order__number+'</td><td>'+data.results[i].result__alfa_result+'</td></tr>';
+                }   
+                 
+            infoModal.find('.modal-body').html(htmlData+'</tbody></table>');
+            infoModal.modal('show');
+          }
+        });
+
+        return false;
+    });
+})(jQuery);
    $('.all').on('click', function(e){
     $this = this;
     $.each($(this).parents('table').find('input'), function(i, item){

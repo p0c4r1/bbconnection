@@ -138,6 +138,7 @@ class OrderForm2(forms.ModelForm):
         )
             
             self.fields['test_selections'].required = False
+            self.fields['test_selections'].widget.attrs['class'] = 'cb-big'
             #self.fields['diagnosis_selections'].initial = list(Orders.objects.get(id=instance.pk)
             #                                        .order_diagitems.all().
             #                                        values_list('diagnosis_id',flat=True).order_by('id'))

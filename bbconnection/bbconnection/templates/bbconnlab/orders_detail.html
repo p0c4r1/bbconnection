@@ -136,7 +136,7 @@
 	</thead>
 	{% for tes in orders.get_test_price %}
 	<tr>
-		<td>{{ tes.name }}</td>
+		<td>{{ tes.order_items__test__name }}</td>
 		<td>{{ tes.order_items__test__test_price__tariff|intcomma }}</td>
 		<td>{{ tes.order_items__test__test_price__service|intcomma }}</td>
 		<td>{{ tes.sub_total|intcomma }}</td>

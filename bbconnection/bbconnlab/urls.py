@@ -1,7 +1,18 @@
 from __future__ import unicode_literals
 
 from django.conf.urls import  url,include
-from . import views
+from rest_framework import routers
+from . import views,models,serializers
+
+router = routers.DefaultRouter()
+router.register(r'orders', views.OrderViewSet)
+router.register(r'patients', views.PatientViewSet)
+router.register(r'doctors', views.DoctorViewSet)
+router.register(r'origins', views.OriginViewSet)
+router.register(r'insurances', views.InsuranceViewSet)
+router.register(r'results', views.ResultViewSet)
+
+
 
 urlpatterns = [
     
@@ -96,6 +107,8 @@ urlpatterns = [
      # #############
     # Report urls
     # #############
+    url(r'^reports/orders/$', views.report_orders, name='rep_orders_list'),
+    # old
     url(r'^reports/jm/$', views.report_jm, name='jm_list'),
     url(r'^reports/origin/$', views.report_origin, name='origin_list'),
     url(r'^reports/insurance/$', views.report_insurance, name='insurance_list'),
@@ -103,4 +116,19 @@ urlpatterns = [
      url(r'^reports/inpatmedsrv/$', views.report_inpatmedsrv, name='inpatmedsrv_list'),
     
     url(r'^avatar/', include('avatar.urls')),
+    
+    
+    ##################
+    # API
+    #################
+    url(r'^api/', include(router.urls)),
+    url(r'^api/login/$', views.api_login, name='api_login'),
+    url(r'^api/test/$', views.api_test, name='api_test'),
+    url(r'^api/orders/', views.OrderListViewSet.as_view(queryset=models.Orders.objects.all(), serializer_class=serializers.OrdersSerializer), name='order-list'),
+    
+    
+    ##################
+    # JSON
+    ##################
+    url(r'^json/pervious_results/(?P<order_pk>\d+)/(?P<test_pk>\d+)/$', views.json_pervious_result, name='json_pervious_result'),
     ]
